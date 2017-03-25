@@ -14,7 +14,20 @@
             url: '/clickstream',
             templateUrl: 'app/clickstream/clickstream.view.html',
             controller: 'clickstreamController'
+        })
+
+        .state('product', {
+            url: '/product/:productId',
+            templateUrl: 'app/clickstream/product.view.html',
+            controller: 'clickstreamController'
+        })
+
+        .state('detail', {
+            url: '/product/:productId/detail/:detail',
+            templateUrl: 'app/clickstream/product.view.html',
+            controller: 'clickstreamController'
         });
+
     $urlRouterProvider.otherwise('/survey');
 
 });

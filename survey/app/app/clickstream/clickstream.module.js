@@ -1,92 +1,36 @@
 angular.module("app.clickstream", ['app.common', 'ngStomp'])
-    .controller("clickstreamController", ['$scope', 'GetJSonMI', 'wsConstant', '$stomp', function ($scope, GetJSonMI, wsConstant, $stomp) {
+    .controller("clickstreamController", ['$scope', 'GetJSonMI', 'wsConstant', '$stomp', '$stateParams', function ($scope, GetJSonMI, wsConstant, $stomp, $stateParams) {
 
-        // GetJSonMI.getAllLocations(function (allLoc) {
-        //     $scope.AllMIData = allLoc;
+        var productId = $stateParams.productId; //getting fooVal
 
-        // });
+        $scope.productId = productId;
 
-        //Working with STOMP
-        // $stomp.setDebug(function (args) {
-        //     $log.debug(args)
-        // })
-
-        emps = { MobileNum: wsConstant.MobileNum };
-
-        $scope.UserData = emps;
-        var loadingText = "loading ..."
-        $scope.mobileInternet = {usbMsisdn:loadingText, balance: loadingText, sallefny: loadingText, ratePlan: loadingText, consumedQouta: 0, totalQouta: 0}
-
-        $scope.adsText = "Stay tuned for new offers ..."
-        $stomp
-            .connect('/poc-backend/ws', {})
-
-            // frame = CONNECTED headers
-            .then(function (frame) {
-                var subscription = $stomp.subscribe('/user/topic/clickstream', function (payload, headers, res) {
-                    $scope.mobileInternet = payload
-                    $scope.$apply();
-                }, {})
-
-                var adsSubscription = $stomp.subscribe('/topic/clickstream', function (payload, headers, res) {
-                    $scope.adsText = payload.content
-                    $scope.$apply();
-                }, {})
-
-                // Unsubscribe
-                //subscription.unsubscribe()
-
-                // Send message
-                $stomp.send('/app/clickstream', {
-                    username: $scope.UserData.MobileNum
-                }, {})
-
-                // Disconnect
-                // $stomp.disconnect(function () {
-                //     $log.info('disconnected')
-                // })
-            })
-
-
-        $scope.GetValueInGB = function (Value) {
-
-            var diplayedValue = Value;
-
-            if (Value > 1024 && Value < 1024 * 1024) {
-                // MByte
-                diplayedValue = parseInt((Value / 1024));
-
+          $scope.phones = [
+            {
+             id: 1,
+             orderProp: 1,
+             imageUrl: 'https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone7/iphone7-colors.jpg',
+             name: 'Phone 1',
+             snippet: 'kleine Beschreibung'
+            },{
+             id: 2,
+             orderProp: 2,
+             imageUrl: 'http://s7d2.scene7.com/is/image/SamsungUS/SMG930_gs7_102416?$product-details-jpg$',
+             name: 'Phone 2',
+             snippet: 'kleine Beschreibung'
+            },{
+             id: 3,
+             orderProp: 2,
+             imageUrl: 'http://s7d2.scene7.com/is/image/SamsungUS/SMG930_gs7_102416?$product-details-jpg$',
+             name: 'Phone 2',
+             snippet: 'kleine Beschreibung'
             }
-            else if (Value > 1024 * 1024) {
-                //GByte
-                diplayedValue = parseInt(Value / (1024 * 1024));
-            }
+          ];
 
-            return diplayedValue;
-        };
-        $scope.GetDisplayedUnit = function (Value) {
+          $scope.setImage = function(imageUrl) {
+            $scope.mainImageUrl = imageUrl;
+          }
 
-            var diplayedUnit = 'KB';
-
-            if (Value > 1024 && Value > 1024 * 1024) {
-                // MByte
-                diplayedUnit = 'MB';
-
-            }
-            else if (Value > 1024 * 1024) {
-                //GByte
-                diplayedUnit = 'GB';
-            }
-
-            return diplayedUnit;
-        };
-        $scope.setprogerress = function (id, value) {
-            return {
-                width: value + "%",
-                transition: "width 20s linear"
-            };
-
-        };
     }])
 
 

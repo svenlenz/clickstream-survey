@@ -194,7 +194,7 @@ angular.module("app.survey", ['webServicesConstant', 'app.common'])
    ]
   }
  ],
- title: "Umfrage Masterarbeit Sven"
+ title: ""
 }
 
     Survey.defaultBootstrapCss.navigationButton = "btn btn-primary";
