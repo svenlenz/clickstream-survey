@@ -1,9 +1,11 @@
 angular.module("app.clickstream", ['app.common', 'ngStomp'])
     .controller("clickstreamController", ['$scope', 'GetJSonMI', 'wsConstant', '$stomp', '$stateParams', function ($scope, GetJSonMI, wsConstant, $stomp, $stateParams) {
 
-        var productId = $stateParams.productId; //getting fooVal
+        var productId = $stateParams.productId;
+        var detailId = $stateParams.detailId;
 
         $scope.productId = productId;
+        $scope.detailId = detailId;
 
           $scope.phones = [
             {

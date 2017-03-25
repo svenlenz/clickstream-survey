@@ -23,8 +23,8 @@
         })
 
         .state('detail', {
-            url: '/product/:productId/detail/:detail',
-            templateUrl: 'app/clickstream/product.view.html',
+            url: '/product/:productId/detail/:detailId',
+            templateUrl: 'app/clickstream/detail.view.html',
             controller: 'clickstreamController'
         });
 
