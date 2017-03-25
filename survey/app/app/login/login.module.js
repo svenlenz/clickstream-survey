@@ -206,7 +206,11 @@ angular.module("app.login", ['webServicesConstant', 'app.common'])
 
         function sendDataToServer(survey) {
           var resultAsString = JSON.stringify(survey.data);
-          alert(resultAsString); //send Ajax request to your web server.
+
+          console.log(divolte)
+          console.log('id: ' + divolte.sessionId)
+          console.log(resultAsString)
+
             checkLogin.checkLoginSuccess(function (response) {
                 console.log("login response -=====>>" + response);
                 // alert("response.length "+response.length);
