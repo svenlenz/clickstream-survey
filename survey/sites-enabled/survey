@@ -1,0 +1,17 @@
+server {
+
+  listen 80;
+  server_name localhost;
+  charset utf-8;
+
+  location / {
+    alias /src/app/;
+  }
+
+  location  /processing/test {
+    proxy_pass         http://processing:4568/test;
+    keepalive_timeout 600s;
+    proxy_send_timeout 600s;
+    proxy_read_timeout 600s;
+  }
+}

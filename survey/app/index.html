@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Survey Masterthesis Sven</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/poc-style.css">
+    <link rel="stylesheet" href="css/customStyle.css">
+    <link href="https://surveyjs.azureedge.net/0.12.4/survey.css" type="text/css" rel="stylesheet" />
+
+    <script src="js/angular.js"></script>
+    <script src="js/angular-resource.js"></script>
+    <script src="js/angular-ui-router.min.js"></script>
+    <script src="js/angular-animate.js"></script>
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/poc-script.js"></script>
+    <script src="js/ng-stomp.standalone.min.js"></script>
+    <script src="js/survey.angular.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/common/common.module.js"></script>
+    <script src="app/common/constants.module.js"></script>
+    <script src="app/login/login.module.js"></script>
+
+
+
+    <script src="app/mi/mi.module.js"></script>
+
+</head>
+
+<body ng-app="routerApp" ng-cloak>
+    <script src="//localhost:8290/divolte.js" defer async></script>
+    <div class="container">
+
+        <div ui-view></div>
+    </div>
+    <!--
+        http://divolte.io/
+        https://hub.docker.com/r/mkieboom/divolte-collector-docker/
+        https://github.com/divThis/docker-divolte
+        export JAVA_HOME=`/usr/libexec/java_home`
+        find ./divolte_clicklogs/published -name '*divolte-tracking-*.avro' | sort | tail -n1 | xargs ./divolte-collector-0.4.1/bin/avro-tools tojson --pretty
+        https://www.slideshare.net/fvanvollenhoven/prototyping-online-ml-with-divolte-collector
+        http://126kr.com/article/542jmbepx15 "Rapid Prototyping of Online Machine Learning with Divolte Collector"
+        Kafka Anbindung: https://github.com/ayman-elgharabawy/Kafka-SpringBoot-WebSocket/tree/master/AngularDocker/public-html/app
+        /login
+    -->
+</body>
+
+</html>

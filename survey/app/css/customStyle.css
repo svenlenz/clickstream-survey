@@ -1,0 +1,69 @@
+/*//-----------------------------Login_Style-----------------------------------*/
+
+.ErrorMsg{
+    display: none;
+    text-align: center;
+}
+
+.center{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+.name ,.password{
+    margin-top: 25px;
+    border: solid 1px gray;
+    box-shadow: none;
+}
+.loginBtn{
+    margin-top: 25px;
+    box-shadow: none;
+}
+input[placeholder] {
+    text-align: center;
+}
+
+/*//-----------------------------MainPageStyle_Style-----------------------------------*/
+.progress.active .progress-bar{
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+.progress-html{
+    -webkit-animation-name: progress-html;
+    animation-name: progress-html;
+    -webkit-animation-delay: .7s;
+    animation-delay: .7s;
+}
+
+@-webkit-keyframes progress-html{0%{width: 0%;} 100%{ width: 100%;}}
+@-moz-keyframes progress-html{0%{width: 0%;} 100%{ width: 100%;}}
+@keyframes progress-html{0%{width: 0%;} 100%{ width: 100%;}}
+/*-------------------------------------------------------------------------*/
+
+.ADSLHeader {
+    background-color: #e60000;
+    border-radius: 5px;
+    height: 60px;
+    margin-top: 30px;
+    padding: 16px;
+    width: 100%;
+}
+
+.ADSLHeader p {
+    float: left;
+    font-size: 24px;
+    line-height: 24px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.loginicon{
+    padding-top: 37px;
+}
+input.pw {
+    -webkit-text-security: disc;
+}
