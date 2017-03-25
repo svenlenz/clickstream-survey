@@ -7,22 +7,19 @@ angular.module("app.clickstream", ['app.common', 'ngStomp'])
         $scope.productId = productId;
         $scope.detailId = detailId;
 
-          $scope.phones = [
+          $scope.products = [
             {
              id: 1,
-             orderProp: 1,
              imageUrl: 'https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone7/iphone7-colors.jpg',
              name: 'Phone 1',
              snippet: 'kleine Beschreibung'
             },{
              id: 2,
-             orderProp: 2,
              imageUrl: 'http://s7d2.scene7.com/is/image/SamsungUS/SMG930_gs7_102416?$product-details-jpg$',
              name: 'Phone 2',
              snippet: 'kleine Beschreibung'
             },{
              id: 3,
-             orderProp: 2,
              imageUrl: 'http://s7d2.scene7.com/is/image/SamsungUS/SMG930_gs7_102416?$product-details-jpg$',
              name: 'Phone 2',
              snippet: 'kleine Beschreibung'
@@ -32,6 +29,12 @@ angular.module("app.clickstream", ['app.common', 'ngStomp'])
           $scope.setImage = function(imageUrl) {
             $scope.mainImageUrl = imageUrl;
           }
+
+        var args = {
+            test: productId || 'undefined'
+        };
+        divolte.signal('myCustomEvent', args);
+
 
     }])
 
