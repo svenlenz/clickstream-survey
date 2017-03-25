@@ -215,7 +215,7 @@ angular.module("app.survey", ['webServicesConstant', 'app.common'])
                 console.log("login response -=====>>" + response);
                 // alert("response.length "+response.length);
                 if (response.length = 1) {
-                    $state.go('profile');
+                    $state.go('clickstream');
                 }
                 else {
                     $('.ErrorMsg').css('display', 'block');
@@ -231,6 +231,6 @@ angular.module("app.survey", ['webServicesConstant', 'app.common'])
 
         $scope.submit = function () {
             divolte.signal('myCustomEvent', { param: 'foo',  otherParam: 'bar' })
-            //$state.go('profile');
+            $state.go('clickstream');
         };
     }])

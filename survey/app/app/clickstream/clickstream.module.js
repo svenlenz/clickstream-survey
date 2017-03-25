@@ -1,5 +1,5 @@
-angular.module("app.mi", ['app.common', 'ngStomp'])
-    .controller("miController", ['$scope', 'GetJSonMI', 'wsConstant', '$stomp', function ($scope, GetJSonMI, wsConstant, $stomp) {
+angular.module("app.clickstream", ['app.common', 'ngStomp'])
+    .controller("clickstreamController", ['$scope', 'GetJSonMI', 'wsConstant', '$stomp', function ($scope, GetJSonMI, wsConstant, $stomp) {
 
         // GetJSonMI.getAllLocations(function (allLoc) {
         //     $scope.AllMIData = allLoc;
@@ -10,25 +10,25 @@ angular.module("app.mi", ['app.common', 'ngStomp'])
         // $stomp.setDebug(function (args) {
         //     $log.debug(args)
         // })
-        
+
         emps = { MobileNum: wsConstant.MobileNum };
 
         $scope.UserData = emps;
         var loadingText = "loading ..."
         $scope.mobileInternet = {usbMsisdn:loadingText, balance: loadingText, sallefny: loadingText, ratePlan: loadingText, consumedQouta: 0, totalQouta: 0}
-        
+
         $scope.adsText = "Stay tuned for new offers ..."
         $stomp
             .connect('/poc-backend/ws', {})
 
             // frame = CONNECTED headers
             .then(function (frame) {
-                var subscription = $stomp.subscribe('/user/topic/mi', function (payload, headers, res) {
+                var subscription = $stomp.subscribe('/user/topic/clickstream', function (payload, headers, res) {
                     $scope.mobileInternet = payload
                     $scope.$apply();
                 }, {})
-                    
-                var adsSubscription = $stomp.subscribe('/topic/ads', function (payload, headers, res) {
+
+                var adsSubscription = $stomp.subscribe('/topic/clickstream', function (payload, headers, res) {
                     $scope.adsText = payload.content
                     $scope.$apply();
                 }, {})
@@ -37,7 +37,7 @@ angular.module("app.mi", ['app.common', 'ngStomp'])
                 //subscription.unsubscribe()
 
                 // Send message
-                $stomp.send('/app/mi', {
+                $stomp.send('/app/clickstream', {
                     username: $scope.UserData.MobileNum
                 }, {})
 

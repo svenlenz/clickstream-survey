@@ -1,5 +1,5 @@
 // app.js
- angular.module('routerApp', ['ui.router','app.survey','app.mi'])
+ angular.module('routerApp', ['ui.router','app.survey','app.clickstream'])
 
 .config(function($stateProvider, $urlRouterProvider) {
 
@@ -10,10 +10,10 @@
             controller: 'surveyController'
         })
 
-        .state('profile', {
-            url: '/profile',
-            templateUrl: 'app/mi/mi.view.html',
-            controller: 'miController'
+        .state('clickstream', {
+            url: '/clickstream',
+            templateUrl: 'app/clickstream/clickstream.view.html',
+            controller: 'clickstreamController'
         });
     $urlRouterProvider.otherwise('/survey');
 
