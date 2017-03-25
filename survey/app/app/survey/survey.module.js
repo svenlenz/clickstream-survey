@@ -1,5 +1,5 @@
-angular.module("app.login", ['webServicesConstant', 'app.common'])
-    .controller("loginController", ['$scope', 'checkLogin', 'wsConstant', '$state', function ($scope, checkLogin, wsConstant, $state) {
+angular.module("app.survey", ['webServicesConstant', 'app.common'])
+    .controller("surveyController", ['$scope', 'checkLogin', 'wsConstant', '$state', function ($scope, checkLogin, wsConstant, $state) {
 
 
         var surveyJSON = {

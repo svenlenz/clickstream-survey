@@ -1,13 +1,13 @@
 // app.js
- angular.module('routerApp', ['ui.router','app.login','app.mi'])
+ angular.module('routerApp', ['ui.router','app.survey','app.mi'])
 
 .config(function($stateProvider, $urlRouterProvider) {
 
     $stateProvider
-        .state('home', {
-            url: '/home',
-            templateUrl: 'app/login/login.view.html',
-            controller: 'loginController'
+        .state('survey', {
+            url: '/survey',
+            templateUrl: 'app/survey/survey.view.html',
+            controller: 'surveyController'
         })
 
         .state('profile', {
@@ -15,6 +15,6 @@
             templateUrl: 'app/mi/mi.view.html',
             controller: 'miController'
         });
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/survey');
 
 });
