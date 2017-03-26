@@ -6,13 +6,31 @@
         <p class="lead">Meine Beschreibung.</p>
   </div>
 
-  <div class="row-fluid">
-      <ul class="products">
-        <li ng-repeat="product in products" class="thumbnail">
-          <a ui-sref="product({productId: '{{product.id}}'})" class="thumb"><img ng-src="{{product.imageUrl}}"></a>
-          <a ui-sref="product({productId: '{{product.id}}'})">{{product.name}}</a>
-          <p>{{product.snippet}}</p>
-        </li>
-      </ul>
-  </div>
+  <button ui-sref="product({productId: '{{product.id}}'})"
+        type="button"
+        class="btn product_overview"
+        ng-repeat="product in products">
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="col-md-2">
+                    <img ng-src="{{product.imageUrl}}" width="100">
+                </div>
+                <div class="col-md-6">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3>{{product.name}}</h3>
+                            </div>
+                      </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p>{{product.snippet}}</p>
+                            </div>
+                      </div>
+                </div>
+          </div>
+        </div>
+    </div>
+  </button>
 </div>

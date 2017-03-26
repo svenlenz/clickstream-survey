@@ -6,8 +6,18 @@
               <h1>Produktname {{productId}}</h1>
             </div>
             <div class="col-md-4 text-right">
-              <button type="button" class="btn align-bottom">
-                <img src="https://cdn0.iconfinder.com/data/icons/thin-voting-awards/57/thin-231_star_favorite-512.png" width="20" /> Merken
+              <button type="button" class="btn align-bottom" ng-click="setFav()">
+                <img
+                  src="https://cdn0.iconfinder.com/data/icons/thin-voting-awards/57/thin-231_star_favorite-512.png"
+                  width="20"
+                  ng-if="!favorite"
+                />
+                <img
+                  src="http://www.clker.com/cliparts/b/9/5/e/1194990394583450769favourites.svg.med.png"
+                  width="20"
+                  ng-if="favorite"
+                />
+                Merken
               </button>
             </div>
       </div>
@@ -19,14 +29,15 @@
     </div>
     <div class="row-fluid">
           <div class="col-md-4">
-              <button ui-sref="detail({productId: '{{productId}}', detailId: '1'})" type="button" class="btn product_menu">
-                  <img src="http://www.pixys.de/files/unternehmen-icon.png" width="40" /><h2>Unternehmen</h2>
+              <button ui-sref="detail({productId: '{{productId}}', detailId: '{{product.details[0].id}}'})"
+                      type="button" class="btn product_menu">
+                  <img ng-src="{{product.details[0].imageUrl}}" width="40" /><h2>{{product.details[0].title}}</h2>
               </button>
           </div>
           <div class="col-md-2">&nbsp;</div>
           <div class="col-md-4">
-              <button ui-sref="detail({productId: '{{productId}}', detailId: '2'})" type="button" class="btn product_menu">
-                  <img src="https://image.flaticon.com/icons/svg/53/53421.svg" width="40" /><h2>Inhaltsstoffe</h2>
+              <button ui-sref="detail({productId: '{{productId}}', detailId: '{{product.details[1].id}}'})" type="button" class="btn product_menu">
+                  <img ng-src="{{product.details[1].imageUrl}}" width="40" /><h2>{{product.details[1].title}}</h2>
               </button>
           </div>
     </div>
@@ -35,15 +46,15 @@
     </div>
     <div class="row-fluid">
           <div class="col-md-4">
-              <button ui-sref="detail({productId: '{{productId}}', detailId: '3'})" type="button" class="btn product_menu">
-                  <img src="https://cdn3.iconfinder.com/data/icons/shopping-icons-1/512/Price_Tag-512.png" width="40" /><h2>Rabatte</h2>
+              <button ui-sref="detail({productId: '{{productId}}', detailId: '{{product.details[2].id}}'})" type="button" class="btn product_menu">
+                  <img ng-src="{{product.details[2].imageUrl}}" width="40" /><h2>{{product.details[2].title}}</h2>
               </button>
           </div>
           <div class="col-md-2">&nbsp;</div>
           <div class="col-md-4 product_menu"></div>
           <div class="col-md-4">
-              <button ui-sref="detail({productId: '{{productId}}', detailId: '4'})" type="button" class="btn product_menu">
-                  <img src="http://www.free-icons-download.net/images/right-footprint-icon-27808.png" width="40" /><h2>Herkunft</h2>
+              <button ui-sref="detail({productId: '{{productId}}', detailId: '{{product.details[3].id}}'})" type="button" class="btn product_menu">
+                  <img ng-src="{{product.details[3].imageUrl}}" width="40" /><h2>{{product.details[3].title}}</h2>
               </button>
           </div>
     </div>
@@ -51,7 +62,7 @@
           <div class="col-md-10">&nbsp;</div>
     </div>
     <div class="row-fluid">
-      <div class="col-md-10"><button ui-sref="clickstream" type="button" class="btn">zurück</button></div>
+      <div class="col-md-10"><button ui-sref="clickstream" ng-click="backToOverviewButton()" type="button" class="btn">zurück</button></div>
     </div>
     <div class="row-fluid">
           <div class="col-md-10">&nbsp;</div>
