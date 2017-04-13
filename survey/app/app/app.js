@@ -31,3 +31,11 @@
     $urlRouterProvider.otherwise('/survey');
 
 });
+
+/*
+.run(function($rootScope, $location) {
+    $rootScope.$on('$locationChangeSuccess', function() {
+        $rootScope.actualLocation = $location.absUrl();
+    });
+});
+*/

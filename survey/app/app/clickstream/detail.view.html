@@ -1,14 +1,14 @@
 <div class="container-fluid">
     <div class="page-header">
-          <h1>Detail {{detail.title}}</h1>
-          <p class="lead">Auf dieser Seite findest du Informationen zum Produkt {{product.name}}</p>
+          <h1>{{detail.title}}</h1>
+          <p class="lead">Auf dieser Seite findest du Information zum Produkt {{product.name}}</p>
     </div>
 
     <div ng-switch="{{detail.id}}">
       <div ng-switch-when="0"><ng-include src="product.details[0].contentUrl"></ng-include></div>
       <div ng-switch-when="1"><ng-include src="product.details[1].contentUrl"></div>
-      <div ng-switch-when="2"><ng-include src="product.details[2].contentUrl"></div>
-      <div ng-switch-when="3"><img ng-src="{{product.details[3].contentUrl}}" width="860" /></div>
+      <div ng-switch-when="2"><img ng-src="{{product.details[2].contentUrl}}" width="100%" /><p>Alle Angaben sind ohne Gewähr von Richtigkeit und Vollständigkeit</p></div>
+      <div ng-switch-when="3"><ng-include src="product.details[3].contentUrl"></div>
 </div>
     </div>
 
