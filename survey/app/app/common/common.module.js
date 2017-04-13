@@ -1,4 +1,4 @@
-angular.module('app.common', ['webServicesConstant'])
+angular.module('app.common', [])
 
     .factory('GetJSonMI',['$http', function ($http){
     var allData= null;
@@ -18,12 +18,11 @@ angular.module('app.common', ['webServicesConstant'])
     }
 
 }])
-.factory('checkLogin',['$http','wsConstant', function ($http,wsConstant){
+.factory('surveyFactory',['$http', function ($http){
 
     var returned= null;
-    var getResponse = function(callBack){
-       //console.log(wsConstant.MobileNum);
-        $http.post('/poc-backend/auth/validData?userid='+wsConstant.MobileNum+'&password='+wsConstant.password).
+    var send = function(callBack, data){
+        $http.post('/survey', data).
             then(function(respond){
                 returned = respond.data;
                 callBack(returned);
@@ -32,7 +31,7 @@ angular.module('app.common', ['webServicesConstant'])
     }
 
     return {
-        checkLoginSuccess: getResponse
+        send: send
     }
 
 }]);

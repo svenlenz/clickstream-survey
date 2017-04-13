@@ -21,7 +21,7 @@ services:
     #  - redis
     #  - db
     volumes:
-      - $PIVW_DATA_VOLUME:/opt/data
+      - $SURVEY_DATA_VOLUME:/opt/data
   #redis:
   #  image: redis
   #  ports:

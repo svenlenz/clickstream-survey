@@ -34,7 +34,7 @@
 		<link>
 			<name>originalpom/pom.xml</name>
 			<type>1</type>
-			<locationURI>$%7BPARENT-2-PROJECT_LOC%7D/Recognition/RecognitionController/pom.xml</locationURI>
+			<locationURI>$%7BPARENT-2-PROJECT_LOC%7D/processing/pom.xml</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

@@ -8,8 +8,8 @@ server {
     alias /src/app/;
   }
 
-  location  /processing/test {
-    proxy_pass         http://processing:4568/test;
+  location  /survey {
+    proxy_pass         http://processing:4568/survey;
     keepalive_timeout 600s;
     proxy_send_timeout 600s;
     proxy_read_timeout 600s;
