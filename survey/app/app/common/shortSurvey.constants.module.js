@@ -3,15 +3,11 @@ angular.module('constants',[]).
  completedHtml: "<p><h4>Besten Dank für das Ausfüllen des ersten Teil.</h4></p><p>Die nächste Aufgabe ist das Klicken durch den Prototyp: <button type='button' class='btn btn-info btn-block' ng-click='submit()' >Zum Prototypen</button></p>",
  pageNextText: "Weiter",
  pagePrevText: "Zurück",
- pages: [
+   pages: [
   {
-   name: "Statistik",
    questions: [
     {
      type: "radiogroup",
-     name: "Statistik",
-     title: "Wie oft haben Sie schon an diesem Test teilgenommen?",
-     isRequired: true,
      choices: [
       {
        value: "1",
@@ -25,19 +21,63 @@ angular.module('constants',[]).
        value: "3",
        text: "Mehr als zwei Mal"
       }
-     ]
+     ],
+     isRequired: true,
+     name: "runs",
+     title: "Wie oft haben Sie schon an diesem Test teilgenommen?"
+    },
+    {
+     type: "radiogroup",
+     choices: [
+      {
+       value: "W",
+       text: "weiblich"
+      },
+      {
+       value: "M",
+       text: "männlich"
+      }
+     ],
+     isRequired: true,
+     name: "gender",
+     title: "Ihr Geschlecht:"
+    },
+    {
+     type: "radiogroup",
+     choices: [
+      {
+       value: "1",
+       text: "jünger als 20 Jahre"
+      },
+      {
+       value: "2",
+       text: "20 bis 30 Jahre"
+      },
+      {
+       value: "3",
+       text: "31 bis 40 Jahre"
+      },
+      {
+       value: "4",
+       text: "41 bis 50 Jahre"
+      },
+      {
+       value: "5",
+       text: "älter als 50 Jahre"
+      }
+     ],
+     isRequired: true,
+     name: "age",
+     title: "Wie alt sind Sie?"
     }
    ],
+   name: "Stats",
    title: "Für statistische Zwecke"
   },
   {
-   name: "Psycho",
    questions: [
     {
      type: "matrix",
-     name: "Psycho",
-     title: "Inwieweit treffen die folgenden Aussagen auf Sie zu? Antworten Sie möglichst spontan. Es gibt keine richtigen oder falschen Antworten.",
-     isRequired: true,
      columns: [
       {
        value: "0",
@@ -56,16 +96,34 @@ angular.module('constants',[]).
        text: "trifft genau zu"
       }
      ],
+     isAllRowRequired: true,
+     isRequired: true,
+     name: "big5_answers",
      rows: [
       {
-       value: "1",
+       value: "neuro1",
        text: "Ich bin ein ängstlicher Typ."
+      },
+      {
+       value: "ehrlich2",
+       text: "Im privaten Bereich habe ich schon mal Dinge gemacht, die besser nicht an die Öffentlichkeit kommen sollten."
       }
      ],
-     isAllRowRequired: true
+     title: "Inwieweit treffen die folgenden Aussagen auf Sie zu? Antworten Sie möglichst spontan. Es gibt keine richtigen oder falschen Antworten."
     }
    ],
+   name: "big5",
    title: "Anonymer Persönlichkeitstest"
+  },
+  {
+   questions: [
+    {
+     type: "comment",
+     name: "about",
+     title: "Feedback"
+    }
+   ],
+   name: "Feedback"
   }
  ],
  title: ""
