@@ -1,6 +1,10 @@
 <p>Jetzt sofort einen 20% Rabattgutschein für ihren nächsten Einkauf sichern:<p>
-<button type="button" class="btn product_menu">
+<button ng-if="!product.showDiscount" type="button" class="btn product_menu" ng-click="discount('on')">
 	<p></p>
 	<img ng-src="/img/discount.svg" width="40" src="/img/discount.svg"><h2 class="ng-binding">Einlösen</h2>
+</button>
+<button ng-if="product.showDiscount" type="button" class="btn product_menu" ng-click="discount('off')">
+	<p></p>
+	<h2 class="ng-binding">{{product.discountCode}}</h2>
 </button>
 <p></p>

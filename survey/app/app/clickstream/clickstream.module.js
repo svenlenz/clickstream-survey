@@ -38,12 +38,14 @@ angular.module("app.clickstream", ['app.common'])
                 imageUrl: '/img/Chiquita.png',
                 name: 'Chiquita Banana',
                 snippet: 'Nichts schmeckt wie eine Chiquita!',
+                discountCode: 'BANANA2017',
+                showDiscount: false,
                 details: [
                     {
                         id: 0,
                         title: 'Unternehmen',
                         imageUrl: '/img/company.svg',
-                        contentUrl: '/app/clickstream/chiquita/company.html'
+                        contentUrl: '/app/clickstream/chiquita/company.html',
                     }, {
                         id: 1,
                         title: 'Inhaltsstoffe',
@@ -65,12 +67,16 @@ angular.module("app.clickstream", ['app.common'])
              id: 1,
              imageUrl: 'http://s7d2.scene7.com/is/image/SamsungUS/SMG930_gs7_102416?$product-details-jpg$',
              name: 'Phone 2',
-             snippet: 'kleine Beschreibung'
+             snippet: 'kleine Beschreibung',
+             showDiscount: false,
+             discountCode: 'PHONE2017'
             },{
              id: 2,
              imageUrl: 'http://s7d2.scene7.com/is/image/SamsungUS/SMG930_gs7_102416?$product-details-jpg$',
              name: 'Phone 2',
-             snippet: 'kleine Beschreibung'
+             snippet: 'kleine Beschreibung',
+             showDiscount: false,
+             discountCode: 'TEXTIL2017'
             }
           ];
 
@@ -103,6 +109,13 @@ angular.module("app.clickstream", ['app.common'])
         $scope.backToOverviewButton = function() {
             divolte.signal('backToOverviewButton', "tbd");
             sendEvent('backToOverviewButton', productId, detailId);
+        }
+
+
+        $scope.discount = function(text) {
+            divolte.signal('discount_'+text);
+            sendEvent('discount_'+text, productId, detailId);
+            $scope.products[productId].showDiscount = true;
         }
 
         $scope.outgoingLink = function(linkId) {
