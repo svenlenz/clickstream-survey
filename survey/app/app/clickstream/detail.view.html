@@ -6,8 +6,8 @@
 
     <div ng-switch="{{detail.id}}">
       <div ng-switch-when="0"><ng-include src="product.details[0].contentUrl"></ng-include></div>
-      <div ng-switch-when="1">...</div>
-      <div ng-switch-when="2">...</div>
+      <div ng-switch-when="1"><ng-include src="product.details[1].contentUrl"></div>
+      <div ng-switch-when="2"><ng-include src="product.details[2].contentUrl"></div>
       <div ng-switch-when="3"><img ng-src="{{product.details[3].contentUrl}}" width="860" /></div>
 </div>
     </div>

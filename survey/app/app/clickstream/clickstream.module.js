@@ -37,21 +37,23 @@ angular.module("app.clickstream", ['app.common'])
                 id: 0,
                 imageUrl: '/img/Chiquita.png',
                 name: 'Chiquita Banana',
-                snippet: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
+                snippet: 'Nichts schmeckt wie eine Chiquita!',
                 details: [
                     {
                         id: 0,
                         title: 'Unternehmen',
                         imageUrl: '/img/company.svg',
-                        contentUrl: '/app/clickstream/chiquita.html'
+                        contentUrl: '/app/clickstream/chiquita/company.html'
                     }, {
                         id: 1,
                         title: 'Inhaltsstoffe',
                         imageUrl: '/img/ingredients.svg',
+                        contentUrl: '/app/clickstream/chiquita/ingredients.html'
                     }, {
                         id: 2,
                         title: 'Rabatte',
                         imageUrl: '/img/discount.svg',
+                        contentUrl: '/app/clickstream/discount.html'
                     }, {
                         id: 3,
                         title: 'Herkunft',
