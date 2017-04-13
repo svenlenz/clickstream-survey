@@ -26,49 +26,7 @@ angular.module('constants',[]).
        text: "Mehr als zwei Mal"
       }
      ]
-    },
-    {
-     type: "radiogroup",
-     name: "Ihr Geschlecht:",
-     isRequired: true,
-     choices: [
-      {
-       value: "W",
-       text: "weiblich"
-      },
-      {
-       value: "M",
-       text: "männlich"
-      }
-     ]
-    },
-    {
-     type: "radiogroup",
-     name: "Wie alt sind Sie?",
-     isRequired: true,
-     choices: [
-      {
-       value: "1",
-       text: "jünger als 20 Jahre"
-      },
-      {
-       value: "2",
-       text: "20 bis 30 Jahre"
-      },
-      {
-       value: "3",
-       text: "31 bis 40 Jahre"
-      },
-      {
-       value: "4",
-       text: "41 bis 50 Jahre"
-      },
-      {
-       value: "5",
-       text: "älter als 50 Jahre"
-      }
-     ]
-    },
+    }
    ],
    title: "Für statistische Zwecke"
   },
@@ -77,7 +35,8 @@ angular.module('constants',[]).
    questions: [
     {
      type: "matrix",
-     name: "Inwieweit treffen die folgenden Aussagen auf Sie zu? Antworten Sie möglichst spontan. Es gibt keine richtigen oder falschen Antworten.",
+     name: "Psycho",
+     title: "Inwieweit treffen die folgenden Aussagen auf Sie zu? Antworten Sie möglichst spontan. Es gibt keine richtigen oder falschen Antworten.",
      isRequired: true,
      columns: [
       {
@@ -101,10 +60,6 @@ angular.module('constants',[]).
       {
        value: "1",
        text: "Ich bin ein ängstlicher Typ."
-      },
-      {
-       value: "2",
-       text: "Im privaten Bereich habe ich schon mal Dinge gemacht, die besser nicht an die Öffentlichkeit kommen sollten."
       }
      ],
      isAllRowRequired: true

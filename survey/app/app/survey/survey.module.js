@@ -13,7 +13,10 @@ angular.module("app.survey", ['constants', 'app.common'])
        };
 
         function sendDataToServer(survey) {
-          var resultAsString = JSON.stringify(survey.data);
+
+          var surveyData = angular.copy(survey.data);
+          surveyData.sessionId = divolte.sessionId;
+          var resultAsString = JSON.stringify(surveyData);
 
           console.log(divolte)
           console.log('id: ' + divolte.sessionId)
@@ -29,7 +32,7 @@ angular.module("app.survey", ['constants', 'app.common'])
               else {
                   $('.ErrorMsg').css('display', 'block');
               }
-          }, survey.data);
+          }, surveyData);
         }
 
         var survey = new Survey.Model(surveyJSON);

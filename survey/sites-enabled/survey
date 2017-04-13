@@ -14,4 +14,11 @@ server {
     proxy_send_timeout 600s;
     proxy_read_timeout 600s;
   }
+
+  location  /clickstream {
+    proxy_pass         http://processing:4568/clickstream;
+    keepalive_timeout 600s;
+    proxy_send_timeout 600s;
+    proxy_read_timeout 600s;
+  }
 }

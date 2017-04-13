@@ -1,8 +1,32 @@
-angular.module("app.clickstream", ['app.common', 'ngStomp'])
-    .controller("clickstreamController", ['$scope', 'GetJSonMI', 'wsConstant', '$stomp', '$stateParams', function ($scope, GetJSonMI, wsConstant, $stomp, $stateParams) {
+angular.module("app.clickstream", ['app.common'])
+    .controller("clickstreamController", ['$scope', '$stateParams', 'clickstreamFactory', function ($scope, $stateParams, clickstreamFactory) {
 
         var productId = $stateParams.productId;
         var detailId = $stateParams.detailId;
+
+        if(!$scope.lastEvent) {
+            $scope.lastEvent = new Date();
+        }
+
+        function sendEvent(eventId, productId, detailId) {
+
+            var currentdate = new Date();
+            var duration = currentdate.getTime() -  $scope.lastEvent.getTime();
+            $scope.lastEvent = currentdate;
+
+            var event = {
+                datetime: currentdate,
+                duration:  duration,
+                event: eventId,
+                sessionId: divolte.sessionId,
+                productId: productId || 'undefined',
+                detail: detailId || 'undefined',
+            };
+
+          clickstreamFactory.send(function (response) {
+              console.log("clickstream response -=====>>" + response);
+          }, event);
+        }
 
         $scope.productId = productId;
         $scope.detailId = detailId;
@@ -57,26 +81,24 @@ angular.module("app.clickstream", ['app.common', 'ngStomp'])
         $scope.setImage = function(imageUrl) {
             $scope.mainImageUrl = imageUrl;
         }
-
-        var args = {
-            test: productId || 'undefined'
-        };
-        divolte.signal('myCustomEvent', args);
+        divolte.signal('myCustomEvent', event);
+        sendEvent('open', productId, detailId);
 
         $scope.setFav = function() {
             $scope.favorite = !$scope.favorite;
             divolte.signal('favorite', $scope.favorite);
+            sendEvent('favorite_'+$scope.favorite, productId, detailId);
         }
 
         $scope.backToProduct = function() {
             divolte.signal('backToProductButton', "tbd");
+            sendEvent('backToProduct', productId, detailId);
         }
 
         $scope.backToOverviewButton = function() {
             divolte.signal('backToOverviewButton', "tbd");
+            sendEvent('backToOverviewButton', productId, detailId);
         }
-
-
     }])
 
 
