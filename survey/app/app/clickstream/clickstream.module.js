@@ -8,7 +8,7 @@ angular.module("app.clickstream", ['app.common'])
             $scope.lastEvent = new Date();
         }
 
-        function sendEvent(eventId, productId, detailId) {
+        function sendEvent(eventId, productId, detailId, linkId) {
 
             var currentdate = new Date();
             var duration = currentdate.getTime() -  $scope.lastEvent.getTime();
@@ -21,6 +21,7 @@ angular.module("app.clickstream", ['app.common'])
                 sessionId: divolte.sessionId,
                 productId: productId || 'undefined',
                 detail: detailId || 'undefined',
+                linkId: linkId || 'undefined',
             };
 
           clickstreamFactory.send(function (response) {
@@ -34,26 +35,28 @@ angular.module("app.clickstream", ['app.common'])
           $scope.products = [
             {
                 id: 0,
-                imageUrl: 'https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone7/iphone7-colors.jpg',
-                name: 'Phone 1',
+                imageUrl: '/img/Chiquita.png',
+                name: 'Chiquita Banana',
                 snippet: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
                 details: [
                     {
                         id: 0,
                         title: 'Unternehmen',
-                        imageUrl: 'http://www.pixys.de/files/unternehmen-icon.png',
+                        imageUrl: '/img/company.svg',
+                        contentUrl: '/app/clickstream/chiquita.html'
                     }, {
                         id: 1,
                         title: 'Inhaltsstoffe',
-                        imageUrl: 'https://image.flaticon.com/icons/svg/53/53421.svg',
+                        imageUrl: '/img/ingredients.svg',
                     }, {
                         id: 2,
                         title: 'Rabatte',
-                        imageUrl: 'https://cdn3.iconfinder.com/data/icons/shopping-icons-1/512/Price_Tag-512.png',
+                        imageUrl: '/img/discount.svg',
                     }, {
                         id: 3,
                         title: 'Herkunft',
-                        imageUrl: 'http://www.free-icons-download.net/images/right-footprint-icon-27808.png',
+                        imageUrl: '/img/footprint.svg',
+                        contentUrl: '/img/avocado.svg',
                     }
                 ]
             },{
@@ -98,6 +101,11 @@ angular.module("app.clickstream", ['app.common'])
         $scope.backToOverviewButton = function() {
             divolte.signal('backToOverviewButton', "tbd");
             sendEvent('backToOverviewButton', productId, detailId);
+        }
+
+        $scope.outgoingLink = function(linkId) {
+            divolte.signal('outgoingLink', linkId);
+            sendEvent('outgoingLink', productId, detailId, linkId);
         }
     }])
 
