@@ -26,3 +26,32 @@ $ export SURVEY_DATA_VOLUME=/ABSOLULT_PATH_TO_GIT_PROJECT/data
 if the variable isn't set, the docker-compose will not run, because it will be defaulted to an empty string (which isn't a valid path).
 note: only absoulte path are possible!
 hint: store it permanent in your .profile (or wherever you can store it in windows ;))
+
+
+### Run on AWS
+
+create instance:
+```
+docker-machine create -d amazonec2 --amazonec2-region eu-central-1 --amazonec2-vpc-id vpc-f0c74e98 clickstream-survey
+```
+
+environment:
+ ```
+ docker-machine env clickstream-survey
+ ```
+
+configure shell (From now on all docker, docker-machine and docker-compose commands will point to the AWS EC2 instance):
+ ```
+ eval $(docker-machine env clickstream-survey)
+ ```
+
+run & build:
+```
+docker-compose build
+docker-compose up -d
+```
+
+TODO:
+- how to get the files?
+- backup?
+-

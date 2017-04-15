@@ -14,25 +14,8 @@ services:
     build: ./processing/.
     ports:
      - "4568:4568"
-    #links:
-    # - redis
-    # - db
-    #depends_on:
-    #  - redis
-    #  - db
     volumes:
       - $SURVEY_DATA_VOLUME:/opt/data
-  #redis:
-  #  image: redis
-  #  ports:
-  #   - "6379:6379"
-  #  volumes:
-  #    - redis-data:/var/lib/redis
-  #db:
-  #  image: mongo
-  #  ports:
-  #    - "27017:27017"
-  #    image: mkieboom/divolte-collector-docker
   divolte:
     build: ./divolte/
     ports:
