@@ -55,3 +55,39 @@ TODO:
 - how to get the files?
 - backup?
 -
+
+
+
+
+
+
+ssh -i ./data/clickstreamsurvey.pem ec2-user@ec2-52-58-231-162.eu-central-1.compute.amazonaws.com
+
+sudo yum install git
+
+mkdir repos
+
+cd repos
+
+git clone https://github.com/svenlenz/clickstream-survey.git
+
+
+---
+Formatieren:
+sudo mkfs -t ext4 /dev/xvdb
+
+Mount:
+sudo mount /dev/xvdb /mnt/clickstream-data/
+
+
+---
+
+DOCKER
+http://docs.aws.amazon.com/AmazonECS/latest/developerguide/docker-basics.html#install_docker
+
+sudo yum install -y docker
+sudo service docker start
+sudo usermod -a -G docker ec2-user
+
+DOCKER-COMPOSE
+sudo  pip install docker-compose
