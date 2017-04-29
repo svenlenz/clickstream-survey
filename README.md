@@ -61,7 +61,7 @@ TODO:
 
 
 
-ssh -i ./data/clickstreamsurvey.pem ec2-user@ec2-52-58-231-162.eu-central-1.compute.amazonaws.com
+ssh -i ./data/aws_clickstream.pem ec2-user@ec2-52-58-231-162.eu-central-1.compute.amazonaws.com
 
 sudo yum install git
 
@@ -71,6 +71,9 @@ cd repos
 
 git clone https://github.com/svenlenz/clickstream-survey.git
 
+/home/ec2-user/repos/clickstream-survey
+
+scp -r -i ./data/aws_clickstream.pem ec2-user@ec2-52-58-231-162.eu-central-1.compute.amazonaws.com:/mnt/clickstream-data/ ./data
 
 ---
 Formatieren:
