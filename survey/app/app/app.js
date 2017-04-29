@@ -1,5 +1,5 @@
 // app.js
- angular.module('routerApp', ['ui.router','app.survey','app.clickstream'])
+ angular.module('routerApp', ['ui.router','app.survey','app.clickstream', 'youtube-embed'])
 
 .config(function($stateProvider, $urlRouterProvider) {
 
@@ -31,11 +31,3 @@
     $urlRouterProvider.otherwise('/survey');
 
 });
-
-/*
-.run(function($rootScope, $location) {
-    $rootScope.$on('$locationChangeSuccess', function() {
-        $rootScope.actualLocation = $location.absUrl();
-    });
-});
-*/

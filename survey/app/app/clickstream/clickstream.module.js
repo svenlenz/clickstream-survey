@@ -40,6 +40,7 @@ angular.module("app.clickstream", ['app.common'])
                 snippet: 'Nichts schmeckt wie eine Chiquita!',
                 discountCode: 'BANANA2017',
                 showDiscount: false,
+                video: 'RFDOI24RRAE',
                 details: [
                     {
                         id: 0,
@@ -56,6 +57,7 @@ angular.module("app.clickstream", ['app.common'])
                         title: 'Herkunft',
                         imageUrl: '/img/footprint.svg',
                         contentUrl: '/img/banana.svg',
+                        video: 'x4gL6QXhP2I'
                     }, {
                         id: 3,
                         title: 'Rabatte',
@@ -70,6 +72,7 @@ angular.module("app.clickstream", ['app.common'])
              snippet: 'move you',
              showDiscount: false,
              discountCode: 'PHONE2017',
+             video: '73yDRm8KaWY',
                 details: [
                     {
                         id: 0,
@@ -86,6 +89,7 @@ angular.module("app.clickstream", ['app.common'])
                         title: 'Herkunft',
                         imageUrl: '/img/footprint.svg',
                         contentUrl: '/img/wii.svg',
+                        video: '_ZknAd5m8Mg'
                     }, {
                         id: 3,
                         title: 'Rabatte',
@@ -100,6 +104,7 @@ angular.module("app.clickstream", ['app.common'])
              snippet: 'Ein Traum für Bücherwürmer',
              showDiscount: false,
              discountCode: 'BILLY2017',
+             video: 'iYLWU_bpKdQ',
              details: [
                     {
                         id: 0,
@@ -116,6 +121,7 @@ angular.module("app.clickstream", ['app.common'])
                         title: 'Herkunft',
                         imageUrl: '/img/footprint.svg',
                         contentUrl: '/img/billy.svg',
+                        video: 'DBrl356VhqQ'
                     }, {
                         id: 3,
                         title: 'Rabatte',
@@ -166,6 +172,29 @@ angular.module("app.clickstream", ['app.common'])
             divolte.signal('outgoingLink', linkId);
             $scope.sendEvent('outgoingLink', productId, detailId, linkId);
         }
+
+        $scope.goHome = function() {
+            divolte.signal('home');
+            $scope.sendEvent('home', productId, detailId);
+        }
+
+
+        $scope.$on('youtube.player.playing', function ($event, player) {
+            divolte.signal('playingVideo');
+            $scope.sendEvent('playingVideo', productId, detailId);
+        });
+
+        $scope.$on('youtube.player.paused', function ($event, player) {
+            divolte.signal('pausedVideo');
+            $scope.sendEvent('pausedVideo', productId, detailId);
+        });
+
+
+        $scope.$on('youtube.player.ended', function ($event, player) {
+            divolte.signal('endedVideo');
+            $scope.sendEvent('endedVideo', productId, detailId);
+        });
+
 
         $scope.sendEvent('open', productId, detailId);
     }])

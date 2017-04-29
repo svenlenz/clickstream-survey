@@ -19,6 +19,9 @@
                 />
                 Merken
               </button>
+              <button type="button" class="btn align-bottom" ng-click="goHome()" ui-sref="clickstream">
+                Home
+              </button>
             </div>
       </div>
       <p class="lead">Auf dieser Seite findest du Information zum Hersteller, Zusammensetzung und Herkunft des Produktes. Des weiteren besteht die Möglichkeit, einen Rabatt für das vorliegende Produkt zu beziehen.</p>
@@ -57,6 +60,12 @@
                   <p></p><img ng-src="{{product.details[3].imageUrl}}" width="40" /><h2>{{product.details[3].title}}</h2>
               </button>
           </div>
+    </div>
+    <div class="row-fluid">
+          <div class="col-md-10">&nbsp;</div>
+    </div>
+    <div class="row-fluid">
+      <div class="col-md-10"><youtube-video video-id="product.video" player="bestPlayer"></youtube-video></div>
     </div>
     <div class="row-fluid">
           <div class="col-md-10">&nbsp;</div>
