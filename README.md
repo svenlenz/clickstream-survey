@@ -91,3 +91,9 @@ sudo usermod -a -G docker ec2-user
 
 DOCKER-COMPOSE
 sudo  pip install docker-compose
+
+
+---
+docker-machine create -d amazonec2 --amazonec2-region eu-central-1 --amazonec2-vpc-id vpc-f0c74e98 clickstream-survey
+eval "$(docker-machine env -u)"
+eval $(docker-machine env clickstream-survey)
