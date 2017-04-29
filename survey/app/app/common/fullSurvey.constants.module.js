@@ -69,6 +69,30 @@ angular.module('constants').
      isRequired: true,
      name: "age",
      title: "Wie alt sind Sie?"
+    },
+    {
+     type: "radiogroup",
+     choices: [
+      {
+       value: "0",
+       text: "trifft gar nicht zu"
+      },
+      {
+       value: "1",
+       text: "trifft eher nicht zu"
+      },
+      {
+       value: "2",
+       text: "trifft eher zu"
+      },
+      {
+       value: "3",
+       text: "trifft genau zu"
+      }
+     ],
+     isRequired: true,
+     name: "technique",
+     title: "Ich bin erfahren im Umgang mit elektronischen Geräten (Computer, Mobilephone, ...)"
     }
    ],
    name: "Stats",
