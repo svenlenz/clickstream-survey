@@ -10,6 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
+import org.apache.log4j.Logger;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.map.ObjectMapper;
 
@@ -34,19 +35,31 @@ public class ProcessingServer {
 		}
 	}	
 	
+//	private static final Logger logger = LoggerFactory.getLogger(ProcessingServer.class);
+	
+	final static Logger logger = Logger.getLogger(ProcessingServer.class);
+
+	
 	public static void main(String[] args) {
+		 
+		logger.info("Starting application");
+		 
 		port(4568);
 		post("/survey",
-				(req, res) -> {					
+				(req, res) -> {
+					logger.info("write new survey");
 					System.out.println("write new survey");
 					ObjectMapper mapper = new ObjectMapper();
 					if (null != req.body() && !"".equals(req.body())) {
 						JsonNode surveryResult = mapper.readTree(req.body());
-						System.out.println("using survey " + surveryResult);
+						logger.info("using survey " + surveryResult);
+						System.out.println("using survey " + surveryResult);					
 						String sessionId = surveryResult.get("sessionId").getTextValue().replaceAll(":", "_");
+						logger.info("using sessionId " + sessionId);
 						System.out.println("using sessionId " + sessionId);
 						
 						String path = PATH_TO_SHARED_VOLUME + "/" + sessionId + "/survey.json";
+						logger.info("write " + path);
 						System.out.println("---> write: " + path);
 						final File file = new File(path);						
 						final File parentDirectory = file.getParentFile();
@@ -57,7 +70,9 @@ public class ProcessingServer {
 
 						FileWriter writer = new FileWriter(file);						
 						writer.write(surveryResult.toString());
+						logger.info("Successfully Copied JSON Object to File...");
 						System.out.println("Successfully Copied JSON Object to File...");
+						logger.info("\nJSON Object: " + surveryResult);
 						System.out.println("\nJSON Object: " + surveryResult);
 						writer.close();
 					}
@@ -66,17 +81,20 @@ public class ProcessingServer {
 				});
 		
 		post("/clickstream",
-				(req, res) -> {					
+				(req, res) -> {
+					logger.debug("write new event");
 					System.out.println("write new event");
 					ObjectMapper mapper = new ObjectMapper();
 					if (null != req.body() && !"".equals(req.body())) {
 						JsonNode clickstreamEvent = mapper.readTree(req.body());
 						System.out.println("using event " + clickstreamEvent);
+						logger.debug("using event " + clickstreamEvent);
 						String sessionId = clickstreamEvent.get("sessionId").getTextValue().replaceAll(":", "_");
 						System.out.println("using sessionId " + sessionId);
 						
 						String path = PATH_TO_SHARED_VOLUME + "/" + sessionId + "/events.json";		
 						System.out.println("---> write: " + path);
+						logger.debug("write " + path);
 						final File file = new File(path);
 						final File parentDirectory = file.getParentFile();
 						if (null != parentDirectory)
@@ -107,7 +125,8 @@ public class ProcessingServer {
 							randomAccessFile.writeBytes("," + jsonElement + "]");
 						}
 						randomAccessFile.close();
-
+						logger.debug("Successfully appended event to JSON File...");
+						logger.debug("\nJSON Object: " + clickstreamEvent);
 						System.out.println("Successfully appended event to JSON File...");
 						System.out.println("\nJSON Object: " + clickstreamEvent);
 						
