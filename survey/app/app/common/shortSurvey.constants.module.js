@@ -138,16 +138,6 @@ angular.module('constants',[]).
    ],
    name: "big5",
    title: "Anonymer Persönlichkeitstest"
-  },
-  {
-   questions: [
-    {
-     type: "comment",
-     name: "about",
-     title: "Feedback"
-    }
-   ],
-   name: "Feedback"
   }
  ],
  title: ""
