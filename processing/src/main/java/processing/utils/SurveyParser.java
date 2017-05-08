@@ -15,27 +15,30 @@ public class SurveyParser {
 		
 		try{
         Object obj = parser.parse(new FileReader(
-                "C:\\Users\\slenz\\workspace\\clickstream-survey\\data\\test.json"));
-        JSONObject object = (JSONObject) obj;	
-        System.out.println(object);
-        Iterator<?> keys = object.keySet().iterator();
+//                "C:\\Users\\slenz\\workspace\\clickstream-survey\\data\\test.json"));
+        		"C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\0_j2ezj4f7_UlY1hprUKAJZVSycpGcylGIxK1waNzh2\\survey.json"));
+        JSONObject object = (JSONObject) obj;
+        JSONObject answers = (JSONObject)object.get("big5_answers");
+        System.out.println(answers);
+        Iterator<?> keys = answers.keySet().iterator();
         
-        String csvFile = "C:\\Users\\slenz\\workspace\\clickstream-survey\\data\\test.csv";
+//        String csvFile = "C:\\Users\\slenz\\workspace\\clickstream-survey\\data\\test.csv";
+        String csvFile = "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\0_j2ezj4f7_UlY1hprUKAJZVSycpGcylGIxK1waNzh2\\survey.csv";        
         FileWriter writer = new FileWriter(csvFile);
      
 
         while( keys.hasNext() ) {
             String key = (String)keys.next();
-            System.out.println(object.get(key));
+            System.out.println(answers.get(key));
             List<String> csvLine = null;
-            Long answer = (Long)object.get(key);
-            if(0 == answer) {
+            String answer = (String)answers.get(key);
+            if("0".equals(answer)) {
             	csvLine = Arrays.asList("X", "", "", "");
-            } else if (1 == answer) {
+            } else if ("1".equals(answer)) {
             	csvLine = Arrays.asList("", "X", "", "");
-            } else if (2 == answer) {
+            } else if ("2".equals(answer)) {
             	csvLine = Arrays.asList("", "", "X", "");
-            } else if (3 == answer) {
+            } else if ("3".equals(answer)) {
             	csvLine = Arrays.asList("", "", "", "X");
             }
             CSVUtils.writeLine(writer, csvLine);
