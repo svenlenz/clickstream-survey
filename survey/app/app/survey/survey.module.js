@@ -12,16 +12,43 @@ angular.module("app.survey", ['constants', 'app.common'])
             navigationButton: "button btn-lg"
        };
 
+        function guid() {
+          function s4() {
+            return Math.floor((1 + Math.random()) * 0x10000)
+              .toString(16)
+              .substring(1);
+          }
+          return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+            s4() + '-' + s4() + s4() + s4();
+        }
+
+        try {
+            var test = divolte;
+        }
+        catch(e) {
+            divolte = {
+              sessionId: guid(),
+              signal: function() {}
+            };
+        }
+
         function sendDataToServer(survey) {
 
           var surveyData = angular.copy(survey.data);
-          surveyData.sessionId = divolte.sessionId;
+          if(angular.isDefined(divolte)) {
+            surveyData.sessionId = divolte.sessionId;
+          } else {
+            surveyData.sessionId = guid();
+          }
+
           var resultAsString = JSON.stringify(surveyData);
 
-          console.log(divolte)
-          console.log('id: ' + divolte.sessionId)
-          console.log(resultAsString)
-          divolte.signal('myCustomEvent', survey.data)
+          if(angular.isDefined(divolte)) {
+            console.log(divolte)
+            console.log('id: ' + divolte.sessionId)
+            console.log(resultAsString)
+            divolte.signal('myCustomEvent', survey.data)
+          }
 
           surveyFactory.send(function (response) {
               console.log("login response -=====>>" + response);
@@ -42,7 +69,6 @@ angular.module("app.survey", ['constants', 'app.common'])
 
 
         $scope.submit = function () {
-            divolte.signal('myCustomEvent', { param: 'foo',  otherParam: 'bar' })
             $state.go('clickstream');
         };
     }])

@@ -8,6 +8,27 @@ angular.module("app.clickstream", ['app.common'])
             $scope.lastEvent = new Date();
         }
 
+        function guid() {
+          function s4() {
+            return Math.floor((1 + Math.random()) * 0x10000)
+              .toString(16)
+              .substring(1);
+          }
+          return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+            s4() + '-' + s4() + s4() + s4();
+        }
+
+        try {
+            var test = divolte;
+        }
+        catch(e) {
+            divolte = {
+              sessionId: guid(),
+              signal: function() {}
+            };
+        }
+
+
         $scope.sendEvent = function sendEvent(eventId, productId, detailId, linkId) {
 
             var currentdate = new Date();
@@ -195,35 +216,47 @@ angular.module("app.clickstream", ['app.common'])
 
 
         $scope.discount = function(text) {
-            divolte.signal('discount_'+text);
+            if(angular.isDefined(divolte)) {
+                divolte.signal('discount_'+text);
+            }
             $scope.sendEvent('discount_'+text, productId, detailId);
             $scope.products[productId].showDiscount = true;
         }
 
         $scope.outgoingLink = function(linkId) {
-            divolte.signal('outgoingLink', linkId);
+            if(angular.isDefined(divolte)) {
+                divolte.signal('outgoingLink', linkId);
+            }
             $scope.sendEvent('outgoingLink', productId, detailId, linkId);
         }
 
         $scope.goHome = function() {
-            divolte.signal('home');
+            if(angular.isDefined(divolte)) {
+                divolte.signal('home');
+            }
             $scope.sendEvent('home', productId, detailId);
         }
 
 
         $scope.$on('youtube.player.playing', function ($event, player) {
-            divolte.signal('playingVideo');
+            if(angular.isDefined(divolte)) {
+                divolte.signal('playingVideo');
+            }
             $scope.sendEvent('playingVideo', productId, detailId);
         });
 
         $scope.$on('youtube.player.paused', function ($event, player) {
-            divolte.signal('pausedVideo');
+            if(angular.isDefined(divolte)) {
+                divolte.signal('pausedVideo');
+            }
             $scope.sendEvent('pausedVideo', productId, detailId);
         });
 
 
         $scope.$on('youtube.player.ended', function ($event, player) {
-            divolte.signal('endedVideo');
+            if(angular.isDefined(divolte)) {
+                divolte.signal('endedVideo');
+            }
             $scope.sendEvent('endedVideo', productId, detailId);
         });
 

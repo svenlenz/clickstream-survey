@@ -8,6 +8,20 @@ server {
     alias /src/app/;
   }
 
+  location  /divolte/divolte.js {
+    proxy_pass         http://divolte:8290/divolte.js;
+    keepalive_timeout 600s;
+    proxy_send_timeout 600s;
+    proxy_read_timeout 600s;
+  }
+
+  location  /divolte/csc-event {
+    proxy_pass         http://divolte:8290/csc-event;
+    keepalive_timeout 600s;
+    proxy_send_timeout 600s;
+    proxy_read_timeout 600s;
+  }
+
   location  /survey {
     proxy_pass         http://processing:4568/survey;
     keepalive_timeout 600s;
