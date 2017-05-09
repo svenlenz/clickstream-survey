@@ -16,14 +16,14 @@ public class SurveyParser {
 		try{
         Object obj = parser.parse(new FileReader(
 //                "C:\\Users\\slenz\\workspace\\clickstream-survey\\data\\test.json"));
-        		"C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\0_j2ezj4f7_UlY1hprUKAJZVSycpGcylGIxK1waNzh2\\survey.json"));
+        		"C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\6\\survey.json"));
         JSONObject object = (JSONObject) obj;
         JSONObject answers = (JSONObject)object.get("big5_answers");
         System.out.println(answers);
         Iterator<?> keys = answers.keySet().iterator();
         
 //        String csvFile = "C:\\Users\\slenz\\workspace\\clickstream-survey\\data\\test.csv";
-        String csvFile = "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\0_j2ezj4f7_UlY1hprUKAJZVSycpGcylGIxK1waNzh2\\survey.csv";        
+        String csvFile = "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\6\\survey.csv";        
         FileWriter writer = new FileWriter(csvFile);
      
 

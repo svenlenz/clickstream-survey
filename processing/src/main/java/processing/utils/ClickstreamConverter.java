@@ -15,12 +15,15 @@ public class ClickstreamConverter {
 	   public static void main(String[] args) {
 	        JSONParser parser = new JSONParser();
 	 
-	        for (int i = 1; i < 100; i++) {
+	        for (int i = 1; i < 2; i++) {
 	        		       
 		        try {
 		 
 		            Object obj = parser.parse(new FileReader(
-		                    "/Users/sle/Repos/clickstream-survey/data/testrun_sle/events.json"));
+//		                    "/Users/sle/Repos/clickstream-survey/data/testrun_sle/events.json"));
+        					"C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\6\\events.json"));
+		            
+		            
 		 
 		            JSONArray events = (JSONArray) obj;	           
 		            events = shuffleJsonArray(events);
