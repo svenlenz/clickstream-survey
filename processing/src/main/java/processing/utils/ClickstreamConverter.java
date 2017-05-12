@@ -18,15 +18,15 @@ public class ClickstreamConverter {
 	        for (int i = 1; i < 2; i++) {
 	        		       
 		        try {
-		 
+		        	i = 32;
 		            Object obj = parser.parse(new FileReader(
 //		                    "/Users/sle/Repos/clickstream-survey/data/testrun_sle/events.json"));
-        					"C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\6\\events.json"));
+        					"C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\"+i+"\\events.json"));
 		            
 		            
 		 
 		            JSONArray events = (JSONArray) obj;	           
-		            events = shuffleJsonArray(events);
+//		            events = shuffleJsonArray(events);
 		            Iterator<JSONObject> iterator = events.iterator();
 		            String clusteringEventLogDetailed = "";
 		            String clusteringEventLogCondensed = "";
@@ -34,8 +34,9 @@ public class ClickstreamConverter {
 		            Long durationSinceLastEvent = 1L;
 		            int normalizedDurationSinceLastEvent = 1;
 		            while (iterator.hasNext()) {
-	//	                System.out.println(iterator.next());
 		                JSONObject event = iterator.next();
+
+//		                System.out.println(event);
 		                String eventId = (String)event.get("event");
 		                String datetime = (String)event.get("datetime");
 		                Long duration = (Long)event.get("duration");
@@ -44,10 +45,10 @@ public class ClickstreamConverter {
 		                String detail = (String)event.get("detail");
 		                String linkId = (String)event.get("linkId");
 		                
-		                Random random = new Random();
-		                if (random.nextBoolean()) {
-		                    continue;
-		                }
+//		                Random random = new Random();
+//		                if (random.nextBoolean()) {
+//		                    continue;
+//		                }
 		                
 		                if(first) {
 	//	                	clusteringEventLogDetailed = sessionId + "\t";

@@ -12,18 +12,18 @@ import org.json.simple.parser.JSONParser;
 public class SurveyParser {
 	public static void main(String[] args) {
 		JSONParser parser = new JSONParser();
-		
+		String base = "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\32\\";
 		try{
         Object obj = parser.parse(new FileReader(
 //                "C:\\Users\\slenz\\workspace\\clickstream-survey\\data\\test.json"));
-        		"C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\6\\survey.json"));
+        		base + "survey.json"));
         JSONObject object = (JSONObject) obj;
         JSONObject answers = (JSONObject)object.get("big5_answers");
         System.out.println(answers);
         Iterator<?> keys = answers.keySet().iterator();
         
 //        String csvFile = "C:\\Users\\slenz\\workspace\\clickstream-survey\\data\\test.csv";
-        String csvFile = "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\6\\survey.csv";        
+        String csvFile = base + "survey.csv";        
         FileWriter writer = new FileWriter(csvFile);
      
 
