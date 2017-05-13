@@ -12,7 +12,7 @@ import org.json.simple.parser.JSONParser;
 public class SurveyParser {
 	public static void main(String[] args) {
 		JSONParser parser = new JSONParser();
-		String base = "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\32\\";
+		String base = "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\51\\";
 		try{
         Object obj = parser.parse(new FileReader(
 //                "C:\\Users\\slenz\\workspace\\clickstream-survey\\data\\test.json"));

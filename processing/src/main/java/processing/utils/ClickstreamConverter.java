@@ -15,10 +15,10 @@ public class ClickstreamConverter {
 	   public static void main(String[] args) {
 	        JSONParser parser = new JSONParser();
 	 
-	        for (int i = 1; i < 2; i++) {
+	        for (int i = 1; i <= 51; i++) {
 	        		       
 		        try {
-		        	i = 32;
+//		        	i = 51;
 		            Object obj = parser.parse(new FileReader(
 //		                    "/Users/sle/Repos/clickstream-survey/data/testrun_sle/events.json"));
         					"C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\"+i+"\\events.json"));
@@ -53,7 +53,7 @@ public class ClickstreamConverter {
 		                if(first) {
 	//	                	clusteringEventLogDetailed = sessionId + "\t";
 		                	clusteringEventLogDetailed = i + "\t";
-		                	clusteringEventLogCondensed = "1\t";
+		                	clusteringEventLogCondensed = i + "\t";
 		                	first = false;
 		                }
 		                
@@ -69,7 +69,7 @@ public class ClickstreamConverter {
 		                	linkId = "";
 		                }
 		                
-	//	                clusteringEventLogDetailed += eventId + productId + detail + "(" + durationSinceLastEvent + ")";
+//		                clusteringEventLogDetailed += eventId + productId + detail + "(" + durationSinceLastEvent + ")";
 		                clusteringEventLogDetailed += eventId + productId + detail + "(" + normalizedDurationSinceLastEvent + ")";
 		                clusteringEventLogCondensed += eventId.charAt(0) + productId + "(" + normalizedDurationSinceLastEvent + ")";
 		                durationSinceLastEvent = duration;
@@ -77,36 +77,44 @@ public class ClickstreamConverter {
 		                	durationSinceLastEvent = 1L;
 		                	normalizedDurationSinceLastEvent = 1;
 		                } else {
-		                	if(durationSinceLastEvent <= 5000) {
+		                	if(durationSinceLastEvent <= 1000) {
 		                		normalizedDurationSinceLastEvent = 2;	
 		                	}
 		                	
-		                	if(durationSinceLastEvent > 5000 && durationSinceLastEvent <= 10000) {
+		                	if(durationSinceLastEvent > 1000 && durationSinceLastEvent <= 2000) {
 		                		normalizedDurationSinceLastEvent = 3;	
 		                	}
 		                	
-		                	if(durationSinceLastEvent > 10000 &&  durationSinceLastEvent <= 20000) {
+		                	if(durationSinceLastEvent > 2000 &&  durationSinceLastEvent <= 3000) {
 		                		normalizedDurationSinceLastEvent = 4;	
 		                	}
 		                	
-		                	if(durationSinceLastEvent > 20000 && durationSinceLastEvent <= 30000) {
+		                	if(durationSinceLastEvent > 3000 && durationSinceLastEvent <= 5000) {
 		                		normalizedDurationSinceLastEvent = 5;	
 		                	}
 		                	
-		                	if(durationSinceLastEvent > 30000 && durationSinceLastEvent <= 40000) {
+		                	if(durationSinceLastEvent > 5000 && durationSinceLastEvent <= 8000) {
 		                		normalizedDurationSinceLastEvent = 6;	
 		                	}
 		                	
-		                	if(durationSinceLastEvent > 40000 && durationSinceLastEvent <= 50000) {
+		                	if(durationSinceLastEvent > 8000 && durationSinceLastEvent <= 13000) {
 		                		normalizedDurationSinceLastEvent = 7;	
 		                	}
 		                	
-		                	if(durationSinceLastEvent > 50000 && durationSinceLastEvent <= 60000) {
+		                	if(durationSinceLastEvent > 13000 && durationSinceLastEvent <= 20000) {
 		                		normalizedDurationSinceLastEvent = 8;	
 		                	}	
 		                	
-		                	if(durationSinceLastEvent > 60000) {
+		                	if(durationSinceLastEvent > 20000 && durationSinceLastEvent <= 30000) {
 		                		normalizedDurationSinceLastEvent = 9;	
+		                	}
+		                	
+		                	if(durationSinceLastEvent > 30000 && durationSinceLastEvent <= 60000) {
+		                		normalizedDurationSinceLastEvent = 10;	
+		                	}		                	
+		                	
+		                	if(durationSinceLastEvent > 60000) {
+		                		normalizedDurationSinceLastEvent = 11;	
 		                	}	                	
 		                }
 		                
