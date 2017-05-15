@@ -15,15 +15,17 @@ import org.json.simple.parser.JSONParser;
 public class ClusterEvaluator {
 	
 	public static boolean CSV_FORMAT = true;
+	public static boolean USE_WINDOWS = true;
+	public static String BASE_PATH_WINDOWS = "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\";
+	public static String BASE_PATH_IOS = "/Users/sle/switchdrive/Master/survey_results/";
+	public static String CLICKPATH_FILE = "testresult4.json";
 	
 	public static void main(String[] args) {
 		JSONParser parser = new JSONParser();
 		
 		try{
-        Object obj = parser.parse(new FileReader(
-                "/Users/sle/Repos/clickstream-survey/clustering/testresult_fibo.json"));
-//        		"C:\\Users\\slenz\\workspace\\clickstream-survey\\clustering\\testresult_click.json"));
-//				"C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\results\\testresult4.json"));
+		String path = (USE_WINDOWS ? BASE_PATH_WINDOWS + "\\results\\" : BASE_PATH_IOS + "/results/") + CLICKPATH_FILE;
+        Object obj = parser.parse(new FileReader(path));
 
         JSONArray jsonClusters = (JSONArray) obj;	
         Cluster cluster = new Cluster();
@@ -163,77 +165,12 @@ public class ClusterEvaluator {
 			} else {
 				System.out.println(indent + next);
 				nextCluster.leafs.get(nextCluster.leafs.size()-1).ids.add(((Long)next).intValue());
-				
-				JSONParser parser = new JSONParser();		
-				String survey = "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\"+next+"\\survey.json";
-				try {
-					Object obj = parser.parse(new FileReader(survey));
-			        JSONObject object = (JSONObject) obj;
-			        JSONObject answers = (JSONObject)object.get("big5_result");
-//			        System.out.println(answers);		
-				} catch (Exception e) {
-//					System.out.println(e);
-				}
 			}
 
 		}
 		return nextCluster;		
 	}
-	
-	static class Big5Result {
-		public int meanNeuro;
-		public int numberOfHighestNeuro;
-		public int numberOfLowestNeuro;
-		public int meanExtra;
-		public int numberOfHighestExtra;
-		public int numberOfLowestExtra;		
-		public int meanGewissen;
-		public int numberOfHighestGewissen;
-		public int numberOfLowestGewissen;		
-		public int meanOffen;
-		public int numberOfHighestOffen;
-		public int numberOfLowestOffen;				
-		public int meanVertrag;
-		public int numberOfHighestVertrag;
-		public int numberOfLowestVertrag;		
-		public int anerkennung;
-		public int macht;
-		public int sicher;
-		public int ehrlich;
-		public int meanTechnique;
-		public int numberOfmales;
-		public int numberofWomen;
-		public int meanAge;
-		public int numberOfClicks;
-		public int meanDuration;
-		
-	
-		@Override
-		public String toString() {
-			return "neuro: " + meanNeuro + "\nextra: " + meanExtra + "\ngewissen:" + meanGewissen + "\noffen:" + meanOffen + "\nvertrag:" + meanVertrag 
-					+ "\nanerkennung:" + anerkennung + "\nmacht:" + macht + "\nsicher:" + sicher + "\nehrlich: " + ehrlich;
-		}
-		
-		public String toCSV() {
-			return meanNeuro + "," + meanExtra + "," + meanGewissen + "," + meanOffen + "," + meanVertrag 
-					+ "," + anerkennung + "," + macht + "," + sicher + "," + ehrlich
-					+ "," + numberOfHighestNeuro + "," + numberOfLowestNeuro + "," + numberOfHighestExtra + "," + numberOfLowestExtra
-					+ "," + numberOfHighestGewissen + "," + numberOfLowestGewissen + "," + numberOfHighestOffen + "," + numberOfLowestOffen
-					+ "," + numberOfHighestVertrag + "," + numberOfLowestVertrag
-					+ "," + meanTechnique + "," + numberOfmales + "," + numberofWomen + "," + meanAge
-					+ "," + numberOfClicks + "," + meanDuration;
-		}
-		
-		public static String csvHeader() {
-			return "meanNeuro,meanExtra,meanGewissen , meanOffen , meanVertrag" + 
-					", anerkennung , macht , sicher , ehrlich" +
-					", numberOfHighestNeuro , numberOfLowestNeuro , numberOfHighestExtra , numberOfLowestExtra" +
-					", numberOfHighestGewissen , numberOfLowestGewissen , numberOfHighestOffen , numberOfLowestOffen" +
-					", numberOfHighestVertrag , numberOfLowestVertrag" +
-					", meanTechnique , numberOfmales , numberofWomen , meanAge" +
-					", numberOfClicks , meanDuration";
-		}
-	}
+
 	
 	public static void meanResultValues(List<Integer> clusterIDs) {
 		JSONParser parser = new JSONParser();
@@ -259,11 +196,8 @@ public class ClusterEvaluator {
 
 		
 		clusterIDs.forEach(id -> {
-//			String survey = "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\"+id+"\\survey.json";
-			String survey = "/Users/sle/switchdrive/Master/survey_results/"+id+"/survey.json";
-
-//			String events = "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\"+id+"\\events.json";
-			String events = "/Users/sle/switchdrive/Master/survey_results/"+id+"/events.json";
+			String survey = (USE_WINDOWS ? BASE_PATH_WINDOWS + "\\" +id+"\\": BASE_PATH_IOS + "/" + id + "/") + "survey.json";
+			String events = (USE_WINDOWS ? BASE_PATH_WINDOWS + "\\" +id+"\\": BASE_PATH_IOS + "/" + id + "/") + "events.json";
 
 				try {
 					Object obj = parser.parse(new FileReader(survey));
