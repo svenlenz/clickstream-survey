@@ -44,11 +44,7 @@ public class ClusterEvaluator {
 		for(int i = 1; i <= 51; i++) {
 			clusterZero.add(i);
 		}
-		List<Integer> clusterOne = Arrays.asList(1,11,13,15,20,22,23,24,25,28,31,32);
-		List<Integer> clusterTwo = Arrays.asList(19, 10, 9, 14, 16);
-		List<Integer> clusterThree = Arrays.asList(2,3,4,7,8,12,17,21,27,30);
-		List<Integer> clusterFour = Arrays.asList(5,6,18,26,29);
-
+		
 		if(CSV_FORMAT) {
 			System.out.println(Big5Result.csvHeader());
 			meanResultValues(clusterZero);

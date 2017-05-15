@@ -26,6 +26,9 @@ public class Big5Result {
 	public int meanAge;
 	public int numberOfClicks;
 	public int meanDuration;
+	public String highest;
+	public String lowest;
+	public String gender;
 
 	public Big5Result() {
 	}
