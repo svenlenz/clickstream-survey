@@ -1,12 +1,11 @@
 package processing.utils;
 
 import java.io.FileReader;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-
-import javax.swing.plaf.synth.SynthSeparatorUI;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.json.simple.JSONArray;
@@ -14,14 +13,17 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 public class ClusterEvaluator {
+	
+	public static boolean CSV_FORMAT = true;
+	
 	public static void main(String[] args) {
 		JSONParser parser = new JSONParser();
 		
 		try{
         Object obj = parser.parse(new FileReader(
-//                "/Users/sle/Repos/clickstream-survey/clustering/testresult.json"));
+                "/Users/sle/Repos/clickstream-survey/clustering/testresult_fibo.json"));
 //        		"C:\\Users\\slenz\\workspace\\clickstream-survey\\clustering\\testresult_click.json"));
-				"C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\results\\testresult4.json"));
+//				"C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\results\\testresult4.json"));
 
         JSONArray jsonClusters = (JSONArray) obj;	
         Cluster cluster = new Cluster();
@@ -37,7 +39,7 @@ public class ClusterEvaluator {
 		
 		List<Integer> clusterZero = new ArrayList<Integer>();
 
-		for(int i = 1; i <= 48; i++) {
+		for(int i = 1; i <= 51; i++) {
 			clusterZero.add(i);
 		}
 		List<Integer> clusterOne = Arrays.asList(1,11,13,15,20,22,23,24,25,28,31,32);
@@ -45,14 +47,23 @@ public class ClusterEvaluator {
 		List<Integer> clusterThree = Arrays.asList(2,3,4,7,8,12,17,21,27,30);
 		List<Integer> clusterFour = Arrays.asList(5,6,18,26,29);
 
-		System.out.println("##### ALL " + clusterZero.size() + " #####");
-		meanResultValues(clusterZero);
-		System.out.println("---------------------------------");
-		clusterCollection.forEach(cl -> {
-			System.out.println("##### "+ cl.size() +" #####");
-			meanResultValues(cl);
+		if(CSV_FORMAT) {
+			System.out.println(Big5Result.csvHeader());
+			meanResultValues(clusterZero);
+			clusterCollection.forEach(cl -> {
+				meanResultValues(cl);
+			});				
+		} else {
+			System.out.println("##### ALL " + clusterZero.size() + " #####");
+			meanResultValues(clusterZero);
 			System.out.println("---------------------------------");
-		});
+			clusterCollection.forEach(cl -> {
+				System.out.println("##### "+ cl.size() +" #####");
+				meanResultValues(cl);
+				System.out.println("---------------------------------");
+			});			
+		}
+
 //		meanResultValues(clusterOne);
 //		System.out.println("------------");
 //		meanResultValues(clusterTwo);
@@ -68,12 +79,22 @@ public class ClusterEvaluator {
 	}
 	
 	static void toList(List<List<Integer>> collection, Cluster cluster) {
-        for(Leaf f : cluster.getLeafs()) {
+		boolean flat = true;
+		if(flat) {
+	        for(Leaf f : cluster.getLeafs()) {
+	    		List<Integer> clusterOne = new ArrayList<Integer>();
+	        	clusterOne.addAll(f.getIds());
+	            collection.add(clusterOne);
+	
+	        }
+		} else {
     		List<Integer> clusterOne = new ArrayList<Integer>();
-        	clusterOne.addAll(f.getIds());
-            collection.add(clusterOne);
-
-        }
+	        for(Leaf f : cluster.getLeafs()) {
+	        	clusterOne.addAll(f.getIds());
+	        }			
+	        collection.add(clusterOne);
+		}
+		
         cluster.getClusters().forEach(cl -> {
         	toList(collection, cl);
         });
@@ -160,135 +181,57 @@ public class ClusterEvaluator {
 	}
 	
 	static class Big5Result {
-		private int neuro;
-		private int extra;
-		private int gewissen;
-		private int offen;
-		private int vertrag;
-		private int anerkennung;
-		private int macht;
-		private int sicher;
-		private int ehrlich;
-		private String highest;
-		private String lowest;
-		private int technique;
-		private int male;
-		private int women;
-		private int age;
-		private int numberOfClicks;
-		private int duration;
+		public int meanNeuro;
+		public int numberOfHighestNeuro;
+		public int numberOfLowestNeuro;
+		public int meanExtra;
+		public int numberOfHighestExtra;
+		public int numberOfLowestExtra;		
+		public int meanGewissen;
+		public int numberOfHighestGewissen;
+		public int numberOfLowestGewissen;		
+		public int meanOffen;
+		public int numberOfHighestOffen;
+		public int numberOfLowestOffen;				
+		public int meanVertrag;
+		public int numberOfHighestVertrag;
+		public int numberOfLowestVertrag;		
+		public int anerkennung;
+		public int macht;
+		public int sicher;
+		public int ehrlich;
+		public int meanTechnique;
+		public int numberOfmales;
+		public int numberofWomen;
+		public int meanAge;
+		public int numberOfClicks;
+		public int meanDuration;
 		
-		public int getNeuro() {
-			return neuro;
-		}
-		public void setNeuro(int neuro) {
-			this.neuro = neuro;
-		}
-		public int getExtra() {
-			return extra;
-		}
-		public void setExtra(int extra) {
-			this.extra = extra;
-		}
-		public int getGewissen() {
-			return gewissen;
-		}
-		public void setGewissen(int gewissen) {
-			this.gewissen = gewissen;
-		}
-		public int getOffen() {
-			return offen;
-		}
-		public void setOffen(int offen) {
-			this.offen = offen;
-		}
-		public int getVertrag() {
-			return vertrag;
-		}
-		public void setVertrag(int vertrag) {
-			this.vertrag = vertrag;
-		}
-		public int getAnerkennung() {
-			return anerkennung;
-		}
-		public void setAnerkennung(int anerkennung) {
-			this.anerkennung = anerkennung;
-		}
-		public int getMacht() {
-			return macht;
-		}
-		public void setMacht(int macht) {
-			this.macht = macht;
-		}
-		public int getSicher() {
-			return sicher;
-		}
-		public void setSicher(int sicher) {
-			this.sicher = sicher;
-		}
-		public int getEhrlich() {
-			return ehrlich;
-		}
-		public void setEhrlich(int ehrlich) {
-			this.ehrlich = ehrlich;
-		}
-		
-		public String getHighest() {
-			return highest;
-		}
-		public void setHighest(String highest) {
-			this.highest = highest;
-		}
-		public String getLowest() {
-			return lowest;
-		}
-		public void setLowest(String lowest) {
-			this.lowest = lowest;
-		}
-		
-		public int getTechnique() {
-			return technique;
-		}
-		public void setTechnique(int technique) {
-			this.technique = technique;
-		}
-		public int getMale() {
-			return male;
-		}
-		public void setMale(int male) {
-			this.male = male;
-		}
-		public int getWomen() {
-			return women;
-		}
-		public void setWomen(int women) {
-			this.women = women;
-		}
-		public int getAge() {
-			return age;
-		}
-		public void setAge(int age) {
-			this.age = age;
-		}
-		
-		
-		public int getNumberOfClicks() {
-			return numberOfClicks;
-		}
-		public void setNumberOfClicks(int numberOfClicks) {
-			this.numberOfClicks = numberOfClicks;
-		}
-		public int getDuration() {
-			return duration;
-		}
-		public void setDuration(int duration) {
-			this.duration = duration;
-		}
 	
 		@Override
 		public String toString() {
-			return "neuro: " + neuro + "\nextra: " + extra + "\ngewissen:" + gewissen + "\noffen:" + offen + "\nvertrag:" + vertrag;
-//					+ "\nanerkennung:" + anerkennung + "\nmacht:" + macht + "\nsicher:" + sicher + "\nehrlich: " + ehrlich;
+			return "neuro: " + meanNeuro + "\nextra: " + meanExtra + "\ngewissen:" + meanGewissen + "\noffen:" + meanOffen + "\nvertrag:" + meanVertrag 
+					+ "\nanerkennung:" + anerkennung + "\nmacht:" + macht + "\nsicher:" + sicher + "\nehrlich: " + ehrlich;
+		}
+		
+		public String toCSV() {
+			return meanNeuro + "," + meanExtra + "," + meanGewissen + "," + meanOffen + "," + meanVertrag 
+					+ "," + anerkennung + "," + macht + "," + sicher + "," + ehrlich
+					+ "," + numberOfHighestNeuro + "," + numberOfLowestNeuro + "," + numberOfHighestExtra + "," + numberOfLowestExtra
+					+ "," + numberOfHighestGewissen + "," + numberOfLowestGewissen + "," + numberOfHighestOffen + "," + numberOfLowestOffen
+					+ "," + numberOfHighestVertrag + "," + numberOfLowestVertrag
+					+ "," + meanTechnique + "," + numberOfmales + "," + numberofWomen + "," + meanAge
+					+ "," + numberOfClicks + "," + meanDuration;
+		}
+		
+		public static String csvHeader() {
+			return "meanNeuro,meanExtra,meanGewissen , meanOffen , meanVertrag" + 
+					", anerkennung , macht , sicher , ehrlich" +
+					", numberOfHighestNeuro , numberOfLowestNeuro , numberOfHighestExtra , numberOfLowestExtra" +
+					", numberOfHighestGewissen , numberOfLowestGewissen , numberOfHighestOffen , numberOfLowestOffen" +
+					", numberOfHighestVertrag , numberOfLowestVertrag" +
+					", meanTechnique , numberOfmales , numberofWomen , meanAge" +
+					", numberOfClicks , meanDuration";
 		}
 	}
 	
@@ -316,8 +259,11 @@ public class ClusterEvaluator {
 
 		
 		clusterIDs.forEach(id -> {
-			String survey = "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\"+id+"\\survey.json";
-			String events = "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\"+id+"\\events.json";
+//			String survey = "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\"+id+"\\survey.json";
+			String survey = "/Users/sle/switchdrive/Master/survey_results/"+id+"/survey.json";
+
+//			String events = "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\"+id+"\\events.json";
+			String events = "/Users/sle/switchdrive/Master/survey_results/"+id+"/events.json";
 
 				try {
 					Object obj = parser.parse(new FileReader(survey));
@@ -362,38 +308,53 @@ public class ClusterEvaluator {
 		});
 		
 		Big5Result b5result = new Big5Result();
-		b5result.setNeuro(calculateAverage(neuroList));
-		b5result.setExtra(calculateAverage(extraList));
-		b5result.setGewissen(calculateAverage(gewissenList));
-		b5result.setOffen(calculateAverage(offenList));
-		b5result.setVertrag(calculateAverage(vertragList));
-		b5result.setAnerkennung(calculateAverage(anerkennungList));
-		b5result.setMacht(calculateAverage(machtList));
-		b5result.setSicher(calculateAverage(sicherList));
-		b5result.setEhrlich(calculateAverage(ehrlichList));
-		b5result.setAge(calculateAverage(ageList));
-		b5result.setTechnique(calculateAverage(techniqueList));
-		b5result.setMale(maleList.size());
-		b5result.setWomen(womenList.size());
-		b5result.setNumberOfClicks(calculateAverage(numberOfClicksList));
-		b5result.setDuration(calculateAverage(durationList));
+		b5result.meanNeuro = calculateAverage(neuroList);
+		b5result.meanExtra = calculateAverage(extraList);
+		b5result.meanGewissen = calculateAverage(gewissenList);
+		b5result.meanOffen= calculateAverage(offenList);
+		b5result.meanVertrag= calculateAverage(vertragList);
+		b5result.anerkennung= calculateAverage(anerkennungList);
+		b5result.macht= calculateAverage(machtList);
+		b5result.sicher= calculateAverage(sicherList);
+		b5result.ehrlich= calculateAverage(ehrlichList);
+		b5result.meanAge= calculateAverage(ageList);
+		b5result.meanTechnique= calculateAverage(techniqueList);
+		b5result.numberOfmales = maleList.size();
+		b5result.numberofWomen = womenList.size();
+		b5result.numberOfClicks= calculateAverage(numberOfClicksList);
+		b5result.meanDuration= calculateAverage(durationList);
 
+		b5result.numberOfHighestNeuro = counter(highestList, "neuro");
+		b5result.numberOfLowestNeuro = counter(lowestList, "neuro");
+		b5result.numberOfHighestExtra = counter(highestList, "extra");
+		b5result.numberOfLowestExtra = counter(lowestList, "extra");
+		b5result.numberOfHighestGewissen = counter(highestList, "gewissen");
+		b5result.numberOfLowestGewissen = counter(lowestList, "gewissen");
+		b5result.numberOfHighestOffen = counter(highestList, "offen");
+		b5result.numberOfLowestOffen = counter(lowestList, "offen");
+		b5result.numberOfHighestVertrag = counter(highestList, "vertrag");
+		b5result.numberOfLowestVertrag = counter(lowestList, "vertrag");
 		
-		System.out.println(b5result);
-		System.out.println("--- counter ---");
-		System.out.println("neuro:" + counter(highestList, "neuro") + " - " + counter(lowestList, "neuro"));
-		System.out.println("extra:" + counter(highestList, "extra") + " - " + counter(lowestList, "extra"));
-		System.out.println("gewissen:" + counter(highestList, "gewissen") + " - " + counter(lowestList, "gewissen"));;
-		System.out.println("offen:" + counter(highestList, "offen") + " - " + counter(lowestList, "offen"));
-		System.out.println("vertrag:" + counter(highestList, "vertrag") + " - " + counter(lowestList, "vertrag"));
-		System.out.println("--- demo ---");
-		System.out.println("age:" + b5result.getAge());
-		System.out.println("technique:" + b5result.getTechnique());
-		System.out.println("male:" + b5result.getMale());
-		System.out.println("women:" + b5result.getWomen());		
-		System.out.println("--- stats ---");
-		System.out.println("number of clicks: " + b5result.getNumberOfClicks());
-		System.out.println("duration: " + b5result.getDuration() / 1000);
+		
+		if(!CSV_FORMAT) {
+			System.out.println(b5result);
+			System.out.println("--- counter ---");
+			System.out.println("neuro:" + b5result.numberOfHighestNeuro + " - " + b5result.numberOfLowestNeuro);
+			System.out.println("extra:" + b5result.numberOfHighestExtra + " - " + b5result.numberOfLowestExtra);
+			System.out.println("gewissen:" + b5result.numberOfHighestGewissen + " - " + b5result.numberOfLowestGewissen);;
+			System.out.println("offen:" + b5result.numberOfHighestOffen + " - " + b5result.numberOfLowestOffen);
+			System.out.println("vertrag:" + b5result.numberOfHighestVertrag + " - " + b5result.numberOfLowestVertrag);
+			System.out.println("--- demo ---");
+			System.out.println("age:" + b5result.meanAge);
+			System.out.println("technique:" + b5result.meanTechnique);
+			System.out.println("male:" + b5result.numberOfmales);
+			System.out.println("women:" + b5result.numberofWomen);		
+			System.out.println("--- stats ---");
+			System.out.println("number of clicks: " + b5result.numberOfClicks);
+			System.out.println("duration: " + b5result.meanDuration / 1000);
+		} else {
+			System.out.println(b5result.toCSV());
+		}
 
 	}
 	
@@ -410,7 +371,11 @@ public class ClusterEvaluator {
 	      int sum = 0;
 	      for (int i=0; i< marks.size(); i++) {
 	            sum += marks.get(i);
-	      }	      
-	      return sum / marks.size();
+	      }	    
+	      double result = 0.0;
+	      result = (sum * 1.0) / marks.size();
+	      BigDecimal b = new BigDecimal(result);
+	      b = b.setScale(0,BigDecimal.ROUND_HALF_UP);
+	      return b.intValue();
 	  }
 }
