@@ -15,13 +15,14 @@ public class ClickstreamConverter {
 	   public static void main(String[] args) {
 	        JSONParser parser = new JSONParser();
 	 
-	        for (int i = 1; i <= 1; i++) {
+	        for (int i = 1; i <= 92; i++) {
 	        		       
 		        try {
-		        	i = 61;
+//		        	i = 61;
 		            Object obj = parser.parse(new FileReader(
-//		                    "/Users/sle/Repos/clickstream-survey/data/testrun_sle/events.json"));
-        					"C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\"+i+"\\events.json"));
+//		            		"/Users/sle/switchdrive/Master/survey_results/clickers/" + i + "/events.json"));
+		                    "/Users/sle/switchdrive/Master/survey_results/" + i + "/events.json"));
+//        					"C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\"+i+"\\events.json"));
 		            
 		            
 		 
@@ -30,9 +31,14 @@ public class ClickstreamConverter {
 		            Iterator<JSONObject> iterator = events.iterator();
 		            String clusteringEventLogDetailed = "";
 		            String clusteringEventLogCondensed = "";
+		            String clusteringEventLogCounter = "";
 		            boolean first = true;
 		            Long durationSinceLastEvent = 1L;
 		            int normalizedDurationSinceLastEvent = 1;
+		            
+		            String lastEvent = null;
+		            int counter = 1;
+		            boolean lastEventMachted = false;
 		            while (iterator.hasNext()) {
 		                JSONObject event = iterator.next();
 
@@ -54,6 +60,7 @@ public class ClickstreamConverter {
 	//	                	clusteringEventLogDetailed = sessionId + "\t";
 		                	clusteringEventLogDetailed = i + "\t";
 		                	clusteringEventLogCondensed = i + "\t";
+		                	clusteringEventLogCounter = i + "\t";
 		                	first = false;
 		                }
 		                
@@ -69,8 +76,26 @@ public class ClickstreamConverter {
 		                	linkId = "";
 		                }
 		                
-//		                clusteringEventLogDetailed += eventId + productId + detail + "(" + durationSinceLastEvent + ")";
-		                clusteringEventLogDetailed += eventId + productId + detail + "(" + normalizedDurationSinceLastEvent + ")";
+		                if(lastEvent == null || lastEvent.equals(eventId)) {
+		                	counter++;
+		                } else {
+		                	clusteringEventLogCounter += lastEvent +"("+counter+")";
+		                	counter = 1;
+		                	lastEventMachted = true;
+		                }
+	                	lastEvent = eventId;		                
+		                
+		                int durationInSeconds = (int) (durationSinceLastEvent/1000);
+		                if(durationInSeconds == 0)
+		                	durationInSeconds = 1;
+		                
+		                if(duration == 0)
+		                	duration = 1L;
+		                
+//		                clusteringEventLogDetailed += eventId + productId + detail + linkId + "(" + durationInSeconds + ")";
+		                clusteringEventLogDetailed += eventId + (("".equals(detail) && "".equals(linkId)) ? "Product" + productId : "") + (!"".equals(detail) ? "Detail" + detail : "") + linkId + "(" + duration + ")";//		                clusteringEventLogDetailed += eventId + productId + detail + linkId + "(" + normalizedDurationSinceLastEvent + ")";
+//		                clusteringEventLogDetailed += eventId + (("".equals(detail) && "".equals(linkId)) ? "Product" + productId : "") + (!"".equals(detail) ? "Detail" + detail : "") + linkId + "(" + normalizedDurationSinceLastEvent + ")";
+//		                clusteringEventLogDetailed += eventId + "(" + normalizedDurationSinceLastEvent + ")";
 		                clusteringEventLogCondensed += eventId.charAt(0) + productId + "(" + normalizedDurationSinceLastEvent + ")";
 		                durationSinceLastEvent = duration;
 		                if(0 == durationSinceLastEvent) {
@@ -120,8 +145,14 @@ public class ClickstreamConverter {
 		                
 		                
 		            }
+		            
+		        
+			        if(!lastEventMachted) {
+	                	clusteringEventLogCounter += lastEvent +"("+counter+")";
+			        }
 		            System.out.println(clusteringEventLogDetailed);
 //		            System.out.println(clusteringEventLogCondensed);
+//		            System.out.println(clusteringEventLogCounter);
 
 		        } catch (Exception e) {
 		            e.printStackTrace();
