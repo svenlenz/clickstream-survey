@@ -24,6 +24,9 @@ public class StatDump {
 
 	public static void main(String[] args) {
 		HashMap<String, List<Integer>> profileMap = new HashMap<String, List<Integer>>();
+		HashMap<String, List<Integer>> clusterOne = new HashMap<String, List<Integer>>();
+		HashMap<String, List<Integer>> clusterTwo = new HashMap<String, List<Integer>>();
+		HashMap<String, List<Integer>> clusterThree = new HashMap<String, List<Integer>>();
 
 		JSONParser parser = new JSONParser();
 		System.out.println(Big5Result.csvHeader());
@@ -117,10 +120,7 @@ public class StatDump {
 					profileMap.put(profile, idList);
 				}
 				
-				
-				//TODO: three cluster solution -> match H****, ...
-				//TODO: four cluster solution -> match H****, ...
-				//TODO: five cluster solution -> match H****, ...				
+					
 				
 				System.out.println(b5result.toCSV());
 			} catch (Exception e) {
@@ -132,6 +132,15 @@ public class StatDump {
 		System.out.println("number of profiles: " + profileMap.size());
 		profileMap.entrySet().forEach(entry -> {
 			System.out.println("profile: " + entry.getKey() + ", size: " + entry.getValue().size());
+			
+			if(entry.getKey().matches("^H....$")) {
+				System.out.println("---> high");
+			}
+			
 		});
+		
+		//TODO: three cluster solution -> match H****, ...
+		//TODO: four cluster solution -> match H****, ...
+		//TODO: five cluster solution -> match H****, ...		
 	}
 }
