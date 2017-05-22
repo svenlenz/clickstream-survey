@@ -140,6 +140,7 @@ public class StatDump {
 
 		System.out.println("---------------------------------");
 		System.out.println("number of profiles: " + profileMap.size());
+		 boolean removeDuplicates = false;
 		profileMap.entrySet().forEach(entry -> {
 			System.out.println("profile: " + entry.getKey() + ", size: " + entry.getValue().size());
 			// NEURO; EXTRA; GEWISSEN; OFFEN; VERTRAG
@@ -168,7 +169,8 @@ public class StatDump {
 //			if (entry.getKey().matches("^(H|A)(A|L)(A|L)(A|L)(A|L)$")) {
 			if (entry.getKey().matches("^(H|A)(H|A)(H|A)(H|A)L$")) {			
 				if(hasClusterFiveClusterSolution) {
-					lastFiveClusterSolution.remove(entry.getKey());
+					if(removeDuplicates)
+						lastFiveClusterSolution.remove(entry.getKey());
 					doubleMatchFiveClusterSolution.put(entry.getKey(), entry.getValue());
 				} else {
 					clusterTwoFiveClusterSolution.put(entry.getKey(), entry.getValue());
@@ -182,9 +184,10 @@ public class StatDump {
 			 * Openness, and low scores on Agreeableness and Conscientiousness.
 			 */
 //			if (entry.getKey().matches("^(H|A)(A|H)(A|L)(A|H)(A|L)$")) {
-			if (entry.getKey().matches("^L(H|A)(H|A)(H|A)(H|A)$")) {				
+			if (entry.getKey().matches("^(L|A)(H|A)(H|A)(H|A)(H|A)$")) {				
 				if(hasClusterFiveClusterSolution) {
-					lastFiveClusterSolution.remove(entry.getKey());
+					if(removeDuplicates)
+						lastFiveClusterSolution.remove(entry.getKey());
 					doubleMatchFiveClusterSolution.put(entry.getKey(), entry.getValue());
 				} else {
 					clusterThreeFiveClusterSolution.put(entry.getKey(), entry.getValue());
@@ -201,7 +204,8 @@ public class StatDump {
 //			if (entry.getKey().matches("^(A)(A|H)(A)(A|H)(A)$")) {
 			if (entry.getKey().matches("^(H|A)(L|A)(H|A)(L|A)(L|A)$")) {	
 				if(hasClusterFiveClusterSolution) {
-					lastFiveClusterSolution.remove(entry.getKey());
+					if(removeDuplicates)
+						lastFiveClusterSolution.remove(entry.getKey());
 					doubleMatchFiveClusterSolution.put(entry.getKey(), entry.getValue());
 				} else {
 					clusterFourFiveClusterSolution.put(entry.getKey(), entry.getValue());
@@ -218,7 +222,8 @@ public class StatDump {
 //			if (entry.getKey().matches("^(L|A)(A|L)(A|H)(A|L)(A|H)$")) {
 			if (entry.getKey().matches("^(L|A)(A|L)(A|L)(A|L)(A|H)$")) {
 				if(hasClusterFiveClusterSolution) {
-					lastFiveClusterSolution.remove(entry.getKey());
+					if(removeDuplicates)
+						lastFiveClusterSolution.remove(entry.getKey());
 					doubleMatchFiveClusterSolution.put(entry.getKey(), entry.getValue());
 				} else {
 					clusterFiveFiveClusterSolution.put(entry.getKey(), entry.getValue());
@@ -256,7 +261,8 @@ public class StatDump {
 			 */
 			if (entry.getKey().matches("^(H|A)(A|L)(A|H)..$")) {
 				if(hasClusterThreeClusterSolution) {
-					lastThreeClusterSolution.remove(entry.getKey());
+					if(removeDuplicates)
+						lastThreeClusterSolution.remove(entry.getKey());
 					doubleMatchThreeClusterSolution.put(entry.getKey(), entry.getValue());
 				} else {
 					clusterTwoThreeClusterSolution.put(entry.getKey(), entry.getValue());
@@ -272,7 +278,8 @@ public class StatDump {
 			 */
 			if (entry.getKey().matches("^(H|A)(A|H)(A|L).(A|L)$")) {
 				if(hasClusterThreeClusterSolution) {
-					lastThreeClusterSolution.remove(entry.getKey());
+					if(removeDuplicates)
+						lastThreeClusterSolution.remove(entry.getKey());
 					doubleMatchThreeClusterSolution.put(entry.getKey(), entry.getValue());
 				} else {
 					clusterThreeThreeClusterSolution.put(entry.getKey(), entry.getValue());
