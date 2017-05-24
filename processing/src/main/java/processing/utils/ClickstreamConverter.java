@@ -15,14 +15,14 @@ public class ClickstreamConverter {
 	   public static void main(String[] args) {
 	        JSONParser parser = new JSONParser();
 	 
-	        for (int i = 1; i <= 92; i++) {
+	        for (int i = 1; i <= 101; i++) {
 	        		       
 		        try {
 //		        	i = 61;
 		            Object obj = parser.parse(new FileReader(
 //		            		"/Users/sle/switchdrive/Master/survey_results/clickers/" + i + "/events.json"));
-		                    "/Users/sle/switchdrive/Master/survey_results/" + i + "/events.json"));
-//        					"C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\"+i+"\\events.json"));
+//		                    "/Users/sle/switchdrive/Master/survey_results/" + i + "/events.json"));
+        					"C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\"+i+"\\events.json"));
 		            
 		            
 		 
@@ -150,9 +150,9 @@ public class ClickstreamConverter {
 			        if(!lastEventMachted) {
 	                	clusteringEventLogCounter += lastEvent +"("+counter+")";
 			        }
-		            System.out.println(clusteringEventLogDetailed);
+//		            System.out.println(clusteringEventLogDetailed);
 //		            System.out.println(clusteringEventLogCondensed);
-//		            System.out.println(clusteringEventLogCounter);
+		            System.out.println(clusteringEventLogCounter);
 
 		        } catch (Exception e) {
 		            e.printStackTrace();
