@@ -21,8 +21,8 @@ public class ClickstreamConverter {
 //		        	i = 61;
 		            Object obj = parser.parse(new FileReader(
 //		            		"/Users/sle/switchdrive/Master/survey_results/clickers/" + i + "/events.json"));
-//		                    "/Users/sle/switchdrive/Master/survey_results/" + i + "/events.json"));
-        					"C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\"+i+"\\events.json"));
+		                    "/Users/sle/switchdrive/Master/survey_results/" + i + "/events.json"));
+//        					"C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\"+i+"\\events.json"));
 		            
 		            
 		 
@@ -83,7 +83,7 @@ public class ClickstreamConverter {
 		                	counter = 1;
 		                	lastEventMachted = true;
 		                }
-	                	lastEvent = eventId;		                
+	                	lastEvent = eventId + (("".equals(detail) && "".equals(linkId)) ? "Product" + productId : "");		                
 		                
 		                int durationInSeconds = (int) (durationSinceLastEvent/1000);
 		                if(durationInSeconds == 0)

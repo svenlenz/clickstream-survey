@@ -15,11 +15,11 @@ import org.json.simple.parser.JSONParser;
 public class ClusterEvaluator {
 	
 	public static boolean CSV_FORMAT = true;
-	public static boolean USE_WINDOWS = true;
+	public static boolean USE_WINDOWS = false;
 	public static boolean CLICKERS = false;
 	public static String BASE_PATH_WINDOWS = "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\";
 	public static String BASE_PATH_IOS = "/Users/sle/switchdrive/Master/survey_results/";
-	public static String CLICKPATH_FILE = "testresult.json";
+	public static String CLICKPATH_FILE = "testresult21.json";
 	
 	public static void main(String[] args) {
 		JSONParser parser = new JSONParser();
@@ -37,8 +37,27 @@ public class ClusterEvaluator {
         List<List<Integer>> clusterCollection = new ArrayList<List<Integer>>();
         toList(clusterCollection, clusterResult);
         System.out.println("//// CLUSTER SIZE //// " + clusterCollection.size());
+        
+        System.out.println("//// CLUSTER CLOSENESS //// ");
+		clusterCollection.forEach(cl -> {
+	        System.out.println("//// ----------------- //// ");
 
-		
+			List<Integer> clusterOne = new ArrayList<Integer>();
+			List<Integer> clusterTwo = new ArrayList<Integer>();
+			List<Integer> clusterThree = new ArrayList<Integer>();
+			List<Integer> clusterFour = new ArrayList<Integer>();
+			List<Integer> clusterFive = new ArrayList<Integer>();
+			cl.forEach(id -> {
+				Big5Result b5result = StatDump.toBig5Result(id);
+				int[] profilePoints = {b5result.meanNeuro, b5result.meanExtra, b5result.meanGewissen, b5result.meanOffen, b5result.meanVertrag};
+				StatDump.calculateNDistance(id, profilePoints, clusterOne, clusterTwo, clusterThree, clusterFour, clusterFive);
+			});
+			System.out.println("---> cluster one " + (100/cl.size()*clusterOne.size()));
+			System.out.println("---> cluster two " + (100/cl.size()*clusterTwo.size()));
+			System.out.println("---> cluster three " + (100/cl.size()*clusterThree.size()));
+			System.out.println("---> cluster four " + (100/cl.size()*clusterFour.size()));
+			System.out.println("---> cluster five " + (100/cl.size()*clusterFive.size()));
+		});	
 		
 		List<Integer> clusterZero = new ArrayList<Integer>();
 
