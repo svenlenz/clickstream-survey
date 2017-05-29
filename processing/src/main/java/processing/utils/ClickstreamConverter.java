@@ -92,9 +92,17 @@ public class ClickstreamConverter {
 		                if(duration == 0)
 		                	duration = 1L;
 		                
-//		                clusteringEventLogDetailed += eventId + productId + detail + linkId + "(" + durationInSeconds + ")";
-		                clusteringEventLogDetailed += eventId + (("".equals(detail) && "".equals(linkId)) ? "Product" + productId : "") + (!"".equals(detail) ? "Detail" + detail : "") + linkId + "(" + duration + ")";//		                clusteringEventLogDetailed += eventId + productId + detail + linkId + "(" + normalizedDurationSinceLastEvent + ")";
+		                clusteringEventLogDetailed += eventId + productId + detail + linkId + "(" + durationInSeconds + ")";
+//		                clusteringEventLogDetailed += eventId + (("".equals(detail) && "".equals(linkId)) ? "Product" + productId : "") + (!"".equals(detail) ? "Detail" + detail : "") + linkId + "(" + durationInSeconds + ")";//		                clusteringEventLogDetailed += eventId + productId + detail + linkId + "(" + normalizedDurationSinceLastEvent + ")";
 //		                clusteringEventLogDetailed += eventId + (("".equals(detail) && "".equals(linkId)) ? "Product" + productId : "") + (!"".equals(detail) ? "Detail" + detail : "") + linkId + "(" + normalizedDurationSinceLastEvent + ")";
+		                
+//		                clusteringEventLogDetailed += eventId +  "(" + (("".equals(detail) && "".equals(linkId)) ? productId : "") + (!"".equals(detail) ? "1" + detail : "") + ")";//		                clusteringEventLogDetailed += eventId + productId + detail + linkId + "(" + normalizedDurationSinceLastEvent + ")";
+//		                if(clusteringEventLogDetailed.endsWith("()")) {
+//		                	clusteringEventLogDetailed = clusteringEventLogDetailed.replace("()", "(1)");
+//		                }else if(clusteringEventLogDetailed.endsWith("(0)")) {
+//		                	clusteringEventLogDetailed = clusteringEventLogDetailed.replace("(0)", "(1)");
+//		                }
+		                
 //		                clusteringEventLogDetailed += eventId + "(" + normalizedDurationSinceLastEvent + ")";
 		                clusteringEventLogCondensed += eventId.charAt(0) + productId + "(" + normalizedDurationSinceLastEvent + ")";
 		                durationSinceLastEvent = duration;
@@ -150,9 +158,9 @@ public class ClickstreamConverter {
 			        if(!lastEventMachted) {
 	                	clusteringEventLogCounter += lastEvent +"("+counter+")";
 			        }
-//		            System.out.println(clusteringEventLogDetailed);
+		            System.out.println(clusteringEventLogDetailed);
 //		            System.out.println(clusteringEventLogCondensed);
-		            System.out.println(clusteringEventLogCounter);
+//		            System.out.println(clusteringEventLogCounter);
 
 		        } catch (Exception e) {
 		            e.printStackTrace();

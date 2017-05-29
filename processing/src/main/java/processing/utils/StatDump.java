@@ -89,14 +89,29 @@ public class StatDump {
 					Pattern.compile("^(L|A)(A|L)(A|L)(A|L)(A|H)$")));
 
 	public static List<int[]> asendorpfThreeClusterPoints = new ArrayList<int[]>(
-			Arrays.asList(new int[] { 3, 6, 7, 5, 5 }, new int[] { 7, 2, 5, 5,
-					4 }, new int[] { 4, 6, 2, 6, 4 }));
+			Arrays.asList(
+					new int[] { 3, 5, 7, 5, 5 }, 
+					new int[] { 7, 2, 5, 5, 4 }, 
+					new int[] { 4, 6, 1, 6, 3 }));
 
 	// NEURO; EXTRA; CON/GEWISSEN; OPENNESS/OFFEN; AGREE/VERTRAG
 	public static List<int[]> germanFiveClusterPoints = new ArrayList<int[]>(
-			Arrays.asList(new int[] { 3, 6, 6, 5, 6 }, new int[] { 7, 3, 4, 4,
-					4 }, new int[] { 7, 5, 3, 5, 3 },
-					new int[] { 5, 6, 5, 6, 5 }, new int[] { 3, 3, 6, 3, 6 }));
+			Arrays.asList(
+					new int[] { 3, 7, 7, 5, 6 }, 
+					new int[] { 8, 2, 4, 5, 5 }, 
+					new int[] { 6, 5, 2, 5, 2 },
+					new int[] { 5, 7, 6, 7, 6 }, 
+					new int[] { 3, 4, 6, 2, 6 }));
+
+	//extreme version:
+	public static List<int[]> extremeGermanFiveClusterPoints = new ArrayList<int[]>(
+			Arrays.asList(
+					new int[] { 1, 9, 5, 5, 5 }, 
+					new int[] { 9, 1, 5, 5, 5 }, 
+					new int[] { 9, 5, 1, 5, 5 },
+					new int[] { 5, 9, 5, 9, 5 }, 
+					new int[] { 1, 1, 5, 5, 5 }));
+	
 
 	// NEURO; EXTRA; CON/GEWISSEN; OPENNESS/OFFEN; AGREE/VERTRAG
 	// SAVA POPPA
@@ -361,8 +376,8 @@ public class StatDump {
 			List<Integer> clusterFive) {
 		float lastndistance = 0;
 		int match = -1;
-		for (int i = 0; i < germanFiveClusterPoints.size(); i++) {
-			int[] cluster = germanFiveClusterPoints.get(i);
+		for (int i = 0; i < extremeGermanFiveClusterPoints.size(); i++) {
+			int[] cluster = extremeGermanFiveClusterPoints.get(i);
 			float ndistance = ndistance(profilePoints, cluster);
 			if (ndistance < lastndistance) {
 				lastndistance = ndistance;

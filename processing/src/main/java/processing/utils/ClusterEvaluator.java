@@ -19,7 +19,7 @@ public class ClusterEvaluator {
 	public static boolean CLICKERS = false;
 	public static String BASE_PATH_WINDOWS = "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\";
 	public static String BASE_PATH_IOS = "/Users/sle/switchdrive/Master/survey_results/";
-	public static String CLICKPATH_FILE = "testresult21.json";
+	public static String CLICKPATH_FILE = "testresult.json";
 	
 	public static void main(String[] args) {
 		JSONParser parser = new JSONParser();
@@ -52,11 +52,12 @@ public class ClusterEvaluator {
 				int[] profilePoints = {b5result.meanNeuro, b5result.meanExtra, b5result.meanGewissen, b5result.meanOffen, b5result.meanVertrag};
 				StatDump.calculateNDistance(id, profilePoints, clusterOne, clusterTwo, clusterThree, clusterFour, clusterFive);
 			});
-			System.out.println("---> cluster one " + (100/cl.size()*clusterOne.size()));
-			System.out.println("---> cluster two " + (100/cl.size()*clusterTwo.size()));
-			System.out.println("---> cluster three " + (100/cl.size()*clusterThree.size()));
-			System.out.println("---> cluster four " + (100/cl.size()*clusterFour.size()));
-			System.out.println("---> cluster five " + (100/cl.size()*clusterFive.size()));
+			System.out.println("cl all " + cl.size() + " cl1 " + clusterOne.size() + " cl2 " + clusterTwo.size() + " cl3 " + clusterThree.size());
+			System.out.println("---> cluster one " + (int)(new Double(100)/cl.size()*clusterOne.size()));
+			System.out.println("---> cluster two " + (int)(new Double(100)/cl.size()*clusterTwo.size()));
+			System.out.println("---> cluster three " +(int)(new Double(100)/cl.size()*clusterThree.size()));
+			System.out.println("---> cluster four " + (int)(new Double(100)/cl.size()*clusterFour.size()));
+			System.out.println("---> cluster five " + (int)(new Double(100)/cl.size()*clusterFive.size()));
 		});	
 		
 		List<Integer> clusterZero = new ArrayList<Integer>();
