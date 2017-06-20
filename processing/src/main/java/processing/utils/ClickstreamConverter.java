@@ -15,14 +15,14 @@ public class ClickstreamConverter {
 	   public static void main(String[] args) {
 	        JSONParser parser = new JSONParser();
 	 
-	        for (int i = 1; i <= 101; i++) {
+	        for (int i = 1; i <= 123; i++) {
 	        		       
 		        try {
 //		        	i = 61;
 		            Object obj = parser.parse(new FileReader(
 //		            		"/Users/sle/switchdrive/Master/survey_results/clickers/" + i + "/events.json"));
-		                    "/Users/sle/switchdrive/Master/survey_results/" + i + "/events.json"));
-//        					"C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\"+i+"\\events.json"));
+//		                    "/Users/sle/switchdrive/Master/survey_results/" + i + "/events.json"));
+        					"C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\"+i+"\\events.json"));
 		            
 		            
 		 
@@ -92,9 +92,13 @@ public class ClickstreamConverter {
 		                if(duration == 0)
 		                	duration = 1L;
 		                
-		                clusteringEventLogDetailed += eventId + productId + detail + linkId + "(" + durationInSeconds + ")";
+//		                clusteringEventLogDetailed += eventId + productId + detail + linkId + "(" + durationInSeconds + ")";
 //		                clusteringEventLogDetailed += eventId + (("".equals(detail) && "".equals(linkId)) ? "Product" + productId : "") + (!"".equals(detail) ? "Detail" + detail : "") + linkId + "(" + durationInSeconds + ")";//		                clusteringEventLogDetailed += eventId + productId + detail + linkId + "(" + normalizedDurationSinceLastEvent + ")";
 //		                clusteringEventLogDetailed += eventId + (("".equals(detail) && "".equals(linkId)) ? "Product" + productId : "") + (!"".equals(detail) ? "Detail" + detail : "") + linkId + "(" + normalizedDurationSinceLastEvent + ")";
+		                
+		                
+		                //PLSA version
+		                clusteringEventLogDetailed += eventId + (("".equals(detail) && "".equals(linkId)) ? "Product" + productId : "") + (!"".equals(detail) ? "Detail" + detail : "") + linkId + " ";
 		                
 //		                clusteringEventLogDetailed += eventId +  "(" + (("".equals(detail) && "".equals(linkId)) ? productId : "") + (!"".equals(detail) ? "1" + detail : "") + ")";//		                clusteringEventLogDetailed += eventId + productId + detail + linkId + "(" + normalizedDurationSinceLastEvent + ")";
 //		                if(clusteringEventLogDetailed.endsWith("()")) {

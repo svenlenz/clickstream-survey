@@ -29,11 +29,13 @@ import org.apache.mahout.vectorizer.tfidf.TFIDFConverter;
  */
 public class ClickstreamKMeansCluster {
 
-	public static boolean USE_WINDOWS = false;
+	public static boolean USE_WINDOWS = true;
 	public static String BASE_PATH_WINDOWS = "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\";
 	public static String BASE_PATH_IOS = "/Users/sle/switchdrive/Master/survey_results/";
 	
-	private static String PATH_TO_SHARED_VOLUME = "/Users/sle/switchdrive/Master/survey_results/kmeans";
+//	private static String PATH_TO_SHARED_VOLUME = "/Users/sle/switchdrive/Master/survey_results/kmeans";
+	
+	private static String PATH_TO_SHARED_VOLUME = USE_WINDOWS ? BASE_PATH_WINDOWS + "kmeans" : BASE_PATH_IOS + "kmeans";
 	// extracted data path
 	private static String WIKI_FILES_BASE_PATH = "/Users/sle/switchdrive/Master/survey_results/kmeans";
 
@@ -70,7 +72,7 @@ public class ClickstreamKMeansCluster {
 		for (int id = 1; id <= 101; id++) {
 			String events = (USE_WINDOWS ? BASE_PATH_WINDOWS + "\\" + id + "\\" : BASE_PATH_IOS + "/" + id + "/")
 					+ "events.json";
-			File source = new File((USE_WINDOWS ? BASE_PATH_WINDOWS + "\\" + id + "\\" : BASE_PATH_IOS + "/" + id + "/events.json"));
+			File source = new File((USE_WINDOWS ? BASE_PATH_WINDOWS + "\\" + id + "\\events.json" : BASE_PATH_IOS + "/" + id + "/events.json"));
 			File target = new File((USE_WINDOWS ? BASE_PATH_WINDOWS + "\\kmeans\\latest\\" + id +".json" : BASE_PATH_IOS + "/kmeans/latest/" + id + ".json"));
 			FileUtils.copyFile(source, target);
 		}

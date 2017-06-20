@@ -18,7 +18,7 @@ import org.json.simple.parser.JSONParser;
 
 public class StatDump {
 
-	public static boolean USE_WINDOWS = false;
+	public static boolean USE_WINDOWS = true;
 	public static boolean WITH_LIERS = true;
 	public static String BASE_PATH_WINDOWS = "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\";
 	public static String BASE_PATH_IOS = "/Users/sle/switchdrive/Master/survey_results/";
