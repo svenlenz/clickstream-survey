@@ -100,3 +100,8 @@ sudo  pip install docker-compose
 docker-machine create -d amazonec2 --amazonec2-region eu-central-1 --amazonec2-vpc-id vpc-f0c74e98 clickstream-survey
 eval "$(docker-machine env -u)"
 eval $(docker-machine env clickstream-survey)
+
+
+http://sandlab.cs.ucsb.edu/clickstream/
+
+Wie es funktioniert: https://de.slideshare.net/HyunjeongLee1/unsupervised-clickstream-clustering-for-user-behavior-analysis-chi2016

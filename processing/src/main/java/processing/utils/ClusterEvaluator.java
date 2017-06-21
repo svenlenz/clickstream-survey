@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -15,26 +16,27 @@ import org.json.simple.parser.JSONParser;
 public class ClusterEvaluator {
 
 	public static boolean CSV_FORMAT = true;
-	public static boolean USE_WINDOWS = true;
-	public static boolean CLICKERS = false;
+	public static boolean USE_WINDOWS = false;
+	public static boolean CLICKERS = true;
 	public static String BASE_PATH_WINDOWS = "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\";
 	public static String BASE_PATH_IOS = "/Users/sle/switchdrive/Master/survey_results/";
 	public static String CLICKPATH_FILE = "testresult.json";
 
-	static boolean takePLSA = true;
-	static List<Integer> cl1 = Arrays.asList(10,44,55,58,82,91,93,94);
-	static List<Integer> cl2 = Arrays.asList(5,9,19,21,40,46,59,60,102,103,115,122);
-	static List<Integer> cl3 = Arrays.asList(1,3,7,8,11,12,13,14,15,16,17,18,20,22,24,25,26,27,28,29,31,32,33,35,37,39,41,42,43,45,48,49,51,52,54,56,57,61,62,63,65,66,67,69,70,72,73,74,75,78,79,80,81,83,85,86,90,95,98,99,101,104,105,108,109,110,111,112,113,114,116,118,120,121);
-	static List<Integer> cl4 = Arrays.asList(2,4,6,23,30,38,47,50,53,64,71,77,88,92,97,106,107,117,119);
-	static List<Integer> cl5 = Arrays.asList(34,36,68,76,84,87,89,96,100);
+	static boolean takePLSA = false;
+	static List<Integer> cl1 = Arrays.asList(15,16,34,45,47,49,52,54,57,63);
+	static List<Integer> cl2 = Arrays.asList(20,23,33,43,44,50,58,59);
+	static List<Integer> cl3 = Arrays.asList(1,2,3,7,9,14,17,21,22,24,25,27,29,35,39,40,42,48,51,55,60,62,66);
+	static List<Integer> cl4 = Arrays.asList(8,10,11,18,19,26,30,32,36,38,41,46,56,61,64,65);
+	static List<Integer> cl5 = Arrays.asList(4,5,6,12,13,28,31,37,53);
 
 
 	public static void main(String[] args) {
 		JSONParser parser = new JSONParser();
 
 		try {
-			String path = (USE_WINDOWS ? BASE_PATH_WINDOWS + "\\results\\" : BASE_PATH_IOS + "/results/")
-					+ CLICKPATH_FILE;
+			String path = "/Users/sle/Repos/clickstream-survey/clustering/" + CLICKPATH_FILE;
+			
+			
 			Object obj = parser.parse(new FileReader(path));
 
 			JSONArray jsonClusters = (JSONArray) obj;
@@ -55,6 +57,12 @@ public class ClusterEvaluator {
 				clusterCollection.add(cl4);
 				clusterCollection.add(cl5);
 			}
+			
+			System.out.println("clusters:");
+			clusterCollection.forEach(cl -> {
+				Collections.sort( cl );
+				System.out.println(cl);
+			});
 
 			System.out.println("//// CLUSTER CLOSENESS //// ");
 			clusterCollection.forEach(cl -> {
@@ -83,7 +91,7 @@ public class ClusterEvaluator {
 
 			List<Integer> clusterZero = new ArrayList<Integer>();
 
-			for (int i = 1; i <= 92; i++) {
+			for (int i = 1; i <= 69; i++) {
 				clusterZero.add(i);
 			}
 
@@ -119,7 +127,7 @@ public class ClusterEvaluator {
 	}
 
 	static void toList(List<List<Integer>> collection, Cluster cluster) {
-		boolean flat = true;
+		boolean flat = false;
 		if (flat) {
 			for (Leaf f : cluster.getLeafs()) {
 				List<Integer> clusterOne = new ArrayList<Integer>();

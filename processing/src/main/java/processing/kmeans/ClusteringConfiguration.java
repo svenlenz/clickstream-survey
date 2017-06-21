@@ -1,6 +1,7 @@
 package processing.kmeans;
 
 import org.apache.mahout.common.distance.DistanceMeasure;
+import org.apache.mahout.common.distance.EuclideanDistanceMeasure;
 import org.apache.mahout.common.distance.TanimotoDistanceMeasure;
 import org.codehaus.jackson.JsonNode;
 
@@ -33,12 +34,12 @@ public class ClusteringConfiguration {
 	 * </ul>
 	 */
 	public ClusteringConfiguration() {
-		distanceMeasure = new TanimotoDistanceMeasure();
+		distanceMeasure = new EuclideanDistanceMeasure();
 		//https://www.youtube.com/watch?v=g7SdhkdGTyo
-		k = 5;
-		convergenceDelta = 0.01;
-		maxIterations = 10;
-		clusterClassificationThreshold = 0.01;
+		k = 3;
+		convergenceDelta = 0.5;
+		maxIterations = 100;
+		clusterClassificationThreshold = 0.2;
 	}
 	
 	/**

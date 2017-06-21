@@ -54,8 +54,8 @@ public class VectorConfiguration {
 	public VectorConfiguration() throws ClassNotFoundException {
 		analyzerClass = Class.forName("org.apache.lucene.analysis.standard.StandardAnalyzer");
 		
-		minSupport = 20;
-		minDf = 20;
+		minSupport = 1;
+		minDf = 1;
 		maxDfPercent = 70;
 		maxNGramSize = 2;
 		minLLRValue = 100;

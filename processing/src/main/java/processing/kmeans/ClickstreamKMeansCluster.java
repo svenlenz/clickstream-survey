@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.LineIterator;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.mahout.clustering.evaluation.RepresentativePointsDriver;
@@ -29,7 +30,7 @@ import org.apache.mahout.vectorizer.tfidf.TFIDFConverter;
  */
 public class ClickstreamKMeansCluster {
 
-	public static boolean USE_WINDOWS = true;
+	public static boolean USE_WINDOWS = false;
 	public static String BASE_PATH_WINDOWS = "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\";
 	public static String BASE_PATH_IOS = "/Users/sle/switchdrive/Master/survey_results/";
 	
@@ -69,12 +70,26 @@ public class ClickstreamKMeansCluster {
 		VectorConfiguration vectorConfiguration = new VectorConfiguration();
 		ClusteringConfiguration clusteringConfiguration = new ClusteringConfiguration();
 		
-		for (int id = 1; id <= 101; id++) {
-			String events = (USE_WINDOWS ? BASE_PATH_WINDOWS + "\\" + id + "\\" : BASE_PATH_IOS + "/" + id + "/")
-					+ "events.json";
-			File source = new File((USE_WINDOWS ? BASE_PATH_WINDOWS + "\\" + id + "\\events.json" : BASE_PATH_IOS + "/" + id + "/events.json"));
-			File target = new File((USE_WINDOWS ? BASE_PATH_WINDOWS + "\\kmeans\\latest\\" + id +".json" : BASE_PATH_IOS + "/kmeans/latest/" + id + ".json"));
-			FileUtils.copyFile(source, target);
+//		for (int id = 1; id <= 66; id++) {
+//			String events = (USE_WINDOWS ? BASE_PATH_WINDOWS + "\\" + id + "\\" : BASE_PATH_IOS + "/" + id + "/")
+//					+ "events.json";
+//			File source = new File((USE_WINDOWS ? BASE_PATH_WINDOWS + "\\" + id + "\\events.json" : BASE_PATH_IOS + "/clickers/" + id + "/events.json"));
+//			File target = new File((USE_WINDOWS ? BASE_PATH_WINDOWS + "\\kmeans\\latest\\" + id +".json" : BASE_PATH_IOS + "/kmeans/latest/" + id + ".json"));
+//			FileUtils.copyFile(source, target);
+//		}
+		
+		LineIterator it = FileUtils.lineIterator(new File("/Users/sle/Repos/clickstream-survey/PLSA/clickstream.txt"), "UTF-8");
+		int index = 1;
+		try {
+		    while (it.hasNext()) {
+		    String line = it.nextLine();
+		    // do something with line
+			File target = new File((USE_WINDOWS ? BASE_PATH_WINDOWS + "\\kmeans\\latest\\" + index +".json" : BASE_PATH_IOS + "/kmeans/latest/" + index + ".json"));
+			FileUtils.writeStringToFile(target, line);
+			index++;
+		    }
+		} finally {
+		    it.close();
 		}
 		
 		ClickstreamKMeansCluster clustering = new ClickstreamKMeansCluster(

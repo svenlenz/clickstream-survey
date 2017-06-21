@@ -2,8 +2,8 @@ angular.module("app.survey", ['constants', 'app.common'])
     .controller("surveyController", ['$scope', 'surveyFactory', 'shortSurvey', 'fullSurvey', '$state', function ($scope, surveyFactory, shortSurvey, fullSurvey, $state) {
 
 
-    //var surveyJSON = shortSurvey;
-    var surveyJSON = fullSurvey;
+    var surveyJSON = shortSurvey;
+    //var surveyJSON = fullSurvey;
 
     Survey.defaultBootstrapCss.navigationButton = "btn btn-primary";
     Survey.Survey.cssType = "bootstrap";

@@ -135,6 +135,11 @@ public class SimpleClusterOutput {
 			reader.close();
 			
 			Set<String> clusterkeys = clusterFilenameIndex.keySet();
+			System.out.println("--------------------------------");
+			clusterkeys.forEach(k -> {
+				System.out.println(clusterFilenameIndex.get(k));
+			});
+			System.out.println("--------------------------------");
 			System.out.println(Big5Result.csvHeader());
 			StringBuffer sb = new StringBuffer();
 			clusterkeys.forEach(k -> {

@@ -11,18 +11,20 @@ import org.json.simple.parser.JSONParser;
 
 
 public class ClickstreamConverter {
+	
+	
 
 	   public static void main(String[] args) {
 	        JSONParser parser = new JSONParser();
 	 
-	        for (int i = 1; i <= 123; i++) {
+	        for (int i = 1; i <= 25; i++) {	        	     
 	        		       
 		        try {
 //		        	i = 61;
 		            Object obj = parser.parse(new FileReader(
-//		            		"/Users/sle/switchdrive/Master/survey_results/clickers/" + i + "/events.json"));
+		            		"/Users/sle/switchdrive/Master/survey_results/clickers/" + i + "/events.json"));
 //		                    "/Users/sle/switchdrive/Master/survey_results/" + i + "/events.json"));
-        					"C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\"+i+"\\events.json"));
+//        					"C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\"+i+"\\events.json"));
 		            
 		            
 		 
@@ -39,6 +41,12 @@ public class ClickstreamConverter {
 		            String lastEvent = null;
 		            int counter = 1;
 		            boolean lastEventMachted = false;
+					boolean fromDetail = false;
+					boolean hasBackToProduct = false;
+					boolean hasBackToOverview = false;
+					boolean fromProduct = false;
+					boolean hasBrowserBackToProduct = false;
+					boolean hasBrowserBackToOverview = false;
 		            while (iterator.hasNext()) {
 		                JSONObject event = iterator.next();
 
@@ -50,7 +58,7 @@ public class ClickstreamConverter {
 		                String productId = (String)event.get("productId");
 		                String detail = (String)event.get("detail");
 		                String linkId = (String)event.get("linkId");
-		                
+		                durationSinceLastEvent = duration;
 //		                Random random = new Random();
 //		                if (random.nextBoolean()) {
 //		                    continue;
@@ -76,6 +84,36 @@ public class ClickstreamConverter {
 		                	linkId = "";
 		                }
 		                
+		                hasBrowserBackToOverview = false;
+		                hasBrowserBackToProduct = false;
+		                if(eventId.contains("backToProduct") || eventId.contains("home")) {
+		                	hasBackToProduct = true;
+		                }	
+		                if(eventId.contains("backToOverview") || eventId.contains("home")) {
+		                	hasBackToOverview = true;
+		                }	
+		                if(!"".equals(detail)) {
+		                	fromDetail = true;
+		                } else if("".equals(detail) && fromDetail && !hasBackToProduct) {
+		                	fromDetail = false;
+		                	hasBrowserBackToProduct = true;
+		                } else if(!"".equals(productId) && hasBackToProduct) {
+		                	fromDetail = false;
+		                	hasBackToProduct = false;
+		                }
+		                if(!"".equals(productId)) {
+		                	fromProduct = true;
+		                } else if("".equals(productId) && fromProduct && !hasBackToOverview) {
+		                	fromProduct = false;
+		                	hasBackToOverview = false;
+		                	hasBrowserBackToOverview = true;
+		                } else if("".equals(productId) && fromProduct && hasBackToOverview) {
+		                	fromProduct = false;
+		                	hasBackToOverview = false;
+		                }
+		                
+		                
+		                // LAST EVENT MEMORYSATION //
 		                if(lastEvent == null || lastEvent.equals(eventId)) {
 		                	counter++;
 		                } else {
@@ -91,14 +129,25 @@ public class ClickstreamConverter {
 		                
 		                if(duration == 0)
 		                	duration = 1L;
+		                //add browserBack Events
+		                if(hasBrowserBackToProduct) {
+		                	clusteringEventLogDetailed += "browserBackToProduct" + "(" + 1 + ")";
+		                }
+
+		                if(hasBrowserBackToOverview) {
+		                	clusteringEventLogDetailed += "browserBackToOverview" + "(" + 1 + ")";
+		                } 
+		                		               
 		                
 //		                clusteringEventLogDetailed += eventId + productId + detail + linkId + "(" + durationInSeconds + ")";
+//		                clusteringEventLogDetailed += eventId + "(" + duration + ")";
+		                clusteringEventLogDetailed += eventId + "(" + normalizedDurationSinceLastEvent + ")";
 //		                clusteringEventLogDetailed += eventId + (("".equals(detail) && "".equals(linkId)) ? "Product" + productId : "") + (!"".equals(detail) ? "Detail" + detail : "") + linkId + "(" + durationInSeconds + ")";//		                clusteringEventLogDetailed += eventId + productId + detail + linkId + "(" + normalizedDurationSinceLastEvent + ")";
 //		                clusteringEventLogDetailed += eventId + (("".equals(detail) && "".equals(linkId)) ? "Product" + productId : "") + (!"".equals(detail) ? "Detail" + detail : "") + linkId + "(" + normalizedDurationSinceLastEvent + ")";
 		                
 		                
 		                //PLSA version
-		                clusteringEventLogDetailed += eventId + (("".equals(detail) && "".equals(linkId)) ? "Product" + productId : "") + (!"".equals(detail) ? "Detail" + detail : "") + linkId + " ";
+//		                clusteringEventLogDetailed += eventId + (("".equals(detail) && "".equals(linkId)) ? "Product" + productId : "") + (!"".equals(detail) ? "Detail" + detail : "") + linkId + " ";
 		                
 //		                clusteringEventLogDetailed += eventId +  "(" + (("".equals(detail) && "".equals(linkId)) ? productId : "") + (!"".equals(detail) ? "1" + detail : "") + ")";//		                clusteringEventLogDetailed += eventId + productId + detail + linkId + "(" + normalizedDurationSinceLastEvent + ")";
 //		                if(clusteringEventLogDetailed.endsWith("()")) {
@@ -109,7 +158,6 @@ public class ClickstreamConverter {
 		                
 //		                clusteringEventLogDetailed += eventId + "(" + normalizedDurationSinceLastEvent + ")";
 		                clusteringEventLogCondensed += eventId.charAt(0) + productId + "(" + normalizedDurationSinceLastEvent + ")";
-		                durationSinceLastEvent = duration;
 		                if(0 == durationSinceLastEvent) {
 		                	durationSinceLastEvent = 1L;
 		                	normalizedDurationSinceLastEvent = 1;
@@ -162,7 +210,23 @@ public class ClickstreamConverter {
 			        if(!lastEventMachted) {
 	                	clusteringEventLogCounter += lastEvent +"("+counter+")";
 			        }
-		            System.out.println(clusteringEventLogDetailed);
+			        
+			        String categories = clusteringEventLogDetailed
+			        						.replaceAll("browserBackToProduct", "back")
+			        						.replaceAll("browserBackToOverview", "back")
+			        						.replaceAll("backToProduct", "back")
+			        						.replaceAll("backButton", "back")
+			        						.replaceAll("backToOverview", "back")
+			        						.replaceAll("playingVideo", "video")
+			        						.replaceAll("pausedVideo", "video")
+			        						.replaceAll("endedVideo", "video")
+			        						.replaceAll("favorite_true", "favorite")
+			        						.replaceAll("favorite_false", "favorite")
+			        						.replaceAll("discount_on", "discount")
+			        						.replaceAll("discount_off", "discount");
+			        
+//		            System.out.println(clusteringEventLogDetailed);
+			        System.out.println(categories);
 //		            System.out.println(clusteringEventLogCondensed);
 //		            System.out.println(clusteringEventLogCounter);
 

@@ -14,15 +14,15 @@ import codecs
 # id2word : a map mapping ids to terms
 # X : document-word matrix, N*M, each line is the number of terms that show up in the document
 def preprocessing(datasetFilePath, stopwordsFilePath):
-    
+
     # read the stopwords file
     file = codecs.open(stopwordsFilePath, 'r', 'utf-8')
-    stopwords = [line.strip() for line in file] 
+    stopwords = [line.strip() for line in file]
     file.close()
-    
+
     # read the documents
     file = codecs.open(datasetFilePath, 'r', 'utf-8')
-    documents = [document.strip() for document in file] 
+    documents = [document.strip() for document in file]
     file.close()
 
     # number of documents
@@ -38,7 +38,7 @@ def preprocessing(datasetFilePath, stopwordsFilePath):
         wordCount = {}
         for word in segList:
             word = word.lower().strip()
-            if len(word) > 1 and not re.search('[0-9]', word) and word not in stopwords:               
+            if len(word) > 1 and not re.search('[0-9]', word) and word not in stopwords:
                 if word not in word2id.keys():
                     word2id[word] = currentId;
                     id2word[currentId] = word;
@@ -48,9 +48,9 @@ def preprocessing(datasetFilePath, stopwordsFilePath):
                 else:
                     wordCount[word] = 1
         wordCounts.append(wordCount);
-    
+
     # length of dictionary
-    M = len(word2id)  
+    M = len(word2id)
 
     # generate the document-word matrix
     X = zeros([N, M], int8)
@@ -58,7 +58,7 @@ def preprocessing(datasetFilePath, stopwordsFilePath):
         j = word2id[word]
         for i in range(0, N):
             if word in wordCounts[i]:
-                X[i, j] = wordCounts[i][word];    
+                X[i, j] = wordCounts[i][word];
 
     return N, M, word2id, id2word, X
 
@@ -102,7 +102,7 @@ def MStep():
         else:
             for j in range(0, M):
                 theta[k, j] /= denominator
-        
+
     # update lamda
     for i in range(0, N):
         for k in range(0, K):
@@ -130,7 +130,7 @@ def LogLikelihood():
 
 def rreplace(s, old, new, occurrence):
     li = s.rsplit(old, occurrence)
-    return new.join(li)    
+    return new.join(li)
 
 # output the params of model and top words of topics to files
 def output():
@@ -142,7 +142,7 @@ def output():
             tmp += str(lamda[i, j]) + ' '
         file.write(tmp + '\n')
     file.close()
-    
+
     # topic-word distribution
     file = codecs.open(topicWordDist,'w','utf-8')
     for i in range(0, K):
@@ -151,13 +151,13 @@ def output():
             tmp += str(theta[i, j]) + ' '
         file.write(tmp + '\n')
     file.close()
-    
+
     # dictionary
     file = codecs.open(dictionary,'w','utf-8')
     for i in range(0, M):
         file.write(id2word[i] + '\n')
     file.close()
-    
+
     # top words of each topic
     file = codecs.open(topicWords,'w','utf-8')
     for i in range(0, K):
@@ -183,27 +183,27 @@ def output():
         biggestValue = 0.0
         biggestTopic = -1
         for j in range(0, K):
-            # Grössten Wert bestimmen, j ist das Cluster, i die Document-ID
+            # Groessten Wert bestimmen, j ist das Cluster, i die Document-ID
             if lamda[i, j] > biggestValue:
                 biggestValue = lamda[i, j]
                 biggestTopic = j
         clusters[biggestTopic] = clusters[biggestTopic] + str(i+1) + ','
 
-    clusters[0] = rreplace(clusters[0], ',', ');', 1)    
-    clusters[1] = rreplace(clusters[1], ',', ');', 1)    
-    clusters[2] = rreplace(clusters[2], ',', ');', 1)    
-    clusters[3] = rreplace(clusters[3], ',', ');', 1)    
-    clusters[4] = rreplace(clusters[4], ',', ');', 1)    
+    clusters[0] = rreplace(clusters[0], ',', ');', 1)
+    clusters[1] = rreplace(clusters[1], ',', ');', 1)
+    clusters[2] = rreplace(clusters[2], ',', ');', 1)
+    clusters[3] = rreplace(clusters[3], ',', ');', 1)
+    clusters[4] = rreplace(clusters[4], ',', ');', 1)
     print("\n".join(clusters))
-    file.close()    
-    
+    file.close()
+
 # set the default params and read the params from cmd
 datasetFilePath = 'clickstream.txt'
 stopwordsFilePath = 'stopwords.dic'
-K = 5    # number of topic
-maxIteration = 30
-threshold = 10.0
-topicWordsNum = 100
+K = 3    # number of topic
+maxIteration = 100
+threshold = 0.2
+topicWordsNum = 10
 docTopicDist = 'docTopicDistribution.txt'
 topicWordDist = 'topicWordDistribution.txt'
 dictionary = 'dictionary.dic'

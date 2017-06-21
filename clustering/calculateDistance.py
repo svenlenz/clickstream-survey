@@ -44,7 +44,7 @@ class myThread (multiprocessing.Process):
 		dist = 1.0001 - angle(vlist1, vlist2)/(PI_VALUE/2)
 
 		if dist<=0:
-			#continue 
+			#continue
 			dist= 0.00000001
 		dist = float(dist)*100
 		weight = int(dist)+1
@@ -80,7 +80,7 @@ class myThread (multiprocessing.Process):
 				dists.append(self.getSeqDist(dic1, dic2))
 			# print(min(dists))
 			self.fo.write('\t'.join(map(str, dists)) + '\n')
-		self.fo.close() 
+		self.fo.close()
 
 def angle(v1, v2):
 	norm1 = 0
@@ -92,12 +92,12 @@ def angle(v1, v2):
 		dotprod += v1[i]*v2[i]
 	# a = 0
 	a = dotprod
-	# if norm1>0 and norm2>0: 
+	# if norm1>0 and norm2>0:
 	# 	a = 1.0*dotprod/(math.sqrt(norm1) * math.sqrt(norm2))
 	if a > 1:
 		a = 1
 	return math.acos(a)
-	
+
 # @inputPath : sampleREAL/subsetall1k/all_setid_ngramcnt_time_sid_sample
 # @sidsPath: the path to two lists of sids that we need to calculate, one as from and one as to
 # @outputPath : where final path is placed
@@ -137,8 +137,9 @@ def calDist(inputPath, sidsPath, outputPath, tmpPrefix = '', idfMapPath = None):
 			curSeq = [(item[0], int(item[1])) for item in map(lambda x: x.split('('), line)]
 		# normalized curSeq by its length
 		lenSeq = math.sqrt(sum([x[1] ** 2 for x in curSeq]))
+		print(sid)
 		sid_seq[sid] = dict([(x, y / lenSeq) for (x,y) in curSeq])
-	
+
 	# slice fromSids into THREAD_NUM pieces
 	if (len(fromSids) < MIN_SLICE * THREAD_NUM):
 		step = MIN_SLICE
@@ -156,7 +157,7 @@ def calDist(inputPath, sidsPath, outputPath, tmpPrefix = '', idfMapPath = None):
 		thread.start()
 		threads.append(thread)
 		start += step
-		
+
 	# wait unitl thread ends
 	for t in threads:
 		t.join()
