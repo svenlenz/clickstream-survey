@@ -98,7 +98,8 @@ public class CompareLists {
 	static ArrayList<int[]> kmeansK3C2 =  new ArrayList<int[]>();
 	static ArrayList<int[]> kmeansK3C3 =  new ArrayList<int[]>();	
 	
-	
+
+	//event normalized
 	private static int[] dhcK3R1C1 = new int[]{1, 3, 7, 9, 14, 17, 22, 23, 27, 32, 34, 35, 38, 39, 40, 43, 46, 47, 49};
 	private static int[] dhcK3R1C2 = new int[]{2, 4, 5, 10, 11, 12, 13, 15, 20, 21, 24, 25, 28, 31, 33, 41, 42, 48};
 	private static int[] dhcK3R1C3 = new int[]{6, 8, 16, 18, 19, 26, 29, 30, 36, 37, 44, 45, 50};
@@ -106,6 +107,18 @@ public class CompareLists {
 	private static int[] dhcK3R1HALFC1 = new int[]{1, 3, 7, 9, 14, 17, 22, 23};
 	private static int[] dhcK3R1HALFC2 = new int[]{2, 4, 5, 12, 13, 15, 21, 24, 25};
 	private static int[] dhcK3R1HALFC3 = new int[]{6, 8, 10, 11, 16, 18, 19, 20};
+	
+	//event seconds
+//	[1, 4, 13, 14, 18, 23, 24, 25, 26, 28, 29, 30, 32, 34, 36, 39, 41, 43, 46]
+//	[3, 7, 9, 12, 20, 21, 27, 35, 40, 47, 48, 49, 50]
+//	[2, 5, 6, 8, 10, 11, 15, 16, 17, 19, 22, 31, 33, 37, 38, 42, 44, 45]
+	
+	
+//			[2, 5, 6, 10, 17, 18, 28, 30, 36, 37, 44, 48, 50]
+//			[11, 26, 34]
+//			[4, 12, 20, 21, 24, 27, 33, 40, 41, 47, 49]
+//			[35]
+//			[1, 3, 7, 8, 9, 13, 14, 15, 16, 19, 22, 23, 25, 29, 31, 32, 38, 39, 42, 43, 45, 46]	
 	
 	public static void main(String[] args) {
 		plsaK3C1.add(plsaK3R1C1);

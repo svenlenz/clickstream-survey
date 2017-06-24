@@ -45,22 +45,22 @@ public class StatDump {
 	 * agreeableness and conscientiousness in combination with high levels of
 	 * neuroticism and extraversion.
 	 */
-	public static List<Pattern> romanianCommonThreeClusterPatterns = new ArrayList<Pattern>(
-			Arrays.asList(Pattern.compile("^(L|A)(A|H)(A|H)(A|L)(A|H)$"),
-					Pattern.compile("^(H|A)(A|L)(A|H)(.)(.)$"),
-					Pattern.compile("^(H|A)(A|H)(A|L)(.)(A|L)$")));
-
-	public static List<Pattern> asendorpfThreeClusterPatterns = new ArrayList<Pattern>(
-			Arrays.asList(Pattern.compile("^(L|A)(A|H)(A|H)(A|L)(A|H)$"),
-					Pattern.compile("^(H|A)(L)(A|L)(A|H)(A|L)$"),
-					Pattern.compile("^(L|A)(A|H)(L)(A|H)(A|L)$")));
-
-	public static List<Pattern> romanianFiveClusterPatterns = new ArrayList<Pattern>(
-			Arrays.asList(Pattern.compile("^(.)(H)(L)(.)(A|L)$"),
-					Pattern.compile("^(H|A)(H|A)(H|A)(H|A)(L)$"),
-					Pattern.compile("^(L|A)(H|A)(H|A)(H|A)(H|A)$"),
-					Pattern.compile("^(H|A)(L|A)(H|A)(L|A)(L|A)$"),
-					Pattern.compile("^(L|A)(A|L)(A|L)(A|L)(A|H)$")));
+//	public static List<Pattern> romanianCommonThreeClusterPatterns = new ArrayList<Pattern>(
+//			Arrays.asList(Pattern.compile("^(L|A)(A|H)(A|H)(A|L)(A|H)$"),
+//					Pattern.compile("^(H|A)(A|L)(A|H)(.)(.)$"),
+//					Pattern.compile("^(H|A)(A|H)(A|L)(.)(A|L)$")));
+//
+//	public static List<Pattern> asendorpfThreeClusterPatterns = new ArrayList<Pattern>(
+//			Arrays.asList(Pattern.compile("^(L|A)(A|H)(A|H)(A|L)(A|H)$"),
+//					Pattern.compile("^(H|A)(L)(A|L)(A|H)(A|L)$"),
+//					Pattern.compile("^(L|A)(A|H)(L)(A|H)(A|L)$")));
+//
+//	public static List<Pattern> romanianFiveClusterPatterns = new ArrayList<Pattern>(
+//			Arrays.asList(Pattern.compile("^(.)(H)(L)(.)(A|L)$"),
+//					Pattern.compile("^(H|A)(H|A)(H|A)(H|A)(L)$"),
+//					Pattern.compile("^(L|A)(H|A)(H|A)(H|A)(H|A)$"),
+//					Pattern.compile("^(H|A)(L|A)(H|A)(L|A)(L|A)$"),
+//					Pattern.compile("^(L|A)(A|L)(A|L)(A|L)(A|H)$")));
 
 	// 5 cluster solution
 	/*
@@ -81,28 +81,37 @@ public class StatDump {
 	 * have low scores on Neuroticism, Extraversion, and Openness, and
 	 * moderately positive scores on Agreeableness and Conscientiousness.
 	 */
-	public static List<Pattern> germanFiveClusterPatterns = new ArrayList<Pattern>(
-			Arrays.asList(Pattern.compile("^(L|A)(A|H)(A|H)(A|H)(A|H)$"),
-					Pattern.compile("^(H|A)(A|L)(A|L)(A|L)(A|L)$"),
-					Pattern.compile("^(H|A)(A|H)(A|L)(A|H)(A|L)$"),
-					Pattern.compile("^(A)(A|H)(A)(A|H)(A)$"),
-					Pattern.compile("^(L|A)(A|L)(A|L)(A|L)(A|H)$")));
+//	public static List<Pattern> germanFiveClusterPatterns = new ArrayList<Pattern>(
+//			Arrays.asList(Pattern.compile("^(L|A)(A|H)(A|H)(A|H)(A|H)$"),
+//					Pattern.compile("^(H|A)(A|L)(A|L)(A|L)(A|L)$"),
+//					Pattern.compile("^(H|A)(A|H)(A|L)(A|H)(A|L)$"),
+//					Pattern.compile("^(A)(A|H)(A)(A|H)(A)$"),
+//					Pattern.compile("^(L|A)(A|L)(A|L)(A|L)(A|H)$")));
 
 	public static List<int[]> asendorpfThreeClusterPoints = new ArrayList<int[]>(
 			Arrays.asList(
-					new int[] { 3, 5, 7, 5, 5 }, 
-					new int[] { 7, 2, 5, 5, 4 }, 
-					new int[] { 4, 6, 1, 6, 3 }));
+					new int[] { 3, 6, 7, 5, 5 }, 
+					new int[] { 7, 3, 5, 5, 5 }, 
+					new int[] { 5, 6, 2, 6, 5 }));
 
 	// NEURO; EXTRA; CON/GEWISSEN; OPENNESS/OFFEN; AGREE/VERTRAG
 	public static List<int[]> germanFiveClusterPoints = new ArrayList<int[]>(
 			Arrays.asList(
-					new int[] { 3, 7, 7, 5, 6 }, 
-					new int[] { 8, 2, 4, 5, 5 }, 
-					new int[] { 6, 5, 2, 5, 2 },
+					new int[] { 1, 8, 8, 6, 7 }, 
+					new int[] { 9, 1, 4, 5, 5 }, 
+					new int[] { 6, 4, 2, 5, 2 },
 					new int[] { 5, 7, 6, 7, 6 }, 
-					new int[] { 3, 4, 6, 2, 6 }));
+					new int[] { 4, 4, 6, 3, 6 }));
 
+
+	public static List<int[]> mixedClusterPoints = new ArrayList<int[]>(
+			Arrays.asList(
+					new int[] { 3, 6, 7, 5, 5 }, 
+					new int[] { 7, 3, 5, 5, 5 }, 
+					new int[] { 5, 6, 2, 6, 5 },
+					new int[] { 5, 7, 6, 7, 6 }, 
+					new int[] { 4, 4, 6, 3, 6 }));
+	
 	//extreme version:
 	public static List<int[]> extremeGermanFiveClusterPoints = new ArrayList<int[]>(
 			Arrays.asList(
@@ -146,10 +155,14 @@ public class StatDump {
 		List<Integer> clusterThree = new ArrayList<Integer>();
 		List<Integer> clusterFour = new ArrayList<Integer>();
 		List<Integer> clusterFive = new ArrayList<Integer>();
+		
+		List<Integer> clusterOne3 = new ArrayList<Integer>();
+		List<Integer> clusterTwo3 = new ArrayList<Integer>();
+		List<Integer> clusterThree3 = new ArrayList<Integer>();
 
 		JSONParser parser = new JSONParser();
 		System.out.println(Big5Result.csvHeader());
-		for (int id = 1; id <= 101; id++) {
+		for (int id = 1; id <= 126; id++) {
 			
 
 			Big5Result b5result = toBig5Result(id);
@@ -159,6 +172,8 @@ public class StatDump {
 					System.out.println("LIER!");
 					continue;
 				}
+				String survey = (USE_WINDOWS ? BASE_PATH_WINDOWS + "\\" + id + "\\"
+						: BASE_PATH_IOS + "/" + id + "/") + "survey.json";
 				String events = (USE_WINDOWS ? BASE_PATH_WINDOWS + "\\" + id + "\\"
 						: BASE_PATH_IOS + "/" + id + "/") + "events.json";
 
@@ -177,7 +192,9 @@ public class StatDump {
 						b5result.meanGewissen, b5result.meanOffen,
 						b5result.meanVertrag };
 				calculateNDistance(id, profilePoints, clusterOne, clusterTwo,
-						clusterThree, clusterFour, clusterFive);
+						clusterThree, clusterFour, clusterFive);			
+				
+				calculateNDistance(id, profilePoints, clusterOne3, clusterTwo3,clusterThree3);							
 
 				int high = 6;
 				int low = 4;
@@ -236,98 +253,109 @@ public class StatDump {
 			}
 		}
 		System.out.println("---------------------------------");
-		System.out.println("euclidiean distance");
+		System.out.println("euclidiean distance 5 cluster solution");
 		System.out.println(clusterOne);
 		System.out.println(clusterTwo);
 		System.out.println(clusterThree);
 		System.out.println(clusterFour);
 		System.out.println(clusterFive);
 		System.out.println(Big5Result.csvHeader());
-		ClusterEvaluator.meanResultValues(clusterOne);
-		ClusterEvaluator.meanResultValues(clusterTwo);
-		ClusterEvaluator.meanResultValues(clusterThree);
-		ClusterEvaluator.meanResultValues(clusterFour);
-		ClusterEvaluator.meanResultValues(clusterFive);
-
+		ClusterEvaluator.meanResultValues(clusterOne); System.out.println(clusterOne.size());
+		ClusterEvaluator.meanResultValues(clusterTwo);System.out.println(clusterTwo.size());
+		ClusterEvaluator.meanResultValues(clusterThree);System.out.println(clusterThree.size());
+		ClusterEvaluator.meanResultValues(clusterFour);System.out.println(clusterFour.size());
+		ClusterEvaluator.meanResultValues(clusterFive);System.out.println(clusterFive.size());
+		
+		
 		System.out.println("---------------------------------");
-		System.out.println("number of profiles: " + profileMap.size());
-		boolean removeDuplicates = false;
-		profileMap.entrySet().forEach(
-				entry -> {
-					System.out.println("profile: " + entry.getKey()
-							+ ", size: " + entry.getValue().size());
-					fiveClusterSolution(romanianFiveClusterPatterns,
-							clusterOneFiveClusterSolution,
-							clusterTwoFiveClusterSolution,
-							clusterThreeFiveClusterSolution,
-							clusterFourFiveClusterSolution,
-							clusterFiveFiveClusterSolution,
-							clusterlessFiveClusterSolution,
-							doubleMatchFiveClusterSolution, removeDuplicates,
-							entry);
-
-					threeClusterSolution(romanianCommonThreeClusterPatterns,
-							clusterOneThreeClusterSolution,
-							clusterTwoThreeClusterSolution,
-							clusterThreeThreeClusterSolution,
-							clusterlessThreeClusterSolution,
-							doubleMatchThreeClusterSolution, removeDuplicates,
-							entry);
-				});
-
-		printFiveClusterSolution(clusterOneFiveClusterSolution,
-				clusterTwoFiveClusterSolution, clusterThreeFiveClusterSolution,
-				clusterFourFiveClusterSolution, clusterFiveFiveClusterSolution,
-				clusterlessFiveClusterSolution, doubleMatchFiveClusterSolution);
-
+		System.out.println("euclidiean distance 3 cluster solution");
+		System.out.println(clusterOne3);
+		System.out.println(clusterTwo3);
+		System.out.println(clusterThree3);
 		System.out.println(Big5Result.csvHeader());
-		getMeanResultValues(clusterOneFiveClusterSolution);
-		getMeanResultValues(clusterTwoFiveClusterSolution);
-		getMeanResultValues(clusterThreeFiveClusterSolution);
-		getMeanResultValues(clusterFourFiveClusterSolution);
-		getMeanResultValues(clusterFiveFiveClusterSolution);
-		getMeanResultValues(clusterlessFiveClusterSolution);
+		ClusterEvaluator.meanResultValues(clusterOne3);System.out.println(clusterOne3.size());
+		ClusterEvaluator.meanResultValues(clusterTwo3);System.out.println(clusterTwo3.size());
+		ClusterEvaluator.meanResultValues(clusterThree3);System.out.println(clusterThree3.size());
 
-		printThreeClusterSolution(clusterOneThreeClusterSolution,
-				clusterTwoThreeClusterSolution,
-				clusterThreeThreeClusterSolution,
-				clusterlessThreeClusterSolution,
-				doubleMatchThreeClusterSolution);
-
-		System.out.println(Big5Result.csvHeader());
-		getMeanResultValues(clusterOneThreeClusterSolution);
-		getMeanResultValues(clusterTwoThreeClusterSolution);
-		getMeanResultValues(clusterThreeThreeClusterSolution);
-		getMeanResultValues(clusterlessThreeClusterSolution);
-
-		profileMap.entrySet().forEach(
-				entry -> {
-					System.out.println("profile: " + entry.getKey()
-							+ ", size: " + entry.getValue().size());
-					fiveClusterSolution(germanFiveClusterPatterns,
-							clusterOneFiveClusterSolution,
-							clusterTwoFiveClusterSolution,
-							clusterThreeFiveClusterSolution,
-							clusterFourFiveClusterSolution,
-							clusterFiveFiveClusterSolution,
-							clusterlessFiveClusterSolution,
-							doubleMatchFiveClusterSolution, removeDuplicates,
-							entry);
-
-				});
-
-		printFiveClusterSolution(clusterOneFiveClusterSolution,
-				clusterTwoFiveClusterSolution, clusterThreeFiveClusterSolution,
-				clusterFourFiveClusterSolution, clusterFiveFiveClusterSolution,
-				clusterlessFiveClusterSolution, doubleMatchFiveClusterSolution);
-
-		System.out.println(Big5Result.csvHeader());
-		getMeanResultValues(clusterOneFiveClusterSolution);
-		getMeanResultValues(clusterTwoFiveClusterSolution);
-		getMeanResultValues(clusterThreeFiveClusterSolution);
-		getMeanResultValues(clusterFourFiveClusterSolution);
-		getMeanResultValues(clusterFiveFiveClusterSolution);
-		getMeanResultValues(clusterlessFiveClusterSolution);
+//		System.out.println("---------------------------------");
+//		System.out.println("number of profiles: " + profileMap.size());
+//		boolean removeDuplicates = false;
+//		profileMap.entrySet().forEach(
+//				entry -> {
+//					System.out.println("profile: " + entry.getKey()
+//							+ ", size: " + entry.getValue().size());
+//					fiveClusterSolution(romanianFiveClusterPatterns,
+//							clusterOneFiveClusterSolution,
+//							clusterTwoFiveClusterSolution,
+//							clusterThreeFiveClusterSolution,
+//							clusterFourFiveClusterSolution,
+//							clusterFiveFiveClusterSolution,
+//							clusterlessFiveClusterSolution,
+//							doubleMatchFiveClusterSolution, removeDuplicates,
+//							entry);
+//
+//					threeClusterSolution(romanianCommonThreeClusterPatterns,
+//							clusterOneThreeClusterSolution,
+//							clusterTwoThreeClusterSolution,
+//							clusterThreeThreeClusterSolution,
+//							clusterlessThreeClusterSolution,
+//							doubleMatchThreeClusterSolution, removeDuplicates,
+//							entry);
+//				});
+//
+//		printFiveClusterSolution(clusterOneFiveClusterSolution,
+//				clusterTwoFiveClusterSolution, clusterThreeFiveClusterSolution,
+//				clusterFourFiveClusterSolution, clusterFiveFiveClusterSolution,
+//				clusterlessFiveClusterSolution, doubleMatchFiveClusterSolution);
+//
+//		System.out.println(Big5Result.csvHeader());
+//		getMeanResultValues(clusterOneFiveClusterSolution);
+//		getMeanResultValues(clusterTwoFiveClusterSolution);
+//		getMeanResultValues(clusterThreeFiveClusterSolution);
+//		getMeanResultValues(clusterFourFiveClusterSolution);
+//		getMeanResultValues(clusterFiveFiveClusterSolution);
+//		getMeanResultValues(clusterlessFiveClusterSolution);
+//
+//		printThreeClusterSolution(clusterOneThreeClusterSolution,
+//				clusterTwoThreeClusterSolution,
+//				clusterThreeThreeClusterSolution,
+//				clusterlessThreeClusterSolution,
+//				doubleMatchThreeClusterSolution);
+//
+//		System.out.println(Big5Result.csvHeader());
+//		getMeanResultValues(clusterOneThreeClusterSolution);
+//		getMeanResultValues(clusterTwoThreeClusterSolution);
+//		getMeanResultValues(clusterThreeThreeClusterSolution);
+//		getMeanResultValues(clusterlessThreeClusterSolution);
+//
+//		profileMap.entrySet().forEach(
+//				entry -> {
+//					System.out.println("profile: " + entry.getKey()
+//							+ ", size: " + entry.getValue().size());
+//					fiveClusterSolution(germanFiveClusterPatterns,
+//							clusterOneFiveClusterSolution,
+//							clusterTwoFiveClusterSolution,
+//							clusterThreeFiveClusterSolution,
+//							clusterFourFiveClusterSolution,
+//							clusterFiveFiveClusterSolution,
+//							clusterlessFiveClusterSolution,
+//							doubleMatchFiveClusterSolution, removeDuplicates,
+//							entry);
+//
+//				});
+//
+//		printFiveClusterSolution(clusterOneFiveClusterSolution,
+//				clusterTwoFiveClusterSolution, clusterThreeFiveClusterSolution,
+//				clusterFourFiveClusterSolution, clusterFiveFiveClusterSolution,
+//				clusterlessFiveClusterSolution, doubleMatchFiveClusterSolution);
+//
+//		System.out.println(Big5Result.csvHeader());
+//		getMeanResultValues(clusterOneFiveClusterSolution);
+//		getMeanResultValues(clusterTwoFiveClusterSolution);
+//		getMeanResultValues(clusterThreeFiveClusterSolution);
+//		getMeanResultValues(clusterFourFiveClusterSolution);
+//		getMeanResultValues(clusterFiveFiveClusterSolution);
+//		getMeanResultValues(clusterlessFiveClusterSolution);
 
 	}
 	
@@ -364,6 +392,11 @@ public class StatDump {
 			b5result.meanTechnique = Integer.valueOf((String) object
 					.get("technique"));
 			b5result.gender = (String) object.get("gender");
+			if (((String) object.get("gender")).equals("M")) {
+				b5result.numberOfmales = 1;
+			} else {
+				b5result.numberofWomen = 1;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -376,8 +409,8 @@ public class StatDump {
 			List<Integer> clusterFive) {
 		float lastndistance = 0;
 		int match = -1;
-		for (int i = 0; i < extremeGermanFiveClusterPoints.size(); i++) {
-			int[] cluster = extremeGermanFiveClusterPoints.get(i);
+		for (int i = 0; i < germanFiveClusterPoints.size(); i++) {
+			int[] cluster = germanFiveClusterPoints.get(i);
 			float ndistance = ndistance(profilePoints, cluster);
 			if (ndistance < lastndistance) {
 				lastndistance = ndistance;
@@ -397,6 +430,32 @@ public class StatDump {
 			clusterFour.add(id);
 		} else if (match == 4) {
 			clusterFive.add(id);
+		}
+	}
+	
+	
+	public static void calculateNDistance(int id, int[] profilePoints,
+			List<Integer> clusterOne, List<Integer> clusterTwo,
+			List<Integer> clusterThree) {
+		float lastndistance = 0;
+		int match = -1;
+		for (int i = 0; i < asendorpfThreeClusterPoints.size(); i++) {
+			int[] cluster = asendorpfThreeClusterPoints.get(i);
+			float ndistance = ndistance(profilePoints, cluster);
+			if (ndistance < lastndistance) {
+				lastndistance = ndistance;
+				match = i;
+			} else if (lastndistance == 0) {
+				lastndistance = ndistance;
+				match = i;
+			}
+		}
+		if (match == 0) {
+			clusterOne.add(id);
+		} else if (match == 1) {
+			clusterTwo.add(id);
+		} else if (match == 2) {
+			clusterThree.add(id);
 		}
 	}
 

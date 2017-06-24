@@ -17,7 +17,7 @@ public class ClickstreamConverter {
 	   public static void main(String[] args) {
 	        JSONParser parser = new JSONParser();
 	 
-	        for (int i = 1; i <= 25; i++) {	        	     
+	        for (int i = 1; i <= 50; i++) {	        	     
 	        		       
 		        try {
 //		        	i = 61;
@@ -139,9 +139,9 @@ public class ClickstreamConverter {
 		                } 
 		                		               
 		                
-//		                clusteringEventLogDetailed += eventId + productId + detail + linkId + "(" + durationInSeconds + ")";
+		                clusteringEventLogDetailed += eventId + productId + detail + linkId + "(" + durationInSeconds + ")";
 //		                clusteringEventLogDetailed += eventId + "(" + duration + ")";
-		                clusteringEventLogDetailed += eventId + "(" + normalizedDurationSinceLastEvent + ")";
+//		                clusteringEventLogDetailed += eventId + "(" + durationInSeconds + ")";
 //		                clusteringEventLogDetailed += eventId + (("".equals(detail) && "".equals(linkId)) ? "Product" + productId : "") + (!"".equals(detail) ? "Detail" + detail : "") + linkId + "(" + durationInSeconds + ")";//		                clusteringEventLogDetailed += eventId + productId + detail + linkId + "(" + normalizedDurationSinceLastEvent + ")";
 //		                clusteringEventLogDetailed += eventId + (("".equals(detail) && "".equals(linkId)) ? "Product" + productId : "") + (!"".equals(detail) ? "Detail" + detail : "") + linkId + "(" + normalizedDurationSinceLastEvent + ")";
 		                

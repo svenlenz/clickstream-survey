@@ -17,7 +17,7 @@ public class ClusterEvaluator {
 
 	public static boolean CSV_FORMAT = true;
 	public static boolean USE_WINDOWS = false;
-	public static boolean CLICKERS = true;
+	public static boolean CLICKERS = false;
 	public static String BASE_PATH_WINDOWS = "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\";
 	public static String BASE_PATH_IOS = "/Users/sle/switchdrive/Master/survey_results/";
 	public static String CLICKPATH_FILE = "testresult.json";
@@ -91,7 +91,7 @@ public class ClusterEvaluator {
 
 			List<Integer> clusterZero = new ArrayList<Integer>();
 
-			for (int i = 1; i <= 69; i++) {
+			for (int i = 1; i <= 126; i++) {
 				clusterZero.add(i);
 			}
 
