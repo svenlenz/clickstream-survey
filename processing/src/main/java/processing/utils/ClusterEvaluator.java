@@ -78,7 +78,7 @@ public class ClusterEvaluator {
 					int[] profilePoints = { b5result.meanNeuro, b5result.meanExtra, b5result.meanGewissen,
 							b5result.meanOffen, b5result.meanVertrag };
 					StatDump.calculateNDistance(id, profilePoints, clusterOne, clusterTwo, clusterThree, clusterFour,
-							clusterFive);
+							clusterFive, clusterCollection.size());
 				});
 				System.out.println("cl all " + cl.size() + " cl1 " + clusterOne.size() + " cl2 " + clusterTwo.size()
 						+ " cl3 " + clusterThree.size());
@@ -127,7 +127,7 @@ public class ClusterEvaluator {
 	}
 
 	static void toList(List<List<Integer>> collection, Cluster cluster) {
-		boolean flat = false;
+		boolean flat = true;
 		if (flat) {
 			for (Leaf f : cluster.getLeafs()) {
 				List<Integer> clusterOne = new ArrayList<Integer>();

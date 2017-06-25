@@ -156,7 +156,7 @@ public class SimpleClusterOutput {
 				clusterFilenameIndex.get(k).forEach(id -> {
 					Big5Result b5result = StatDump.toBig5Result(id);
 					int[] profilePoints = {b5result.meanNeuro, b5result.meanExtra, b5result.meanGewissen, b5result.meanOffen, b5result.meanVertrag};
-					StatDump.calculateNDistance(id, profilePoints, clusterOne, clusterTwo, clusterThree, clusterFour, clusterFive);
+					StatDump.calculateNDistance(id, profilePoints, clusterOne, clusterTwo, clusterThree, clusterFour, clusterFive, 5);
 				});
 				sb.append("cl all " + clusterFilenameIndex.get(k).size() + " cl1 " + clusterOne.size() + " cl2 " + clusterTwo.size() + " cl3 " + clusterThree.size());
 				sb.append("\n");

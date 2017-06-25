@@ -93,6 +93,19 @@ public class StatDump {
 					new int[] { 3, 6, 7, 5, 5 }, 
 					new int[] { 7, 3, 5, 5, 5 }, 
 					new int[] { 5, 6, 2, 6, 5 }));
+	
+	public static List<int[]> lenzThreeClusterPoints = new ArrayList<int[]>(
+			Arrays.asList(
+					new int[] { 6, 6, 5, 4, 4 }, 
+					new int[] { 5, 5, 4, 4, 3 }, 
+					new int[] { 5, 5, 3, 4, 3  }));	
+	
+	public static List<int[]> lenzThreeClusterPointsClickers = new ArrayList<int[]>(
+			Arrays.asList(
+					new int[] { 6, 5, 5, 4, 4 }, 
+					new int[] { 5, 5, 4, 4, 3 }, 
+					new int[] { 5, 5, 4, 5, 3  }));	
+		
 
 	// NEURO; EXTRA; CON/GEWISSEN; OPENNESS/OFFEN; AGREE/VERTRAG
 	public static List<int[]> germanFiveClusterPoints = new ArrayList<int[]>(
@@ -120,6 +133,16 @@ public class StatDump {
 					new int[] { 9, 5, 1, 5, 5 },
 					new int[] { 5, 9, 5, 9, 5 }, 
 					new int[] { 1, 1, 5, 5, 5 }));
+	
+	
+	public static List<int[]> lenzFiveClusterPoints = new ArrayList<int[]>(
+			Arrays.asList(
+					new int[] { 6, 5, 4, 4, 4 }, 
+					new int[] { 5, 5, 5, 4, 4 }, 
+					new int[] { 5, 5, 4, 4, 4 },
+					new int[] { 5, 5, 4, 4, 4 },
+					new int[] { 5, 5, 4, 4, 3 }
+					));	
 	
 
 	// NEURO; EXTRA; CON/GEWISSEN; OPENNESS/OFFEN; AGREE/VERTRAG
@@ -192,7 +215,7 @@ public class StatDump {
 						b5result.meanGewissen, b5result.meanOffen,
 						b5result.meanVertrag };
 				calculateNDistance(id, profilePoints, clusterOne, clusterTwo,
-						clusterThree, clusterFour, clusterFive);			
+						clusterThree, clusterFour, clusterFive, 5);			
 				
 				calculateNDistance(id, profilePoints, clusterOne3, clusterTwo3,clusterThree3);							
 
@@ -406,11 +429,17 @@ public class StatDump {
 	public static void calculateNDistance(int id, int[] profilePoints,
 			List<Integer> clusterOne, List<Integer> clusterTwo,
 			List<Integer> clusterThree, List<Integer> clusterFour,
-			List<Integer> clusterFive) {
+			List<Integer> clusterFive, int clusterSize) {
+		
+		if(clusterSize < 4) {
+			calculateNDistance(id, profilePoints, clusterOne, clusterTwo, clusterThree);
+			return;
+		}
+		
 		float lastndistance = 0;
 		int match = -1;
-		for (int i = 0; i < germanFiveClusterPoints.size(); i++) {
-			int[] cluster = germanFiveClusterPoints.get(i);
+		for (int i = 0; i < lenzFiveClusterPoints.size(); i++) {
+			int[] cluster = lenzFiveClusterPoints.get(i);
 			float ndistance = ndistance(profilePoints, cluster);
 			if (ndistance < lastndistance) {
 				lastndistance = ndistance;
