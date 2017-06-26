@@ -74,8 +74,7 @@ public class ClickstreamConverter {
 					String sessionId = (String) event.get("sessionId");
 					String productId = (String) event.get("productId");
 					String detail = (String) event.get("detail");
-					String linkId = (String) event.get("linkId");
-					durationSinceLastEvent = duration;
+					String linkId = (String) event.get("linkId");	
 					// Random random = new Random();
 					// if (random.nextBoolean()) {
 					// continue;
@@ -87,7 +86,10 @@ public class ClickstreamConverter {
 						clusteringEventLogCondensed = i + "\t";
 						clusteringEventLogCounter = i + "\t";
 						first = false;
+					} else {
+						clusteringEventLogDetailed = clusteringEventLogDetailed.replaceAll("TBD", durationSinceLastEvent.toString());
 					}
+					durationSinceLastEvent = duration;
 
 					if ("undefined".equals(productId)) {
 						productId = "";
@@ -156,11 +158,11 @@ public class ClickstreamConverter {
 					
 					//low level
 //					 clusteringEventLogDetailed += eventId + "(" + durationInSeconds + ")";
-//					 clusteringEventLogDetailed += eventId + "(" + duration + ")";
+					 clusteringEventLogDetailed += eventId + "(TBD)";
 //					 
 					 //medium level
-//					 clusteringEventLogDetailed += eventId + (("".equals(detail) && "".equals(linkId)) ? "Product" : "") + (!"".equals(detail) ? "Detail" : "") + "(" + durationInSeconds + ")";
-//					 clusteringEventLogDetailed += eventId + (("".equals(detail) && "".equals(linkId)) ? "Product" : "") + (!"".equals(detail) ? "Detail" : "") + "(" + duration + ")";
+//					 clusteringEventLogDetailed += eventId + (("".equals(detail) && "".equals(linkId)) ? "Product" + productId: "") + (!"".equals(detail) ? "Detail" + detail: "") + "(" + durationInSeconds + ")";
+//					 clusteringEventLogDetailed += eventId + (("".equals(detail) && "".equals(linkId)) ? "Product" + productId: "") + (!"".equals(detail) ? "Detail" + detail: "") + "(" + duration + ")";
 
 					 //high level
 //					clusteringEventLogDetailed += eventId + productId + detail + linkId + "("+ durationInSeconds + ")";
@@ -214,7 +216,8 @@ public class ClickstreamConverter {
 					}
 
 				}
-
+				clusteringEventLogDetailed = clusteringEventLogDetailed.replaceAll("TBD", durationSinceLastEvent.toString());
+				
 				if (!lastEventMachted) {
 					clusteringEventLogCounter += lastEvent + "(" + counter + ")";
 				}

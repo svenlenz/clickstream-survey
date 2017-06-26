@@ -30,7 +30,7 @@ public class KMeansClickstream {
 
 		JSONParser parser = new JSONParser();
 
-		for (int i = 1; i <= 100; i++) {
+		for (int i = 1; i <= 123; i++) {
 
 			try {
 				// i = 61;
