@@ -35,7 +35,7 @@ public class ClickstreamConverter {
 
 		JSONParser parser = new JSONParser();
 
-		for (int i = 1; i <= 100; i++) {
+		for (int i = 1; i <= 126; i++) {
 
 			try {
 				// i = 61;
@@ -157,16 +157,13 @@ public class ClickstreamConverter {
 					}
 					
 					//low level
-//					 clusteringEventLogDetailed += eventId + "(" + durationInSeconds + ")";
-					 clusteringEventLogDetailed += eventId + "(TBD)";
+//					 clusteringEventLogDetailed += eventId + "(TBD)";
 //					 
 					 //medium level
-//					 clusteringEventLogDetailed += eventId + (("".equals(detail) && "".equals(linkId)) ? "Product" + productId: "") + (!"".equals(detail) ? "Detail" + detail: "") + "(" + durationInSeconds + ")";
-//					 clusteringEventLogDetailed += eventId + (("".equals(detail) && "".equals(linkId)) ? "Product" + productId: "") + (!"".equals(detail) ? "Detail" + detail: "") + "(" + duration + ")";
+					 clusteringEventLogDetailed += eventId + (("".equals(detail) && "".equals(linkId)) ? "Product" + productId: "") + (!"".equals(detail) ? "Detail" + detail: "") + "(TBD)";
 
 					 //high level
-//					clusteringEventLogDetailed += eventId + productId + detail + linkId + "("+ durationInSeconds + ")";
-//					clusteringEventLogDetailed += eventId + productId + detail + linkId + "("+ duration + ")";
+//					clusteringEventLogDetailed += eventId + productId + detail + linkId + "(TBD)";
 					 
 
 					clusteringEventLogCondensed += eventId.charAt(0) + productId + "(" + normalizedDurationSinceLastEvent + ")";
