@@ -39,7 +39,7 @@ import processing.utils.StatDump;
  * @author Justin Basilico
  * @since 3.0
  */
-public class SimpleKMeansExample {
+public class CreatePrototypesWithKMeans {
 
 	public static boolean USE_WINDOWS = false;
 	public static boolean WITH_LIERS = true;
