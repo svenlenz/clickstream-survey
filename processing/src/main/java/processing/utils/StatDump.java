@@ -18,7 +18,7 @@ import org.json.simple.parser.JSONParser;
 
 public class StatDump {
 
-	public static boolean USE_WINDOWS = true;
+	public static boolean USE_WINDOWS = false;
 	public static boolean WITH_LIERS = true;
 	public static String BASE_PATH_WINDOWS = "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\";
 	public static String BASE_PATH_IOS = "/Users/sle/switchdrive/Master/survey_results/";
@@ -468,8 +468,8 @@ public class StatDump {
 			List<Integer> clusterThree) {
 		float lastndistance = 0;
 		int match = -1;
-		for (int i = 0; i < asendorpfThreeClusterPoints.size(); i++) {
-			int[] cluster = asendorpfThreeClusterPoints.get(i);
+		for (int i = 0; i < lenzThreeClusterPoints.size(); i++) {
+			int[] cluster = lenzThreeClusterPoints.get(i);
 			float ndistance = ndistance(profilePoints, cluster);
 			if (ndistance < lastndistance) {
 				lastndistance = ndistance;

@@ -15,7 +15,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 public class MoveClickers {
-	public static boolean USE_WINDOWS = true;
+	public static boolean USE_WINDOWS = false;
 	public static String BASE_PATH_WINDOWS = "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\";
 	public static String BASE_PATH_IOS = "/Users/sle/switchdrive/Master/survey_results/";
 
@@ -91,7 +91,7 @@ public class MoveClickers {
 //	            Iterator<JSONObject> iterator = eventsArray.iterator();
 
 //				String eventId = (String)event.get("event");
-				if(eventCounter >= 30) {		           
+				if(eventCounter >= 20) {		           
 					File source = new File((USE_WINDOWS ? BASE_PATH_WINDOWS + "\\" + id + "\\" : BASE_PATH_IOS + "/" + id + "/"));
 					File target = new File((USE_WINDOWS ? BASE_PATH_WINDOWS + "\\clickers\\" + newCounter + "\\" : BASE_PATH_IOS + "/clickers/" + newCounter + "/"));
 					newCounter++;

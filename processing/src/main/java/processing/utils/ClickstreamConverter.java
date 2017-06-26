@@ -19,9 +19,9 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map.Entry;
 import java.util.Random;
 import java.util.TreeMap;
-import java.util.Map.Entry;
 
 import org.json.JSONException;
 import org.json.simple.JSONArray;
@@ -29,21 +29,25 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 public class ClickstreamConverter {
+	
+	static int maxDoc = 126;
+	static int version = 0; //0 = high, 1=medium, 2=low
+	static int timeMode = 0; //0 = millis, 1=seconds, 2=normalized
 
 	public static void main(String[] args) throws Exception {
 
 
 		JSONParser parser = new JSONParser();
 
-		for (int i = 1; i <= 126; i++) {
+		for (int i = 1; i <= maxDoc; i++) {
 
 			try {
 				// i = 61;
 				Object obj = parser.parse(new FileReader(
 				// "/Users/sle/switchdrive/Master/survey_results/clickers/" + i
 				// + "/events.json"));
-//						"/Users/sle/switchdrive/Master/survey_results/" + i + "/events.json"));
-				 "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\"+i+"\\events.json"));
+						"/Users/sle/switchdrive/Master/survey_results/" + i + "/events.json"));
+//				 "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\"+i+"\\events.json"));
 
 				JSONArray events = (JSONArray) obj;
 				// events = shuffleJsonArray(events);
@@ -87,7 +91,10 @@ public class ClickstreamConverter {
 						clusteringEventLogCounter = i + "\t";
 						first = false;
 					} else {
-						clusteringEventLogDetailed = clusteringEventLogDetailed.replaceAll("TBD", durationSinceLastEvent.toString());
+						Long time = 0L;
+						time = getTime(durationSinceLastEvent, time);
+						
+						clusteringEventLogDetailed = clusteringEventLogDetailed.replaceAll("TBD", time.toString());
 					}
 					durationSinceLastEvent = duration;
 
@@ -156,14 +163,19 @@ public class ClickstreamConverter {
 						clusteringEventLogDetailed += "browserBackToOverview" + "(" + 1 + ")";
 					}
 					
-					//low level
-//					 clusteringEventLogDetailed += eventId + "(TBD)";
-//					 
-					 //medium level
-					 clusteringEventLogDetailed += eventId + (("".equals(detail) && "".equals(linkId)) ? "Product" + productId: "") + (!"".equals(detail) ? "Detail" + detail: "") + "(TBD)";
-
-					 //high level
-//					clusteringEventLogDetailed += eventId + productId + detail + linkId + "(TBD)";
+					switch(version) {
+						case 0:
+							clusteringEventLogDetailed += eventId + "(TBD)";	
+							break;
+						case 1: 
+							clusteringEventLogDetailed += eventId + (!eventId.contains("open") ? eventId : "")  + (("".equals(detail) && "".equals(linkId)) ? "Product" + productId: "") + (!"".equals(detail) ? "Detail" + detail: "") + "(TBD)";
+							break;
+						case 2:
+							clusteringEventLogDetailed += eventId + productId + detail + linkId + "(TBD)";
+							break;
+						default:
+							System.out.println("???" + version);
+					}
 					 
 
 					clusteringEventLogCondensed += eventId.charAt(0) + productId + "(" + normalizedDurationSinceLastEvent + ")";
@@ -171,49 +183,13 @@ public class ClickstreamConverter {
 						durationSinceLastEvent = 1L;
 						normalizedDurationSinceLastEvent = 1;
 					} else {
-						if (durationSinceLastEvent <= 1000) {
-							normalizedDurationSinceLastEvent = 2;
-						}
-
-						if (durationSinceLastEvent > 1000 && durationSinceLastEvent <= 2000) {
-							normalizedDurationSinceLastEvent = 3;
-						}
-
-						if (durationSinceLastEvent > 2000 && durationSinceLastEvent <= 3000) {
-							normalizedDurationSinceLastEvent = 4;
-						}
-
-						if (durationSinceLastEvent > 3000 && durationSinceLastEvent <= 5000) {
-							normalizedDurationSinceLastEvent = 5;
-						}
-
-						if (durationSinceLastEvent > 5000 && durationSinceLastEvent <= 8000) {
-							normalizedDurationSinceLastEvent = 6;
-						}
-
-						if (durationSinceLastEvent > 8000 && durationSinceLastEvent <= 13000) {
-							normalizedDurationSinceLastEvent = 7;
-						}
-
-						if (durationSinceLastEvent > 13000 && durationSinceLastEvent <= 20000) {
-							normalizedDurationSinceLastEvent = 8;
-						}
-
-						if (durationSinceLastEvent > 20000 && durationSinceLastEvent <= 30000) {
-							normalizedDurationSinceLastEvent = 9;
-						}
-
-						if (durationSinceLastEvent > 30000 && durationSinceLastEvent <= 60000) {
-							normalizedDurationSinceLastEvent = 10;
-						}
-
-						if (durationSinceLastEvent > 60000) {
-							normalizedDurationSinceLastEvent = 11;
-						}
+						normalizedDurationSinceLastEvent = normalize(durationSinceLastEvent);
 					}
 
 				}
-				clusteringEventLogDetailed = clusteringEventLogDetailed.replaceAll("TBD", durationSinceLastEvent.toString());
+				Long time = 0L;
+				time = getTime(durationSinceLastEvent, time);
+				clusteringEventLogDetailed = clusteringEventLogDetailed.replaceAll("TBD", time.toString());
 				
 				if (!lastEventMachted) {
 					clusteringEventLogCounter += lastEvent + "(" + counter + ")";
@@ -225,14 +201,76 @@ public class ClickstreamConverter {
 				clusteringEventLogCounter = clusteringEventLogCounter.replaceAll("browserBackToProduct", "back").replaceAll("browserBackToOverview", "back").replaceAll("backToProduct", "back").replaceAll("backButton", "back").replaceAll("backToOverview", "back").replaceAll("playingVideo", "video").replaceAll("pausedVideo", "video").replaceAll("endedVideo", "video").replaceAll("favorite_true", "favorite").replaceAll("favorite_false", "favorite").replaceAll("discount_on", "discount")
 						.replaceAll("discount_off", "discount");
 
-				// System.out.println(clusteringEventLogDetailed);
-				 System.out.println(categories);
+				 System.out.println(clusteringEventLogDetailed);
+//				 System.out.println(categories);
 				// System.out.println(clusteringEventLogCondensed);
 //				System.out.println(clusteringEventLogCounter);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	private static Long getTime(Long durationSinceLastEvent, Long time) {
+		switch(timeMode) {
+			case 0: 
+				time = durationSinceLastEvent;
+				break;
+			case 1:
+				time = durationSinceLastEvent/1000;
+				break;
+			case 2:
+				time = new Long(normalize(durationSinceLastEvent));
+				break;
+				
+		}
+		if(time == 0)
+			time = 1L;
+		return time;
+	}
+
+	private static int normalize(Long durationSinceLastEvent) {
+		int normalizedDurationSinceLastEvent = 1;
+		if (durationSinceLastEvent <= 1000) {
+			normalizedDurationSinceLastEvent = 2;
+		}
+
+		if (durationSinceLastEvent > 1000 && durationSinceLastEvent <= 2000) {
+			normalizedDurationSinceLastEvent = 3;
+		}
+
+		if (durationSinceLastEvent > 2000 && durationSinceLastEvent <= 3000) {
+			normalizedDurationSinceLastEvent = 5;
+		}
+
+		if (durationSinceLastEvent > 3000 && durationSinceLastEvent <= 5000) {
+			normalizedDurationSinceLastEvent = 8;
+		}
+
+		if (durationSinceLastEvent > 5000 && durationSinceLastEvent <= 8000) {
+			normalizedDurationSinceLastEvent = 13;
+		}
+
+		if (durationSinceLastEvent > 8000 && durationSinceLastEvent <= 13000) {
+			normalizedDurationSinceLastEvent = 20;
+		}
+
+		if (durationSinceLastEvent > 13000 && durationSinceLastEvent <= 20000) {
+			normalizedDurationSinceLastEvent = 30;
+		}
+
+		if (durationSinceLastEvent > 20000 && durationSinceLastEvent <= 30000) {
+			normalizedDurationSinceLastEvent = 50;
+		}
+
+		if (durationSinceLastEvent > 30000) {
+			normalizedDurationSinceLastEvent = 80;
+		}
+
+		if (durationSinceLastEvent > 60000) {
+			normalizedDurationSinceLastEvent = 130;
+		}
+		return normalizedDurationSinceLastEvent;
 	}
 
 	public static JSONArray shuffleJsonArray(JSONArray array) throws JSONException {

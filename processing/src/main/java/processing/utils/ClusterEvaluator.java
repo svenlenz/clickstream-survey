@@ -17,8 +17,9 @@ import org.json.simple.parser.JSONParser;
 public class ClusterEvaluator {
 
 	public static boolean CSV_FORMAT = true;
-	public static boolean USE_WINDOWS = true;
+	public static boolean USE_WINDOWS = false;
 	public static boolean CLICKERS = false;
+	public static boolean FLAT = false;
 	public static String BASE_PATH_WINDOWS = "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\";
 	public static String BASE_PATH_IOS = "/Users/sle/switchdrive/Master/survey_results/";
 	public static String CLICKPATH_FILE = "testresult.json";
@@ -36,8 +37,8 @@ public class ClusterEvaluator {
 		JSONParser parser = new JSONParser();
 
 		try {
-//			String path = "/Users/sle/Repos/clickstream-survey/clustering/" + CLICKPATH_FILE;
-			String path = "C:\\Users\\slenz\\workspace\\clickstream-survey\\clustering\\" + CLICKPATH_FILE;
+			String path = "/Users/sle/Repos/clickstream-survey/clustering/" + CLICKPATH_FILE;
+//			String path = "C:\\Users\\slenz\\workspace\\clickstream-survey\\clustering\\" + CLICKPATH_FILE;
 			
 			
 			
@@ -148,8 +149,7 @@ public class ClusterEvaluator {
 	}
 
 	static void toList(List<List<Integer>> collection, Cluster cluster) {
-		boolean flat = true;
-		if (flat) {
+		if (FLAT) {
 			for (Leaf f : cluster.getLeafs()) {
 				List<Integer> clusterOne = new ArrayList<Integer>();
 				clusterOne.addAll(f.getIds());
