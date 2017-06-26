@@ -35,7 +35,7 @@ public class ClickstreamConverter {
 
 		JSONParser parser = new JSONParser();
 
-		for (int i = 1; i <= 50; i++) {
+		for (int i = 1; i <= 100; i++) {
 
 			try {
 				// i = 61;
@@ -154,58 +154,19 @@ public class ClickstreamConverter {
 						clusteringEventLogDetailed += "browserBackToOverview" + "(" + 1 + ")";
 					}
 					
-					// clusteringEventLogDe|tailed += eventId + productId +
-					// detail + linkId + "(" + duration + ")";
-					// clusteringEventLogDetailed += eventId + "(" +
-					// durationInSeconds + ")";
-					// clusteringEventLogDetailed += eventId + "(" +
-					// durationInSeconds + ")";
-					// clusteringEventLogDetailed += eventId +
-					// (("".equals(detail) && "".equals(linkId)) ? "Product" +
-					// productId : "") + (!"".equals(detail) ? "Detail" + detail
-					// : "") + linkId + "(" + duration + ")";//
-					// clusteringEventLogDetailed += eventId + productId +
-					// detail + linkId + "(" + normalizedDurationSinceLastEvent
-					// + ")";
-					// clusteringEventLogDetailed += eventId +
-					// (("".equals(detail) && "".equals(linkId)) ? "Product" +
-					// productId : "") + (!"".equals(detail) ? "Detail" + detail
-					// : "") + linkId + "(" + duration + ")";//
-					// clusteringEventLogDetailed += eventId + productId +
-					// detail + linkId + "(" + normalizedDurationSinceLastEvent
-					// + ")";
-					clusteringEventLogDetailed += eventId + (("".equals(detail) && "".equals(linkId)) ? "Product" : "") + (!"".equals(detail) ? "Detail" : "") + "(" + duration + ")";// clusteringEventLogDetailed
-																																														// +=
-																																														// eventId																																									// +
-																																														// ")";
-					// clusteringEventLogDetailed += eventId +
-					// (("".equals(detail) && "".equals(linkId)) ? "Product" +
-					// productId : "") + (!"".equals(detail) ? "Detail" + detail
-					// : "") + linkId + "(" + normalizedDurationSinceLastEvent +
-					// ")";
+					//low level
+//					 clusteringEventLogDetailed += eventId + "(" + durationInSeconds + ")";
+//					 clusteringEventLogDetailed += eventId + "(" + duration + ")";
+//					 
+					 //medium level
+//					 clusteringEventLogDetailed += eventId + (("".equals(detail) && "".equals(linkId)) ? "Product" : "") + (!"".equals(detail) ? "Detail" : "") + "(" + durationInSeconds + ")";
+//					 clusteringEventLogDetailed += eventId + (("".equals(detail) && "".equals(linkId)) ? "Product" : "") + (!"".equals(detail) ? "Detail" : "") + "(" + duration + ")";
 
-					// PLSA version
-					// clusteringEventLogDetailed += eventId +
-					// (("".equals(detail) && "".equals(linkId)) ? "Product" +
-					// productId : "") + (!"".equals(detail) ? "Detail" + detail
-					// : "") + linkId + " ";
+					 //high level
+//					clusteringEventLogDetailed += eventId + productId + detail + linkId + "("+ durationInSeconds + ")";
+//					clusteringEventLogDetailed += eventId + productId + detail + linkId + "("+ duration + ")";
+					 
 
-					// clusteringEventLogDetailed += eventId + "(" +
-					// (("".equals(detail) && "".equals(linkId)) ? productId :
-					// "") + (!"".equals(detail) ? "1" + detail : "") + ")";//
-					// clusteringEventLogDetailed += eventId + productId +
-					// detail + linkId + "(" + normalizedDurationSinceLastEvent
-					// + ")";
-					// if(clusteringEventLogDetailed.endsWith("()")) {
-					// clusteringEventLogDetailed =
-					// clusteringEventLogDetailed.replace("()", "(1)");
-					// }else if(clusteringEventLogDetailed.endsWith("(0)")) {
-					// clusteringEventLogDetailed =
-					// clusteringEventLogDetailed.replace("(0)", "(1)");
-					// }
-
-					// clusteringEventLogDetailed += eventId + "(" +
-					// normalizedDurationSinceLastEvent + ")";
 					clusteringEventLogCondensed += eventId.charAt(0) + productId + "(" + normalizedDurationSinceLastEvent + ")";
 					if (0 == durationSinceLastEvent) {
 						durationSinceLastEvent = 1L;
@@ -265,9 +226,9 @@ public class ClickstreamConverter {
 						.replaceAll("discount_off", "discount");
 
 				// System.out.println(clusteringEventLogDetailed);
-				// System.out.println(categories);
+				 System.out.println(categories);
 				// System.out.println(clusteringEventLogCondensed);
-				System.out.println(clusteringEventLogCounter);
+//				System.out.println(clusteringEventLogCounter);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

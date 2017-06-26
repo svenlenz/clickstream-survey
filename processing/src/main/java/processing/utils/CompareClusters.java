@@ -53,6 +53,10 @@ public class CompareClusters {
 	private static int[] plsaK3R1HALFC2 = new int[]{9,10,14};
 	private static int[] plsaK3R1HALFC3  = new int[]{15,16,23};
 	
+	private static int[] plsaK3R1DOUBLEC1 = new int[]{1,2,3,4,5,6,7,12,14,15,19,21,22,23,24,25,26,27,28,31,33,35,36,37,39,40,41,43,44,45,46,47,48,50,54,55,58,59,61,62,63,64,65,66,67,69,70,72,73,74,75,80,81,82,85,87,90,91,93,94,97,99};
+	private static int[] plsaK3R1DOUBLEC2 = new int[]{10,29,30,32,38,53,60,68,71,76,77,84,88,92,96,100};
+	private static int[] plsaK3R1DOUBLEC3  = new int[]{8,9,11,13,16,17,18,20,34,42,49,51,52,56,57,78,79,83,86,89,95,98};
+	
 	static ArrayList<int[]> plsaK3C1 =  new ArrayList<int[]>();
 	static ArrayList<int[]> plsaK3C2 =  new ArrayList<int[]>();
 	static ArrayList<int[]> plsaK3C3 =  new ArrayList<int[]>();
@@ -103,6 +107,10 @@ public class CompareClusters {
 	private static int[] kmeansK3R1C1_HALF  = new int[]{2, 3, 5, 8, 9, 10, 11, 13, 14, 15, 16, 20, 22, 24, 25};
 	private static int[] kmeansK3R1C2_HALF = new int[]{1, 4, 6, 12, 19, 21, 23};
 	private static int[] kmeansK3R1C3_HALF= new int[]{7, 17, 18};
+	
+	private static int[] kmeansK3R1C1_DOUBLE  = new int[]{2, 3, 4, 5, 8, 9, 10, 11, 13, 14, 15, 16, 20, 22, 24, 25, 27, 28, 31, 32, 33, 34, 35, 36, 38, 39, 42, 43, 44, 45, 46, 47, 51, 52, 56, 57, 59, 61, 62, 63, 65, 66, 67, 69, 70, 71, 72, 73, 74, 76, 78, 79, 80, 82, 85, 86, 87, 88, 89, 90, 91, 93, 94, 95, 96, 97, 98, 99, 100};
+	private static int[] kmeansK3R1C2_DOUBLE = new int[]{1, 6, 7, 12, 17, 18, 19, 21, 23, 26, 29, 30, 40, 41, 48, 49, 50, 53, 54, 55, 58, 60, 68, 75, 77, 81, 83, 84, 92};
+	private static int[] kmeansK3R1C3_DOUBLE= new int[]{37, 64};
 	
 	static ArrayList<int[]> kmeansK3C1 =  new ArrayList<int[]>();
 	static ArrayList<int[]> kmeansK3C2 =  new ArrayList<int[]>();
@@ -256,17 +264,25 @@ public class CompareClusters {
 		
 		
 		
-		System.out.println("Subsample DHC1 " + getPercentThatMatchFromSubsample(dhcK3R1HALFC1, dhcK3R1C1));
-		System.out.println("Subsample DHC2 " + getPercentThatMatchFromSubsample(dhcK3R1HALFC2, dhcK3R1C2));
-		System.out.println("Subsample DHC3 " + getPercentThatMatchFromSubsample(dhcK3R1HALFC3, dhcK3R1C3));
+		System.out.println("Subsample DHC1 half " + getPercentThatMatchFromSubsample(dhcK3R1HALFC1, dhcK3R1C1));
+		System.out.println("Subsample DHC2 half " + getPercentThatMatchFromSubsample(dhcK3R1HALFC2, dhcK3R1C2));
+		System.out.println("Subsample DHC3 half " + getPercentThatMatchFromSubsample(dhcK3R1HALFC3, dhcK3R1C3));
 		
-		System.out.println("Subsample KMEANS " + getPercentThatMatchFromSubsample(kmeansK3R1C1_HALF, kmeansK3R1C1));
-		System.out.println("Subsample KMEANS " + getPercentThatMatchFromSubsample(kmeansK3R1C2_HALF, kmeansK3R1C2));
-		System.out.println("Subsample KMEANS " + getPercentThatMatchFromSubsample(kmeansK3R1C3_HALF, kmeansK3R1C3));
+		System.out.println("Subsample KMEANS half " + getPercentThatMatchFromSubsample(kmeansK3R1C1_HALF, kmeansK3R1C1));
+		System.out.println("Subsample KMEANS half " + getPercentThatMatchFromSubsample(kmeansK3R1C2_HALF, kmeansK3R1C2));
+		System.out.println("Subsample KMEANS half " + getPercentThatMatchFromSubsample(kmeansK3R1C3_HALF, kmeansK3R1C3));
 		
-		System.out.println("Subsample PLSA " + getPercentThatMatchFromSubsample(plsaK3R1HALFC1, plsaK3R1C1));
-		System.out.println("Subsample PLSA " + getPercentThatMatchFromSubsample(plsaK3R1HALFC2, plsaK3R1C2));
-		System.out.println("Subsample PLSA " + getPercentThatMatchFromSubsample(plsaK3R1HALFC3, plsaK3R1C3));
+		System.out.println("Subsample KMEANS " + getPercentThatMatchFromSubsample(kmeansK3R1C1, kmeansK3R1C1_DOUBLE));
+		System.out.println("Subsample KMEANS " + getPercentThatMatchFromSubsample(kmeansK3R1C2, kmeansK3R1C2_DOUBLE));
+		System.out.println("Subsample KMEANS " + getPercentThatMatchFromSubsample(kmeansK3R1C3, kmeansK3R1C3_DOUBLE));
+		
+		System.out.println("Subsample PLSA half " + getPercentThatMatchFromSubsample(plsaK3R1HALFC1, plsaK3R1C1));
+		System.out.println("Subsample PLSA half " + getPercentThatMatchFromSubsample(plsaK3R1HALFC2, plsaK3R1C2));
+		System.out.println("Subsample PLSA half " + getPercentThatMatchFromSubsample(plsaK3R1HALFC3, plsaK3R1C3));
+		
+		System.out.println("Subsample PLSA double " + getPercentThatMatchFromSubsample(plsaK3R1C1, plsaK3R1DOUBLEC1));
+		System.out.println("Subsample PLSA double " + getPercentThatMatchFromSubsample(plsaK3R1C2, plsaK3R1DOUBLEC2));
+		System.out.println("Subsample PLSA double " + getPercentThatMatchFromSubsample(plsaK3R1C3, plsaK3R1DOUBLEC3));
 	}
 
 	private static void overallPercentage(String s, ArrayList<int[]> clusterList) {
