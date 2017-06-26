@@ -11,7 +11,7 @@ import org.json.simple.parser.JSONParser;
 
 public class SurveyParser {
 	public static void main(String[] args) {
-		for (int i = 123; i <= 123; i++) {
+		for (int i = 124; i <= 126; i++) {
 
 			JSONParser parser = new JSONParser();
 			String base = "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\"+i+"\\";

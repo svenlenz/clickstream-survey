@@ -30,23 +30,20 @@ import org.json.simple.parser.JSONParser;
 
 public class ClickstreamConverter {
 
-	static ArrayList<double[]> matrix = new ArrayList<double[]>();
-	static HashMap<String, Integer> eventMap = new HashMap<String, Integer>();
-
 	public static void main(String[] args) throws Exception {
-		resetEventMap();
+
 
 		JSONParser parser = new JSONParser();
 
-		for (int i = 1; i <= 126; i++) {
+		for (int i = 1; i <= 50; i++) {
 
 			try {
 				// i = 61;
 				Object obj = parser.parse(new FileReader(
 				// "/Users/sle/switchdrive/Master/survey_results/clickers/" + i
 				// + "/events.json"));
-						"/Users/sle/switchdrive/Master/survey_results/" + i + "/events.json"));
-				// "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\"+i+"\\events.json"));
+//						"/Users/sle/switchdrive/Master/survey_results/" + i + "/events.json"));
+				 "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\"+i+"\\events.json"));
 
 				JSONArray events = (JSONArray) obj;
 				// events = shuffleJsonArray(events);
@@ -157,15 +154,6 @@ public class ClickstreamConverter {
 						clusteringEventLogDetailed += "browserBackToOverview" + "(" + 1 + ")";
 					}
 					
-//					String eventDetailed = eventId + (("".equals(detail) && "".equals(linkId)) ? "Product" + productId : "") + (!"".equals(detail) ? "Detail" + detail : "");
-					if (eventMap.containsKey(eventId)) {
-						Long test = eventMap.get(eventId) + duration;
-						eventMap.put(eventId, test.intValue());
-					} else {
-						throw new Exception(eventId);
-					}
-
-
 					// clusteringEventLogDe|tailed += eventId + productId +
 					// detail + linkId + "(" + duration + ")";
 					// clusteringEventLogDetailed += eventId + "(" +
@@ -280,165 +268,10 @@ public class ClickstreamConverter {
 				// System.out.println(categories);
 				// System.out.println(clusteringEventLogCondensed);
 				System.out.println(clusteringEventLogCounter);
-
-				double[] vector = new double[eventMap.keySet().size()];
-				int x = 0;
-				for (String key : eventMap.keySet()) {
-					vector[x] = eventMap.get(key);
-					x++;
-				}
-				matrix.add(vector);
-				resetEventMap();
-
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-
-		Collection<Vector> data = new ArrayList<Vector>();
-		VectorFactory<?> vectorFactory = VectorFactory.getDefault();
-		System.out.println("---> matrix " + matrix.size());
-		HashMap<Integer, double[]> index = new HashMap<Integer, double[]>();
-		int i = 1;
-		for (double[] arr : matrix) {
-			data.add(vectorFactory.copyArray(arr));
-			index.put(i, arr);
-			i++;
-		}
-
-		ArrayList<ArrayList<double[]>> centroidIndex = new ArrayList<ArrayList<double[]>>();
-		int numRequestedClusters = 3; // The "k" in k-means.
-
-		final Random random = new Random();
-		if (centroidIndex.size() == 0) {
-			for (int x = 0; x < numRequestedClusters; x++) {
-				centroidIndex.add(new ArrayList<double[]>());
-			}
-		}
-		Semimetric<Vectorizable> metric = EuclideanDistanceSquaredMetric.INSTANCE;
-		int maxIterations = 10000;
-		ClusterCreator<CentroidCluster<Vector>, Vector> creator = VectorMeanCentroidClusterCreator.INSTANCE;
-		DistanceSamplingClusterInitializer<CentroidCluster<Vector>, Vector> initializer = new DistanceSamplingClusterInitializer<CentroidCluster<Vector>, Vector>(metric, creator, random);
-		ClusterDivergenceFunction<CentroidCluster<Vector>, Vector> clusterDivergence = new CentroidClusterDivergenceFunction<Vector>(metric);
-		KMeansClusterer<Vector, CentroidCluster<Vector>> kMeans = new KMeansClusterer<Vector, CentroidCluster<Vector>>(numRequestedClusters, maxIterations, initializer, clusterDivergence, creator);
-
-		// Now run the clustering to create the clusters.
-		Collection<CentroidCluster<Vector>> clusters = kMeans.learn(data);
-		// printClusters("Version 3: ", clusters, false);
-		printClusters("Version 3: ", clusters, true);
-		collectAllCentroids(centroidIndex, clusters);
-
-		for (int xx = 0; xx < centroidIndex.size() - 1; xx++) {
-			System.out.println(centroidIndex.get(xx).size());
-			System.out.println(centroidIndex.get(xx + 1).size());
-			if (centroidIndex.get(xx).size() != centroidIndex.get(xx + 1).size()) {
-				throw new Exception("wrong number...");
-			}
-		}
-		assignMembers("Version 3a: ", clusters, index);
-	}
-
-	private static void resetEventMap() {
-		eventMap = new HashMap<String, Integer>();
-		eventMap.put("playingVideo", 0);
-		eventMap.put("backToProduct", 0);
-		eventMap.put("outgoingLink", 0);
-		eventMap.put("discount_off", 0);
-		eventMap.put("favorite_true", 0);
-		eventMap.put("pausedVideo", 0);
-		eventMap.put("discount_on", 0);
-		eventMap.put("endedVideo", 0);
-		eventMap.put("backToOverviewButton", 0);
-		eventMap.put("open", 0);
-		eventMap.put("home", 0);
-
-	}
-
-	/**
-	 * Prints out the cluster centers.
-	 *
-	 * @param title
-	 *            The title to print.
-	 * @param clusters
-	 *            The cluster centers.
-	 */
-	public static void printClusters(final String title, final Collection<CentroidCluster<Vector>> clusters, boolean round) {
-		System.out.print(title);
-		System.out.println("There are " + clusters.size() + " clusters.");
-		int index = 0;
-		for (CentroidCluster<Vector> cluster : clusters) {
-			if (round) {
-				System.out.print("    " + index + " (" + cluster.getMembers().size() + ") : ");
-				cluster.getCentroid().forEach(entry -> {
-					System.out.print(Math.round(entry.getValue()) + " ");
-				});
-				System.out.println();
-			} else {
-				System.out.println("    " + index + " (" + cluster.getMembers().size() + ") : " + cluster.getCentroid());
-			}
-			index++;
-			// Another useful method on a cluster is: cluster.getMembers()
-		}
-	}
-
-	public static void collectAllCentroids(ArrayList<ArrayList<double[]>> centroidIndex, final Collection<CentroidCluster<Vector>> clusters) throws Exception {
-		TreeMap<String, double[]> tt = new TreeMap<String, double[]>();
-		int index = 0;
-		for (CentroidCluster<Vector> cluster : clusters) {
-			if (tt.containsKey(cluster.getMembers().size() + "" + cluster.hashCode()))
-				throw new Exception("try again");
-
-			tt.put(cluster.getMembers().size() + "" + cluster.hashCode(), cluster.getCentroid().toArray());
-		}
-		System.out.println(tt.keySet());
-		for (String key : tt.keySet()) {
-			double[] vector = tt.get(key);
-			centroidIndex.get(index).add(vector);
-			index++;
-			System.out.println("-> " + key);
-		}
-	}
-
-	public static void assignMembers(final String title, final Collection<CentroidCluster<Vector>> clusters, HashMap<Integer, double[]> profilePoints) {
-		System.out.print(title);
-		System.out.println("There are " + clusters.size() + " clusters.");
-		int countMatches = 0;
-		ArrayList<Integer> clusterOne = new ArrayList<Integer>();
-		ArrayList<Integer> clusterTwo = new ArrayList<Integer>();
-		ArrayList<Integer> clusterThree = new ArrayList<Integer>();
-		ArrayList<Integer> clusterFour = new ArrayList<Integer>();
-		ArrayList<Integer> clusterFive = new ArrayList<Integer>();
-		ArrayList<ArrayList<Integer>> clusterIdx = new ArrayList<ArrayList<Integer>>();
-		clusterIdx.add(clusterOne);
-		clusterIdx.add(clusterTwo);
-		clusterIdx.add(clusterThree);
-		clusterIdx.add(clusterFour);
-		clusterIdx.add(clusterFive);
-		for (Entry<Integer, double[]> entry : profilePoints.entrySet()) {
-			int index = 0;
-			for (CentroidCluster<Vector> cluster : clusters) {
-				for (Vector v : cluster.getMembers()) {
-					if (Arrays.equals(v.toArray(), entry.getValue())) {
-						countMatches++;
-						clusterIdx.get(index).add(entry.getKey());
-						index = 0;
-						break;
-					}
-				}
-				index++;
-			}
-			;
-		}
-		System.out.print(clusterOne);
-		System.out.println(" (" + clusterOne.size() + ")");
-		System.out.print(clusterTwo);
-		System.out.println(" (" + clusterTwo.size() + ")");
-		System.out.print(clusterThree);
-		System.out.println(" (" + clusterThree.size() + ")");
-		System.out.print(clusterFour);
-		System.out.println(" (" + clusterFour.size() + ")");
-		System.out.print(clusterFive);
-		System.out.println(" (" + clusterFive.size() + ")");
 	}
 
 	public static JSONArray shuffleJsonArray(JSONArray array) throws JSONException {

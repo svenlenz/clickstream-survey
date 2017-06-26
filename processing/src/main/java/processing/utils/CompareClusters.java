@@ -6,7 +6,7 @@ import java.util.List;
 
 public class CompareClusters {
 	
-	
+	//plsa, 50 sessions, runs 1-10, 3 clusters
 	private static int[] plsaK3R1C1 = new int[]{1,2,3,4,5,6,7,8,11,12,13,14,17,18,19,20,21,22,24,28,30,32,37,41,49,50};
 	private static int[] plsaK3R1C2 = new int[]{9,10,16,25,29,31,35,38,39,42,44,45,46};
 	private static int[] plsaK3R1C3 = new int[]{15,23,26,27,33,34,36,40,43,47,48};
@@ -48,77 +48,76 @@ public class CompareClusters {
 	private static int[] plsaK3R10C2 = new int[]{9,10,16,25,29,31,35,38,39,42,44,45,46};
 	private static int[] plsaK3R10C3 = new int[]{15,23,26,27,33,34,36,40,43,47,48};
 	
+	//plsa, 25 sessions, runs 1, 3 clusters
+	private static int[] plsaK3R1HALFC1 = new int[]{1,2,3,4,5,6,7,8,11,12,13,17,18,19,20,21,22,24,25};
+	private static int[] plsaK3R1HALFC2 = new int[]{9,10,14};
+	private static int[] plsaK3R1HALFC3  = new int[]{15,16,23};
+	
 	static ArrayList<int[]> plsaK3C1 =  new ArrayList<int[]>();
 	static ArrayList<int[]> plsaK3C2 =  new ArrayList<int[]>();
 	static ArrayList<int[]> plsaK3C3 =  new ArrayList<int[]>();
 	
+	//k-means, 50 sessions, runs 1-10, 3 clusters
+	private static int[] kmeansK3R1C1 = new int[]{2, 3, 4, 5, 8, 9, 10, 11, 13, 14, 15, 16, 20, 22, 23, 24, 25, 27, 28, 31, 32, 33, 34, 35, 36, 38, 39, 42, 43, 44, 45, 46, 47};
+	private static int[] kmeansK3R1C2 = new int[]{1, 6, 7, 17, 18, 19, 21, 26, 29, 30, 40, 41, 48, 49, 50};
+	private static int[] kmeansK3R1C3 = new int[]{12, 37};
 	
-	private static int[] kmeansK3R1C1 = new int[]{1, 10, 12, 13, 14, 2, 20, 21, 25, 31, 33, 36, 38, 4, 41, 43, 45, 48, 5, 50, 6, 8};
-	private static int[] kmeansK3R1C2 = new int[]{15, 16, 17, 18, 19, 22, 23, 24, 28, 29, 3, 30, 32, 35, 37, 39, 42, 44, 46, 49, 7, 9};
-	private static int[] kmeansK3R1C3 = new int[]{11, 26, 27, 34, 40, 47};
+	private static int[] kmeansK3R2C1 = new int[]{2, 3, 4, 5, 8, 9, 10, 11, 13, 14, 15, 16, 20, 22, 24, 25, 27, 28, 31, 32, 33, 34, 35, 36, 38, 39, 42, 43, 44, 45, 46, 47};
+	private static int[] kmeansK3R2C2 = new int[]{1, 6, 7, 12, 17, 18, 19, 21, 23, 26, 29, 30, 40, 41, 48, 49, 50};
+	private static int[] kmeansK3R2C3 = new int[]{37};
 	
-	private static int[] kmeansK3R2C1 = new int[]{1, 13, 17, 18, 19, 2, 20, 21, 22, 24, 28, 3, 30, 32, 35, 37, 39, 4, 49, 5, 50, 6, 7, 8, 9};
-	private static int[] kmeansK3R2C2 = new int[]{10, 12, 14, 15, 16, 25, 29, 31, 33, 36, 38, 41, 42, 43, 44, 45, 46, 48};
-	private static int[] kmeansK3R2C3 = new int[]{11, 23, 26, 27, 34, 40, 47};
+	private static int[] kmeansK3R3C1 = new int[]{2, 3, 4, 5, 8, 9, 10, 11, 13, 14, 15, 16, 20, 22, 24, 25, 27, 28, 31, 32, 33, 34, 35, 36, 38, 39, 42, 43, 44, 45, 46, 47};
+	private static int[] kmeansK3R3C2 = new int[]{1, 6, 7, 12, 17, 18, 19, 21, 23, 26, 29, 30, 40, 41, 48, 49, 50};
+	private static int[] kmeansK3R3C3 = new int[]{37};
 	
-	private static int[] kmeansK3R3C1 = new int[]{1, 12, 13, 14, 19, 2, 20, 21, 24, 25, 29, 31, 35, 36, 38, 4, 41, 45, 46, 48, 5, 50, 6, 8};
-	private static int[] kmeansK3R3C2 = new int[]{10, 15, 16, 23, 26, 33, 34, 42, 43, 44, 47};
-	private static int[] kmeansK3R3C3 = new int[]{11, 17, 18, 22, 27, 28, 3, 30, 32, 37, 39, 40, 49, 7, 9};
-	
-	private static int[] kmeansK3R4C1 = new int[]{1, 11, 12, 13, 17, 18, 2, 20, 21, 26, 27, 30, 34, 36, 4, 40, 41, 47, 48, 5, 50, 6, 8};
-	private static int[] kmeansK3R4C2 = new int[]{19, 22, 23, 24, 25, 28, 3, 32, 35, 37, 38, 39, 44, 49, 7, 9};
-	private static int[] kmeansK3R4C3 = new int[]{10, 14, 15, 16, 29, 31, 33, 42, 43, 45, 46};
+	private static int[] kmeansK3R4C1 = new int[]{2, 3, 4, 5, 8, 9, 10, 11, 13, 14, 15, 16, 20, 22, 23, 24, 25, 27, 28, 31, 32, 33, 34, 35, 36, 38, 39, 42, 43, 44, 45, 46, 47};
+	private static int[] kmeansK3R4C2 = new int[]{1, 6, 7, 17, 18, 19, 21, 26, 29, 30, 40, 41, 48, 49, 50};
+	private static int[] kmeansK3R4C3 = new int[]{12, 37};
 	
 	
-	private static int[] kmeansK3R5C1 = new int[]{1, 11, 12, 13, 17, 18, 2, 20, 21, 24, 25, 26, 27, 28, 30, 32, 33, 34, 36, 37, 39, 4, 40, 41, 44, 47, 48, 5, 50, 6, 8};
-	private static int[] kmeansK3R5C2 = new int[]{10, 14, 15, 16, 29, 31, 38, 43, 45, 46};
-	private static int[] kmeansK3R5C3 = new int[]{19, 22, 23, 3, 35, 42, 49, 7, 9};
+	private static int[] kmeansK3R5C1 = new int[]{2, 3, 4, 5, 8, 9, 10, 11, 13, 14, 15, 16, 20, 22, 23, 24, 25, 27, 28, 31, 32, 33, 34, 35, 36, 38, 39, 42, 43, 44, 45, 46, 47};
+	private static int[] kmeansK3R5C2 = new int[]{1, 6, 7, 17, 18, 19, 21, 26, 29, 30, 40, 41, 48, 49, 50};
+	private static int[] kmeansK3R5C3 = new int[]{12, 37};
 	
-	private static int[] kmeansK3R6C1 = new int[]{11, 13, 17, 18, 19, 2, 21, 22, 24, 28, 3, 30, 32, 37, 4, 49, 6, 8};
-	private static int[] kmeansK3R6C2 = new int[]{10, 15, 16, 23, 25, 29, 31, 35, 38, 39, 42, 44, 45, 46, 9};
-	private static int[] kmeansK3R6C3 = new int[]{1, 12, 14, 20, 26, 27, 33, 34, 36, 40, 41, 43, 47, 48, 5, 50, 7};
+	private static int[] kmeansK3R6C1 = new int[]{1, 6, 7, 12, 17, 18, 19, 21, 23, 26, 29, 30, 40, 41, 48, 49, 50};
+	private static int[] kmeansK3R6C2 = new int[]{2, 3, 4, 5, 8, 9, 10, 11, 13, 14, 15, 16, 20, 22, 24, 25, 27, 28, 31, 32, 33, 34, 35, 36, 38, 39, 42, 43, 44, 45, 46, 47};
+	private static int[] kmeansK3R6C3 = new int[]{37};
 	
-	private static int[] kmeansK3R7C1 = new int[]{1, 11, 12, 13, 14, 2, 20, 21, 26, 27, 30, 33, 34, 36, 4, 40, 41, 43, 47, 48, 5, 50, 6, 8};
-	private static int[] kmeansK3R7C2 = new int[]{10, 15, 16, 23, 29, 31, 38, 39, 42, 44, 45, 46};
-	private static int[] kmeansK3R7C3 = new int[]{17, 18, 19, 22, 24, 25, 28, 3, 32, 35, 37, 49, 7, 9};
+	private static int[] kmeansK3R7C1 = new int[]{2, 3, 4, 5, 8, 9, 10, 11, 13, 14, 15, 16, 20, 22, 24, 25, 27, 28, 31, 32, 33, 34, 35, 36, 38, 39, 42, 43, 44, 45, 46, 47};
+	private static int[] kmeansK3R7C2 = new int[]{1, 6, 7, 12, 17, 18, 19, 21, 23, 26, 29, 30, 40, 41, 48, 49, 50};
+	private static int[] kmeansK3R7C3 = new int[]{37};
 	
-	private static int[] kmeansK3R8C1 = new int[]{1, 11, 12, 13, 17, 18, 19, 2, 20, 21, 22, 24, 25, 27, 28, 3, 30, 32, 36, 37, 4, 40, 41, 47, 48, 49, 5, 50, 6, 7, 8, 9};
-	private static int[] kmeansK3R8C2 = new int[]{10, 15, 16, 23, 26, 33, 34, 39, 42, 44};
-	private static int[] kmeansK3R8C3 = new int[]{14, 29, 31, 35, 38, 43, 45, 46};
+	private static int[] kmeansK3R8C1 = new int[]{2, 3, 4, 5, 8, 9, 10, 11, 13, 14, 15, 16, 20, 22, 24, 25, 27, 28, 31, 32, 33, 34, 35, 36, 38, 39, 42, 43, 44, 45, 46, 47};
+	private static int[] kmeansK3R8C2 = new int[]{1, 6, 7, 12, 17, 18, 19, 21, 23, 26, 29, 30, 40, 41, 48, 49, 50};
+	private static int[] kmeansK3R8C3 = new int[]{37};
 	
-	private static int[] kmeansK3R9C1 = new int[]{1, 11, 12, 13, 17, 18, 19, 2, 20, 21, 22, 24, 25, 27, 28, 3, 30, 32, 35, 36, 37, 38, 4, 40, 41, 47, 48, 49, 5, 50, 6, 7, 8, 9};
-	private static int[] kmeansK3R9C2 = new int[]{14, 15, 23, 26, 33, 34, 42, 43};
-	private static int[] kmeansK3R9C3 = new int[]{10, 16, 29, 31, 39, 44, 45, 46};
+	private static int[] kmeansK3R9C1 = new int[]{2, 3, 4, 5, 8, 9, 10, 11, 13, 14, 15, 16, 20, 22, 24, 25, 27, 28, 31, 32, 33, 34, 35, 36, 38, 39, 42, 43, 44, 45, 46, 47};
+	private static int[] kmeansK3R9C2 = new int[]{1, 6, 7, 12, 17, 18, 19, 21, 23, 26, 29, 30, 40, 41, 48, 49, 50};
+	private static int[] kmeansK3R9C3 = new int[]{37};
 	
-	private static int[] kmeansK3R10C1 = new int[]{1, 11, 17, 18, 19, 20, 21, 22, 24, 28, 3, 30, 32, 35, 37, 4, 49, 5, 50, 7, 8, 9};
-	private static int[] kmeansK3R10C2 = new int[]{10, 12, 13, 14, 15, 16, 2, 25, 29, 31, 33, 36, 38, 39, 41, 42, 43, 44, 45, 46, 48, 6};
-	private static int[] kmeansK3R10C3 = new int[]{23, 26, 27, 34, 40, 47};
+	private static int[] kmeansK3R10C1 = new int[]{2, 3, 4, 5, 8, 9, 10, 11, 13, 14, 15, 16, 20, 22, 24, 25, 27, 28, 31, 32, 33, 34, 35, 36, 38, 39, 42, 43, 44, 45, 46, 47};
+	private static int[] kmeansK3R10C2 = new int[]{1, 6, 7, 12, 17, 18, 19, 21, 23, 26, 29, 30, 40, 41, 48, 49, 50};
+	private static int[] kmeansK3R10C3 = new int[]{37};
+	
+	//k-means, 25 sessions, runs 1, 3 clusters
+	private static int[] kmeansK3R1C1_HALF  = new int[]{2, 3, 5, 8, 9, 10, 11, 13, 14, 15, 16, 20, 22, 24, 25};
+	private static int[] kmeansK3R1C2_HALF = new int[]{1, 4, 6, 12, 19, 21, 23};
+	private static int[] kmeansK3R1C3_HALF= new int[]{7, 17, 18};
 	
 	static ArrayList<int[]> kmeansK3C1 =  new ArrayList<int[]>();
 	static ArrayList<int[]> kmeansK3C2 =  new ArrayList<int[]>();
 	static ArrayList<int[]> kmeansK3C3 =  new ArrayList<int[]>();	
-	
 
-	//event normalized
+	//dhc, 50 sessions, runs 1-10, 3 clusters
 	private static int[] dhcK3R1C1 = new int[]{1, 3, 7, 9, 14, 17, 22, 23, 27, 32, 34, 35, 38, 39, 40, 43, 46, 47, 49};
 	private static int[] dhcK3R1C2 = new int[]{2, 4, 5, 10, 11, 12, 13, 15, 20, 21, 24, 25, 28, 31, 33, 41, 42, 48};
 	private static int[] dhcK3R1C3 = new int[]{6, 8, 16, 18, 19, 26, 29, 30, 36, 37, 44, 45, 50};
 	
+	//dhc, 25 sessions, runs 1, 3 clusters
 	private static int[] dhcK3R1HALFC1 = new int[]{1, 3, 7, 9, 14, 17, 22, 23};
 	private static int[] dhcK3R1HALFC2 = new int[]{2, 4, 5, 12, 13, 15, 21, 24, 25};
-	private static int[] dhcK3R1HALFC3 = new int[]{6, 8, 10, 11, 16, 18, 19, 20};
-	
-	//event seconds
-//	[1, 4, 13, 14, 18, 23, 24, 25, 26, 28, 29, 30, 32, 34, 36, 39, 41, 43, 46]
-//	[3, 7, 9, 12, 20, 21, 27, 35, 40, 47, 48, 49, 50]
-//	[2, 5, 6, 8, 10, 11, 15, 16, 17, 19, 22, 31, 33, 37, 38, 42, 44, 45]
-	
-	
-//			[2, 5, 6, 10, 17, 18, 28, 30, 36, 37, 44, 48, 50]
-//			[11, 26, 34]
-//			[4, 12, 20, 21, 24, 27, 33, 40, 41, 47, 49]
-//			[35]
-//			[1, 3, 7, 8, 9, 13, 14, 15, 16, 19, 22, 23, 25, 29, 31, 32, 38, 39, 42, 43, 45, 46]	
+	private static int[] dhcK3R1HALFC3  = new int[]{6, 8, 10, 11, 16, 18, 19, 20};
+
 	
 	public static void main(String[] args) {
 		plsaK3C1.add(plsaK3R1C1);
@@ -260,6 +259,14 @@ public class CompareClusters {
 		System.out.println("Subsample DHC1 " + getPercentThatMatchFromSubsample(dhcK3R1HALFC1, dhcK3R1C1));
 		System.out.println("Subsample DHC2 " + getPercentThatMatchFromSubsample(dhcK3R1HALFC2, dhcK3R1C2));
 		System.out.println("Subsample DHC3 " + getPercentThatMatchFromSubsample(dhcK3R1HALFC3, dhcK3R1C3));
+		
+		System.out.println("Subsample KMEANS " + getPercentThatMatchFromSubsample(kmeansK3R1C1_HALF, kmeansK3R1C1));
+		System.out.println("Subsample KMEANS " + getPercentThatMatchFromSubsample(kmeansK3R1C2_HALF, kmeansK3R1C2));
+		System.out.println("Subsample KMEANS " + getPercentThatMatchFromSubsample(kmeansK3R1C3_HALF, kmeansK3R1C3));
+		
+		System.out.println("Subsample PLSA " + getPercentThatMatchFromSubsample(plsaK3R1HALFC1, plsaK3R1C1));
+		System.out.println("Subsample PLSA " + getPercentThatMatchFromSubsample(plsaK3R1HALFC2, plsaK3R1C2));
+		System.out.println("Subsample PLSA " + getPercentThatMatchFromSubsample(plsaK3R1HALFC3, plsaK3R1C3));
 	}
 
 	private static void overallPercentage(String s, ArrayList<int[]> clusterList) {
