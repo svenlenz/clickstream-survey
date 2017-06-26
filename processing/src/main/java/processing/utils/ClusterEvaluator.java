@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -29,12 +30,15 @@ public class ClusterEvaluator {
 	static List<Integer> cl4 = Arrays.asList(8,10,11,18,19,26,30,32,36,38,41,46,56,61,64,65);
 	static List<Integer> cl5 = Arrays.asList(4,5,6,12,13,28,31,37,53);
 
+	static int CLUSTER_SIZE = 3;
 
 	public static void main(String[] args) {
 		JSONParser parser = new JSONParser();
 
 		try {
-			String path = "/Users/sle/Repos/clickstream-survey/clustering/" + CLICKPATH_FILE;
+//			String path = "/Users/sle/Repos/clickstream-survey/clustering/" + CLICKPATH_FILE;
+			String path = "C:\\Users\\slenz\\workspace\\clickstream-survey\\clustering\\" + CLICKPATH_FILE;
+			
 			
 			
 			Object obj = parser.parse(new FileReader(path));
@@ -48,6 +52,15 @@ public class ClusterEvaluator {
 			List<List<Integer>> clusterCollection = new ArrayList<List<Integer>>();
 			toList(clusterCollection, clusterResult);
 			System.out.println("//// CLUSTER SIZE //// " + clusterCollection.size());
+			
+			Collections.sort(clusterCollection, new Comparator<List<Integer>>() {
+		        @Override
+		        public int compare(List<Integer> fruit2, List<Integer> fruit1)
+		        {
+
+		            return  fruit1.size() - fruit2.size() ;
+		        }
+		    });
 
 			if (takePLSA) {
 				clusterCollection.clear();
@@ -63,6 +76,14 @@ public class ClusterEvaluator {
 				Collections.sort( cl );
 				System.out.println(cl);
 			});
+			
+			ArrayList<int[]> toCompare  = new ArrayList<int[]>();
+			for(int i = 0; i < CLUSTER_SIZE; i++){
+				List<Integer> l = clusterCollection.get(i);
+				int[] array = l.stream().mapToInt(x->x).toArray();
+				toCompare.add(array);
+			}
+			CompareToPrototypes.compareToPrototype3(toCompare);
 
 			System.out.println("//// CLUSTER CLOSENESS //// ");
 			clusterCollection.forEach(cl -> {

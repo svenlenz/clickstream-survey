@@ -77,33 +77,7 @@ public class CompareToPrototypes {
 		dch4.add(dch4_3);
 		dch4.add(dch4_4);
 		
-		for(int i = 0; i < 3; i++) {
-			prototype3.add(prototype3_1);
-			prototype3.add(prototype3_2);
-			prototype3.add(prototype3_3);
-			
-			for(int didx = 0; didx < dch3.size(); didx++) {
-				int matcher = -1;
-				double lastPercent = 0;
-				for(int pIdx = 0; pIdx < prototype3.size(); pIdx++) {
-						int[] sub = prototype3.get(pIdx).length < dch3.get(didx).length ? prototype3.get(pIdx) : dch3.get(didx);
-						int[] all = prototype3.get(pIdx).length < dch3.get(didx).length ?  dch3.get(didx) : prototype3.get(pIdx);
-						double percent = getPercentThatMatchFromSubsample(sub, all);
-						if(percent > lastPercent) {
-							lastPercent = percent;
-							matcher = pIdx;
-						}
-				}
-				System.out.println("best match: "  + lastPercent);
-				System.out.println("prototype: " + Arrays.toString(prototype3.get(matcher)));
-				System.out.println("dch: " + Arrays.toString(dch3.get(didx)));
-				prototype3.remove(matcher);
-												
-			}
-			System.out.println("------------");
-			int[] move = dch3.remove(0);
-			dch3.add(move);
-		}
+		compareToPrototype3(dch3);
 		
 //		
 //		System.out.println("---------------------");
@@ -135,6 +109,36 @@ public class CompareToPrototypes {
 //			int[] move = dch4.remove(0);
 //			dch4.add(move);
 //		}
+	}
+
+	public static void compareToPrototype3(ArrayList<int[]> dch3) {
+		for(int i = 0; i < 3; i++) {
+			prototype3.add(prototype3_1);
+			prototype3.add(prototype3_2);
+			prototype3.add(prototype3_3);
+			
+			for(int didx = 0; didx < dch3.size(); didx++) {
+				int matcher = -1;
+				double lastPercent = 0;
+				for(int pIdx = 0; pIdx < prototype3.size(); pIdx++) {
+						int[] sub = prototype3.get(pIdx).length < dch3.get(didx).length ? prototype3.get(pIdx) : dch3.get(didx);
+						int[] all = prototype3.get(pIdx).length < dch3.get(didx).length ?  dch3.get(didx) : prototype3.get(pIdx);
+						double percent = getPercentThatMatchFromSubsample(sub, all);
+						if(percent > lastPercent) {
+							lastPercent = percent;
+							matcher = pIdx;
+						}
+				}
+				System.out.println("best match: "  + lastPercent);
+				System.out.println("prototype: " + Arrays.toString(prototype3.get(matcher)));
+				System.out.println("dch: " + Arrays.toString(dch3.get(didx)));
+				prototype3.remove(matcher);
+												
+			}
+			System.out.println("------------");
+			int[] move = dch3.remove(0);
+			dch3.add(move);
+		}
 	}
 
 	private static void overallPercentage(String s, ArrayList<int[]> clusterList) {
