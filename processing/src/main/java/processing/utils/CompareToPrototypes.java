@@ -4,13 +4,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class CompareLists {
+public class CompareToPrototypes {
 	
 	//lenz
 	private static int[] prototype3_1 = new int[]{1, 2, 5, 6, 7, 8, 10, 13, 15, 16, 19, 24, 26, 29, 30, 32, 36, 43, 44, 46, 49, 50, 54, 57, 58, 60, 61, 62, 63, 64, 66, 67, 68, 69, 71, 77, 78, 81, 82, 88, 91, 92, 93, 94, 95, 96, 97, 100, 101, 102, 103, 106, 107, 110, 111, 113, 114, 115, 116, 117, 118, 120, 124};
 	private static int[] prototype3_2 = new int[]{12, 20, 21, 22, 23, 25, 27, 35, 39, 41, 45, 47, 48, 55, 59, 72, 73, 79, 83, 84, 85, 89, 105, 108, 109, 112, 122};
 	private static int[] prototype3_3 = new int[]{3, 4, 9, 11, 14, 17, 18, 28, 31, 33, 34, 37, 38, 40, 42, 51, 52, 53, 56, 65, 70, 74, 75, 76, 80, 86, 87, 90, 98, 99, 104, 119, 121, 123, 125, 126};
 	
+	//lenz clickers >=30
+//	private static int[] prototype3_1 = new int[]{1, 8, 14, 20, 24, 26, 34, 39, 42, 46, 47};
+//	private static int[] prototype3_2 = new int[]{2, 4, 11, 12, 13, 15, 16, 17, 21, 30, 36, 38, 40, 41, 43, 44, 5};
+//	private static int[] prototype3_3 = new int[]{3, 5, 6, 7, 9, 10, 18, 19, 22, 23, 25, 27, 28, 29, 31, 32, 33, 35, 37, 45, 48, 49, 51, 52};
+//	
 	
 	
 	//lenz clickers
@@ -25,9 +30,9 @@ public class CompareLists {
 	static ArrayList<int[]> prototype3 =  new ArrayList<int[]>();
 
 					
-	private static int[] dch3_1 = new int[]{2, 3, 4, 5, 8, 9, 10, 11, 13, 14, 15, 16, 20, 22, 24, 25, 27, 28, 31, 32, 33, 34, 35, 36, 38, 39, 42, 43, 44, 45, 46, 47, 51, 52, 56, 57, 59, 61, 62, 63, 65, 66, 67, 69, 70, 71, 72, 73, 74, 76, 78, 79, 80, 82, 85, 86, 87, 88, 89, 90, 91, 93, 94, 95, 96, 97, 98, 99, 100, 101, 104, 105, 108, 109, 111, 113, 114, 116, 117, 118, 119, 120, 121, 123};
-	private static int[] dch3_2 = new int[]{37, 64};
-	private static int[] dch3_3 = new int[]{1, 6, 7, 12, 17, 18, 19, 21, 23, 26, 29, 30, 40, 41, 48, 49, 50, 53, 54, 55, 58, 60, 68, 75, 77, 81, 83, 84, 92, 102, 103, 106, 107, 110, 112, 115, 122, 124, 125, 126};
+	private static int[] dch3_1 = new int[]{1, 2, 3, 4, 5, 6, 8, 9, 11, 12, 13, 14, 15, 17, 20, 21, 22, 25, 26, 27, 31, 32, 37, 38, 40, 41, 47, 49, 51, 52};
+	private static int[] dch3_2 = new int[]{18, 30};
+	private static int[] dch3_3 = new int[]{7, 10, 16, 19, 23, 24, 28, 29, 33, 34, 35, 36, 39, 42, 43, 44, 45, 46, 48, 50};
 
 	static ArrayList<int[]> dch3 =  new ArrayList<int[]>();
 	

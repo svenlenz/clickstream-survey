@@ -16,7 +16,7 @@ import org.json.simple.parser.JSONParser;
 public class ClusterEvaluator {
 
 	public static boolean CSV_FORMAT = true;
-	public static boolean USE_WINDOWS = false;
+	public static boolean USE_WINDOWS = true;
 	public static boolean CLICKERS = false;
 	public static String BASE_PATH_WINDOWS = "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\";
 	public static String BASE_PATH_IOS = "/Users/sle/switchdrive/Master/survey_results/";
@@ -257,9 +257,9 @@ public class ClusterEvaluator {
 				events = (USE_WINDOWS ? BASE_PATH_WINDOWS + "\\" + id + "\\" : BASE_PATH_IOS + "/" + id + "/")
 						+ "events.json";
 			} else {
-				survey = (USE_WINDOWS ? BASE_PATH_WINDOWS + "\\" + id + "\\" : BASE_PATH_IOS + "/clickers/" + id + "/")
+				survey = (USE_WINDOWS ? BASE_PATH_WINDOWS + "\\clickers\\" + id + "\\" : BASE_PATH_IOS + "/clickers/" + id + "/")
 						+ "survey.json";
-				events = (USE_WINDOWS ? BASE_PATH_WINDOWS + "\\" + id + "\\" : BASE_PATH_IOS + "/clickers/" + id + "/")
+				events = (USE_WINDOWS ? BASE_PATH_WINDOWS + "\\clickers\\" + id + "\\" : BASE_PATH_IOS + "/clickers/" + id + "/")
 						+ "events.json";
 			}
 			try {

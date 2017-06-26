@@ -30,7 +30,7 @@ public class KMeansClickstream {
 
 		JSONParser parser = new JSONParser();
 
-		for (int i = 1; i <= 25; i++) {
+		for (int i = 1; i <= 126; i++) {
 
 			try {
 				// i = 61;
@@ -39,6 +39,7 @@ public class KMeansClickstream {
 				// + "/events.json"));
 //						"/Users/sle/switchdrive/Master/survey_results/" + i + "/events.json"));
 				 "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\"+i+"\\events.json"));
+//				"C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\clickers\\"+i+"\\events.json"));
 
 				JSONArray events = (JSONArray) obj;
 				// events = shuffleJsonArray(events);
