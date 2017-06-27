@@ -1,5 +1,7 @@
 package processing.utils;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,20 +10,22 @@ import java.util.TreeMap;
 
 public class CompareToPrototypes {
 	
+	static boolean prototypeAsendorf = false;
+	
 	//lenz
-//	private static int[] prototype3_1 = new int[]{1, 2, 5, 6, 7, 8, 10, 13, 15, 16, 19, 24, 26, 29, 30, 32, 36, 43, 44, 46, 49, 50, 54, 57, 58, 60, 61, 62, 63, 64, 66, 67, 68, 69, 71, 77, 78, 81, 82, 88, 91, 92, 93, 94, 95, 96, 97, 100, 101, 102, 103, 106, 107, 110, 111, 113, 114, 115, 116, 117, 118, 120, 124};
-//	private static int[] prototype3_2 = new int[]{12, 20, 21, 22, 23, 25, 27, 35, 39, 41, 45, 47, 48, 55, 59, 72, 73, 79, 83, 84, 85, 89, 105, 108, 109, 112, 122};
-//	private static int[] prototype3_3 = new int[]{3, 4, 9, 11, 14, 17, 18, 28, 31, 33, 34, 37, 38, 40, 42, 51, 52, 53, 56, 65, 70, 74, 75, 76, 80, 86, 87, 90, 98, 99, 104, 119, 121, 123, 125, 126};
+	private static int[] prototype3_1 = new int[]{1, 2, 5, 6, 7, 8, 10, 13, 15, 16, 19, 24, 26, 29, 30, 32, 36, 43, 44, 46, 49, 50, 54, 57, 58, 60, 61, 62, 63, 64, 66, 67, 68, 69, 71, 77, 78, 81, 82, 88, 91, 92, 93, 94, 95, 96, 97, 100, 101, 102, 103, 106, 107, 110, 111, 113, 114, 115, 116, 117, 118, 120, 124};
+	private static int[] prototype3_2 = new int[]{12, 20, 21, 22, 23, 25, 27, 35, 39, 41, 45, 47, 48, 55, 59, 72, 73, 79, 83, 84, 85, 89, 105, 108, 109, 112, 122};
+	private static int[] prototype3_3 = new int[]{3, 4, 9, 11, 14, 17, 18, 28, 31, 33, 34, 37, 38, 40, 42, 51, 52, 53, 56, 65, 70, 74, 75, 76, 80, 86, 87, 90, 98, 99, 104, 119, 121, 123, 125, 126};
 //	
 	//asendorf
-//	private static int[] prototype3_1 = new int[]{1, 10, 12, 20, 26, 32, 41, 46, 50, 54, 59, 62, 63, 81, 92, 93, 102, 110, 111, 112, 117, 120};
-//	private static int[] prototype3_2 = new int[]{2, 4, 15, 16, 19, 21, 22, 23, 27, 29, 30, 35, 36, 38, 39, 43, 44, 45, 47, 57, 61, 64, 66, 67, 69, 71, 72, 78, 82, 84, 85, 89, 90, 91, 94, 96, 97, 101, 103, 105, 106, 113, 114, 118, 124};
-//	private static int[] prototype3_3 = new int[]{3, 5, 6, 7, 8, 9, 11, 13, 14, 17, 18, 24, 25, 28, 31, 33, 34, 37, 40, 42, 48, 49, 51, 52, 53, 55, 56, 58, 60, 65, 68, 70, 73, 74, 75, 76, 77, 79, 80, 83, 86, 87, 88, 95, 98, 99, 100, 104, 107, 108, 109, 115, 116, 119, 121, 122, 123, 125, 126};	
+	private static int[] prototypeA3_1 = new int[]{1, 10, 12, 20, 26, 32, 41, 46, 50, 54, 59, 62, 63, 81, 92, 93, 102, 110, 111, 112, 117, 120};
+	private static int[] prototypeA3_2 = new int[]{2, 4, 15, 16, 19, 21, 22, 23, 27, 29, 30, 35, 36, 38, 39, 43, 44, 45, 47, 57, 61, 64, 66, 67, 69, 71, 72, 78, 82, 84, 85, 89, 90, 91, 94, 96, 97, 101, 103, 105, 106, 113, 114, 118, 124};
+	private static int[] prototypeA3_3 = new int[]{3, 5, 6, 7, 8, 9, 11, 13, 14, 17, 18, 24, 25, 28, 31, 33, 34, 37, 40, 42, 48, 49, 51, 52, 53, 55, 56, 58, 60, 65, 68, 70, 73, 74, 75, 76, 77, 79, 80, 83, 86, 87, 88, 95, 98, 99, 100, 104, 107, 108, 109, 115, 116, 119, 121, 122, 123, 125, 126};	
 	
 	//lenz clickers >=30
-	private static int[] prototype3_1 = new int[]{1, 8, 14, 20, 24, 26, 34, 39, 42, 46, 47};
-	private static int[] prototype3_2 = new int[]{2, 4, 11, 12, 13, 15, 16, 17, 21, 30, 36, 38, 40, 41, 43, 44, 5};
-	private static int[] prototype3_3 = new int[]{3, 5, 6, 7, 9, 10, 18, 19, 22, 23, 25, 27, 28, 29, 31, 32, 33, 35, 37, 45, 48, 49, 51, 52};
+//	private static int[] prototype3_1 = new int[]{1, 8, 14, 20, 24, 26, 34, 39, 42, 46, 47};
+//	private static int[] prototype3_2 = new int[]{2, 4, 11, 12, 13, 15, 16, 17, 21, 30, 36, 38, 40, 41, 43, 44, 5};
+//	private static int[] prototype3_3 = new int[]{3, 5, 6, 7, 9, 10, 18, 19, 22, 23, 25, 27, 28, 29, 31, 32, 33, 35, 37, 45, 48, 49, 51, 52};
 	
 	
 	
@@ -34,9 +38,9 @@ public class CompareToPrototypes {
 	static ArrayList<int[]> prototype3 =  new ArrayList<int[]>();
 
 					
-	private static int[] dch3_1 = new int[]{1, 2, 3, 4, 5, 6, 8, 9, 11, 12, 13, 14, 15, 17, 20, 21, 22, 25, 26, 27, 31, 32, 37, 38, 40, 41, 47, 49, 51, 52};
-	private static int[] dch3_2 = new int[]{18, 30};
-	private static int[] dch3_3 = new int[]{7, 10, 16, 19, 23, 24, 28, 29, 33, 34, 35, 36, 39, 42, 43, 44, 45, 46, 48, 50};
+	private static int[] dch3_1 = new int[]{7, 18, 30, 40, 49, 50, 58, 64, 77, 81, 83, 84, 92, 102, 103, 106, 107, 110, 115, 124};
+	private static int[] dch3_2 = new int[]{1, 2, 3, 4, 5, 6, 9, 12, 17, 19, 21, 23, 24, 26, 29, 36, 37, 38, 41, 42, 47, 48, 52, 53, 54, 55, 56, 60, 66, 68, 75, 76, 87, 89, 94, 97, 100, 101, 108, 112, 116, 118, 122, 125, 126};
+	private static int[] dch3_3 = new int[]{8, 10, 11, 13, 14, 15, 16, 20, 22, 25, 27, 28, 31, 32, 33, 34, 35, 39, 43, 44, 45, 46, 51, 57, 59, 61, 62, 63, 65, 67, 69, 70, 71, 72, 73, 74, 78, 79, 80, 82, 85, 86, 88, 90, 91, 93, 95, 96, 98, 99, 104, 105, 109, 111, 113, 114, 117, 119, 120, 121, 123};
 
 	static ArrayList<int[]> dch3 =  new ArrayList<int[]>();
 	
@@ -65,12 +69,11 @@ public class CompareToPrototypes {
 	public static void main(String[] args) {
 //		prototype3.add(prototype3_1);
 //		prototype3.add(prototype3_2);
-//		prototype3.add(prototype3_3);
-		
-		prototype4.add(prototype4_1);
-		prototype4.add(prototype4_2);
-		prototype4.add(prototype4_3);
-		prototype4.add(prototype4_4);
+//		prototype3.add(prototype3_3);		
+//		prototype4.add(prototype4_1);
+//		prototype4.add(prototype4_2);
+//		prototype4.add(prototype4_3);
+//		prototype4.add(prototype4_4);
 		
 		dch3.add(dch3_1);
 		dch3.add(dch3_2);
@@ -81,6 +84,11 @@ public class CompareToPrototypes {
 		dch4.add(dch4_3);
 		dch4.add(dch4_4);
 		
+		if(prototypeAsendorf) {
+			prototype3_1 = prototypeA3_1;
+			prototype3_2 = prototypeA3_2;
+			prototype3_3 = prototypeA3_3;
+		}
 		compareFMeasureToPrototype3(dch3);
 		
 //		
@@ -113,10 +121,6 @@ public class CompareToPrototypes {
 //			int[] move = dch4.remove(0);
 //			dch4.add(move);
 //		}
-		int[] gold = new int[]{1,2,3,4,5};
-		int[] test = new int[]{1,2, 7};
-		System.out.println("Prec: " + getPrecision(gold, test));
-		System.out.println("Recall: " + getRecall(gold, test));
 	}
 
 	public static void compareToPrototype3(ArrayList<int[]> dch3) {
@@ -216,12 +220,19 @@ public class CompareToPrototypes {
 			dch3.add(move);
 		}
 
-		ArrayList<SimpleEntry<int[], int[]>> topMatch = winner.get(winner.keySet().toArray()[2]);
+		DecimalFormat df = new DecimalFormat("#.###");
+		df.setRoundingMode(RoundingMode.CEILING);
+		
+		double avgFMeasure = (double)winner.keySet().toArray()[winner.keySet().toArray().length-1];
+		ArrayList<SimpleEntry<int[], int[]>> topMatch = winner.get(avgFMeasure);
 		System.out.println("/////// RESULT /////////");
+		System.out.println("avg f-measure:" + df.format(avgFMeasure));
 		topMatch.forEach(entry -> {
 			System.out.println("prototype: " + Arrays.toString(entry.getKey()));
 			System.out.println("dch: " + Arrays.toString(entry.getValue()));
-			System.out.println("f-measure: " + getFMeasure(entry.getKey(), entry.getValue()));
+			System.out.println("f-measure: " + df.format(getFMeasure(entry.getKey(), entry.getValue())));
+			System.out.println("precision: " + df.format(getPrecision(entry.getKey(), entry.getValue())));
+			System.out.println("recall: " + df.format(getRecall(entry.getKey(), entry.getValue())));
 			System.out.println("----");
 		});
 	}
