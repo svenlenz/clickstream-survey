@@ -160,64 +160,78 @@ public class CompareToPrototypes {
 		TreeMap<Double, ArrayList<SimpleEntry<int[],int[]>>> winner = new TreeMap<Double, ArrayList<SimpleEntry<int[],int[]>>>();
 		double[] fMeasures = new double[3];
 		
-		ArrayList<ArrayList<int[]>> combos = new ArrayList<ArrayList<int[]>>();
+		ArrayList<ArrayList<int[]>> combosGold = new ArrayList<ArrayList<int[]>>();
 		prototype3.add(prototype3_1);
 		prototype3.add(prototype3_2);
 		prototype3.add(prototype3_3);
-		combos.add((ArrayList<int[]>)prototype3.clone());
+		combosGold.add((ArrayList<int[]>)prototype3.clone());
 		prototype3.clear();
 		prototype3.add(prototype3_2);
 		prototype3.add(prototype3_1);
 		prototype3.add(prototype3_3);
-		combos.add((ArrayList<int[]>)prototype3.clone());
+		combosGold.add((ArrayList<int[]>)prototype3.clone());
 		prototype3.clear();
 		prototype3.add(prototype3_2);
 		prototype3.add(prototype3_3);
 		prototype3.add(prototype3_1);
-		combos.add((ArrayList<int[]>)prototype3.clone());		
+		combosGold.add((ArrayList<int[]>)prototype3.clone());		
 		prototype3.clear();
 		prototype3.add(prototype3_3);
 		prototype3.add(prototype3_2);
 		prototype3.add(prototype3_1);
-		combos.add((ArrayList<int[]>)prototype3.clone());				
+		combosGold.add((ArrayList<int[]>)prototype3.clone());		
 		
-		for(int i = 0; i < combos.size(); i++) {
-			ArrayList<SimpleEntry<int[],int[]>> pairList = new ArrayList<SimpleEntry<int[],int[]>>();
-			prototype3 = combos.get(i);
+		ArrayList<int[]> dch = new ArrayList<int[]>();
+		ArrayList<ArrayList<int[]>> combosDHC = new ArrayList<ArrayList<int[]>>();
+		dch.add(dch3.get(0));
+		dch.add(dch3.get(1));
+		dch.add(dch3.get(2));
+		combosDHC.add((ArrayList<int[]>)dch.clone());
+		dch.clear();
+		dch.add(dch3.get(0));
+		dch.add(dch3.get(2));
+		dch.add(dch3.get(1));
+		combosDHC.add((ArrayList<int[]>)dch.clone());
+		dch.clear();
+		dch.add(dch3.get(2));
+		dch.add(dch3.get(0));
+		dch.add(dch3.get(1));
+		combosDHC.add((ArrayList<int[]>)dch.clone());		
+		dch.clear();
+		dch.add(dch3.get(2));
+		dch.add(dch3.get(1));
+		dch.add(dch3.get(0));
+		combosDHC.add((ArrayList<int[]>)dch.clone());				
+		
+		for(int i = 0; i < combosGold.size(); i++) {			
+			prototype3 = combosGold.get(i);
 			
-			SimpleEntry<int[],int[]> pair = null;
-			for(int didx = 0; didx < dch3.size(); didx++) {
-				int matcher = 0;
-				double lastFMeasure = 0;
-				for(int pIdx = 0; pIdx < prototype3.size(); pIdx++) {
-						int[] gold = prototype3.get(pIdx);
-						int[] test = dch3.get(didx);
-						double fmeasure = getFMeasure(gold, test);
-						if(fmeasure > lastFMeasure) {
-							lastFMeasure = fmeasure;
-							matcher = pIdx;
-						}
-				}
-				System.out.println("best match: "  + lastFMeasure);
-				pair = new SimpleEntry<int[],int[]>(prototype3.get(matcher), dch3.get(didx));
-				fMeasures[didx] = lastFMeasure;
-				System.out.println("prototype: " + Arrays.toString(prototype3.get(matcher)));
-				System.out.println("dch: " + Arrays.toString(dch3.get(didx)));	
+			for(int j = 0; j < combosDHC.size(); j++) {
+				ArrayList<SimpleEntry<int[],int[]>> pairList = new ArrayList<SimpleEntry<int[],int[]>>();
+				dch3 = combosDHC.get(j);
 				
-				pairList.add(pair);
-				if(matcher != -1)
-					prototype3.remove(matcher);
-												
+				SimpleEntry<int[],int[]> pair = null;
+				for(int x = 0; x < 3; x++) {
+					int[] gold = prototype3.get(x);
+					int[] test = dch3.get(x);
+					double fmeasure = getFMeasure(gold, test);
+					fMeasures[x] = fmeasure;					
+					System.out.println("best match: "  + fmeasure);
+					pair = new SimpleEntry<int[],int[]>(prototype3.get(x), dch3.get(x));				
+					System.out.println("prototype: " + Arrays.toString(prototype3.get(x)));
+					System.out.println("dch: " + Arrays.toString(dch3.get(x)));						
+					pairList.add(pair);	
+					System.out.println("----");
+				}
+
+				double total = 0.0;
+				for(int f = 0; f < 3; f++) {
+					total +=fMeasures[f];
+				}
+				System.out.println("f-measure: " + total/3);
+				winner.put(total/3, pairList);
+				System.out.println("------------");				
 			}
-			double total = 0.0;
-			for(int f = 0; f < 3; f++) {
-				total +=fMeasures[f];
-			}
-			System.out.println("f-measure: " + total/3);
-			winner.put(total/3, pairList);
-			System.out.println("------------");
-			int[] move = dch3.remove(0);
-			dch3.add(move);
 		}
 
 		DecimalFormat df = new DecimalFormat("#.###");
