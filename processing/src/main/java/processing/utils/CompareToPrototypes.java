@@ -1,8 +1,10 @@
 package processing.utils;
 
+import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.TreeMap;
 
 public class CompareToPrototypes {
 	
@@ -79,7 +81,7 @@ public class CompareToPrototypes {
 		dch4.add(dch4_3);
 		dch4.add(dch4_4);
 		
-		compareToPrototype3(dch3);
+		compareFMeasureToPrototype3(dch3);
 		
 //		
 //		System.out.println("---------------------");
@@ -111,6 +113,10 @@ public class CompareToPrototypes {
 //			int[] move = dch4.remove(0);
 //			dch4.add(move);
 //		}
+		int[] gold = new int[]{1,2,3,4,5};
+		int[] test = new int[]{1,2, 7};
+		System.out.println("Prec: " + getPrecision(gold, test));
+		System.out.println("Recall: " + getRecall(gold, test));
 	}
 
 	public static void compareToPrototype3(ArrayList<int[]> dch3) {
@@ -144,6 +150,142 @@ public class CompareToPrototypes {
 			dch3.add(move);
 		}
 	}
+
+	public static void compareFMeasureToPrototype3(ArrayList<int[]> dch3) {
+		//TODO: kombinatorik!
+		TreeMap<Double, ArrayList<SimpleEntry<int[],int[]>>> winner = new TreeMap<Double, ArrayList<SimpleEntry<int[],int[]>>>();
+		double[] fMeasures = new double[3];
+		
+		ArrayList<ArrayList<int[]>> combos = new ArrayList<ArrayList<int[]>>();
+		prototype3.add(prototype3_1);
+		prototype3.add(prototype3_2);
+		prototype3.add(prototype3_3);
+		combos.add((ArrayList<int[]>)prototype3.clone());
+		prototype3.clear();
+		prototype3.add(prototype3_2);
+		prototype3.add(prototype3_1);
+		prototype3.add(prototype3_3);
+		combos.add((ArrayList<int[]>)prototype3.clone());
+		prototype3.clear();
+		prototype3.add(prototype3_2);
+		prototype3.add(prototype3_3);
+		prototype3.add(prototype3_1);
+		combos.add((ArrayList<int[]>)prototype3.clone());		
+		prototype3.clear();
+		prototype3.add(prototype3_3);
+		prototype3.add(prototype3_2);
+		prototype3.add(prototype3_1);
+		combos.add((ArrayList<int[]>)prototype3.clone());				
+		
+		for(int i = 0; i < combos.size(); i++) {
+			ArrayList<SimpleEntry<int[],int[]>> pairList = new ArrayList<SimpleEntry<int[],int[]>>();
+			prototype3 = combos.get(i);
+			
+			SimpleEntry<int[],int[]> pair = null;
+			for(int didx = 0; didx < dch3.size(); didx++) {
+				int matcher = 0;
+				double lastFMeasure = 0;
+				for(int pIdx = 0; pIdx < prototype3.size(); pIdx++) {
+						int[] gold = prototype3.get(pIdx);
+						int[] test = dch3.get(didx);
+						double fmeasure = getFMeasure(gold, test);
+						if(fmeasure > lastFMeasure) {
+							lastFMeasure = fmeasure;
+							matcher = pIdx;
+						}
+				}
+				System.out.println("best match: "  + lastFMeasure);
+				pair = new SimpleEntry<int[],int[]>(prototype3.get(matcher), dch3.get(didx));
+				fMeasures[didx] = lastFMeasure;
+				System.out.println("prototype: " + Arrays.toString(prototype3.get(matcher)));
+				System.out.println("dch: " + Arrays.toString(dch3.get(didx)));	
+				
+				pairList.add(pair);
+				if(matcher != -1)
+					prototype3.remove(matcher);
+												
+			}
+			double total = 0.0;
+			for(int f = 0; f < 3; f++) {
+				total +=fMeasures[f];
+			}
+			System.out.println("f-measure: " + total/3);
+			winner.put(total/3, pairList);
+			System.out.println("------------");
+			int[] move = dch3.remove(0);
+			dch3.add(move);
+		}
+
+		ArrayList<SimpleEntry<int[], int[]>> topMatch = winner.get(winner.keySet().toArray()[2]);
+		System.out.println("/////// RESULT /////////");
+		topMatch.forEach(entry -> {
+			System.out.println("prototype: " + Arrays.toString(entry.getKey()));
+			System.out.println("dch: " + Arrays.toString(entry.getValue()));
+			System.out.println("f-measure: " + getFMeasure(entry.getKey(), entry.getValue()));
+			System.out.println("----");
+		});
+	}
+		
+	
+	/**
+	 * The F-score (or F-measure) considers both the precision and the recall of the test
+	 * to compute the score. The precision p is the number of correct positive results
+	 * divided by the number of all positive results, and the recall r is the number of
+	 * correct positive results divided by the number of positive results that should
+	 * have been returned.
+	 *
+	 * The traditional or balanced F-score (F1 score) is the harmonic mean of
+	 * precision and recall, where an F1 score reaches its best value at 1 and worst at 0.
+	 *
+	 * The general formula involves a positive real &beta; so that F-score measures
+	 * the effectiveness of retrieval with respect to a user who attaches &beta; times
+	 * as much importance to recall as precision.
+	 */	
+	public static double getFMeasure(int[] goldStandard, int[] clustering) {
+		double  precision = getPrecision(goldStandard, clustering);
+		double  recall = getRecall(goldStandard, clustering);
+		double beta2  = 1.0;
+		return ((beta2  + 1) * precision * recall) / (beta2 *precision + recall);
+	}
+	
+
+//	Precision = true positives / (true positives + false positives)
+	public static double getPrecision(int[] goldStandard, int[] clustering) {
+		double  truePositive = getNumberOfTruePositives(goldStandard, clustering);
+		double  falsePositive = getNumberOfFalsePositives(goldStandard, clustering);
+		return truePositive / (truePositive + falsePositive);
+	}
+	
+//	Recall = true positives /( true positivies + false negatives)
+	public static double getRecall(int[] goldStandard, int[] clustering) {
+		double truePositive = getNumberOfTruePositives(goldStandard, clustering);
+		double falseNegative = getNumberOfFalseNegatives(goldStandard, clustering);
+		return truePositive / (truePositive + falseNegative);
+	}
+	
+	public static int getNumberOfTruePositives(int[] goldStandard, int[] clustering) {
+		int counter = 0;
+		for(int i = 0; i < goldStandard.length; i++) {
+			for(int j = 0; j < clustering.length; j++) {
+				if(goldStandard[i] == clustering[j]){
+					counter++;
+					continue;
+				}
+			}	
+		}
+		return counter;
+	}
+
+	public static int getNumberOfFalsePositives(int[] goldStandard, int[] clustering) {
+		int counter = getNumberOfTruePositives(goldStandard, clustering);
+		return clustering.length - counter;
+	}
+	
+	public static int getNumberOfFalseNegatives(int[] goldStandard, int[] clustering) {
+		int counter = getNumberOfTruePositives(goldStandard, clustering);
+		return goldStandard.length - counter;
+	}
+
 
 	private static void overallPercentage(String s, ArrayList<int[]> clusterList) {
 		List<List<int[]>> permutatedPlsaK3C1 = listPermutations(clusterList);		
