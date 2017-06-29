@@ -44,10 +44,10 @@ public class ClickstreamConverter {
 			try {
 				// i = 61;
 				Object obj = parser.parse(new FileReader(
-				// "/Users/sle/switchdrive/Master/survey_results/clickers/" + i
+//				 "/Users/sle/switchdrive/Master/survey_results/clickers/" + i
 				// + "/events.json"));
-						"/Users/sle/switchdrive/Master/survey_results/" + i + "/events.json"));
-//				 "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\"+i+"\\events.json"));
+//						"/Users/sle/switchdrive/Master/survey_results/" + i + "/events.json"));
+				 "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\"+i+"\\events.json"));
 
 				JSONArray events = (JSONArray) obj;
 				// events = shuffleJsonArray(events);
@@ -170,7 +170,9 @@ public class ClickstreamConverter {
 							clusteringEventLogDetailed += (!eventId.contains("open") ? eventId : "")  + (("".equals(detail) && "".equals(linkId)) ? "Product" : "") + (!"".equals(detail) ? "Detail" : "") + "(TBD)";
 							break;
 						case 1: 
-							clusteringEventLogDetailed += eventId + (!eventId.contains("open") ? eventId : "")  + (("".equals(detail) && "".equals(linkId)) ? "Product" + productId: "") + (!"".equals(detail) ? "Detail" + detail: "") + "(TBD)";
+//							clusteringEventLogDetailed += eventId + (!eventId.contains("open") ? eventId : "")  + (("".equals(detail) && "".equals(linkId)) ? "Product" + productId: "") + (!"".equals(detail) ? "Detail" + detail: "") + "(TBD)";
+							clusteringEventLogDetailed += eventId + (("".equals(detail) && "".equals(linkId)) ? "Product" + productId: "") + (!"".equals(detail) ? "Detail" + detail: "") + "(TBD)";
+
 							break;
 						case 2:
 							clusteringEventLogDetailed += eventId + productId + detail + linkId + "(TBD)";
@@ -203,8 +205,10 @@ public class ClickstreamConverter {
 				clusteringEventLogCounter = clusteringEventLogCounter.replaceAll("browserBackToProduct", "back").replaceAll("browserBackToOverview", "back").replaceAll("backToProduct", "back").replaceAll("backButton", "back").replaceAll("backToOverview", "back").replaceAll("playingVideo", "video").replaceAll("pausedVideo", "video").replaceAll("endedVideo", "video").replaceAll("favorite_true", "favorite").replaceAll("favorite_false", "favorite").replaceAll("discount_on", "discount")
 						.replaceAll("discount_off", "discount");
 
-				 System.out.println(clusteringEventLogDetailed);
-//				 System.out.println(categories);
+				if(version == 2)
+					System.out.println(clusteringEventLogDetailed);
+				else
+					System.out.println(categories);
 				// System.out.println(clusteringEventLogCondensed);
 //				System.out.println(clusteringEventLogCounter);
 			} catch (Exception e) {
@@ -232,45 +236,47 @@ public class ClickstreamConverter {
 	}
 
 	private static int normalize(Long durationSinceLastEvent) {
-		int normalizedDurationSinceLastEvent = 10;
+
+		int normalizedDurationSinceLastEvent = 0;
 		if (durationSinceLastEvent <= 1000) {
-			normalizedDurationSinceLastEvent = 20;
+			normalizedDurationSinceLastEvent = 1;
 		}
 
 		if (durationSinceLastEvent > 1000 && durationSinceLastEvent <= 2000) {
-			normalizedDurationSinceLastEvent = 30;
+			normalizedDurationSinceLastEvent = 2;
 		}
 
 		if (durationSinceLastEvent > 2000 && durationSinceLastEvent <= 3000) {
-			normalizedDurationSinceLastEvent = 50;
+			normalizedDurationSinceLastEvent = 3;
 		}
 
 		if (durationSinceLastEvent > 3000 && durationSinceLastEvent <= 5000) {
-			normalizedDurationSinceLastEvent = 80;
+			normalizedDurationSinceLastEvent = 5;
 		}
 
 		if (durationSinceLastEvent > 5000 && durationSinceLastEvent <= 8000) {
-			normalizedDurationSinceLastEvent = 130;
+			normalizedDurationSinceLastEvent = 8;
 		}
 
 		if (durationSinceLastEvent > 8000 && durationSinceLastEvent <= 13000) {
-			normalizedDurationSinceLastEvent = 200;
+			normalizedDurationSinceLastEvent = 13;
 		}
 
 		if (durationSinceLastEvent > 13000 && durationSinceLastEvent <= 20000) {
-			normalizedDurationSinceLastEvent = 300;
+			normalizedDurationSinceLastEvent = 21;
 		}
 
 		if (durationSinceLastEvent > 20000 && durationSinceLastEvent <= 30000) {
-			normalizedDurationSinceLastEvent = 500;
+			normalizedDurationSinceLastEvent = 34;
 		}
 
 		if (durationSinceLastEvent > 30000) {
-			normalizedDurationSinceLastEvent = 800;
+			normalizedDurationSinceLastEvent = 55;
 		}
 
 		if (durationSinceLastEvent > 60000) {
-			normalizedDurationSinceLastEvent = 1300;
+			normalizedDurationSinceLastEvent = 185;
+
 		}
 		return normalizedDurationSinceLastEvent;
 	}

@@ -196,6 +196,12 @@ public class CompareClusters {
 		kmeansK3C1.add(kmeansK3R8C1);
 		kmeansK3C1.add(kmeansK3R9C1);
 		kmeansK3C1.add(kmeansK3R10C1);
+		
+		double tot = 0.0;
+		for(int i = 1; i < kmeansK3C1.size(); i++) {
+			tot += CompareToPrototypes.getPrecision(kmeansK3C1.get(0), kmeansK3C1.get(i));
+		}
+		System.out.println("---> " + (tot/(kmeansK3C1.size()-1)));
 		overallPercentage("kmeans, C1", (ArrayList<int[]>)kmeansK3C1.clone());
 		
 		kmeansK3C2.add(kmeansK3R1C2);
@@ -220,7 +226,7 @@ public class CompareClusters {
 		kmeansK3C3.add(kmeansK3R7C3);
 		kmeansK3C3.add(kmeansK3R8C3);
 		kmeansK3C3.add(kmeansK3R9C3);
-		kmeansK3C3.add(kmeansK3R10C3);
+		kmeansK3C3.add(kmeansK3R10C3);		
 		overallPercentage("kmeans, C3",(ArrayList<int[]>)kmeansK3C3.clone() );	
 		total = 0;
 		for(int i = 0; i < kmeansK3C1.size(); i++) {
