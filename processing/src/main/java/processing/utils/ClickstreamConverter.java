@@ -31,8 +31,8 @@ import org.json.simple.parser.JSONParser;
 public class ClickstreamConverter {
 	
 	static int maxDoc = 126;
-	static int version = 0; //0 = high, 1=medium, 2=low
-	static int timeMode = 0; //0 = millis, 1=seconds, 2=normalized
+	static int version = 2; //0 = high, 1=medium, 2=low
+	static int timeMode = 1; //0 = millis, 1=seconds, 2=normalized
 
 	public static void main(String[] args) throws Exception {
 
@@ -137,10 +137,16 @@ public class ClickstreamConverter {
 						fromProduct = false;
 						hasBackToOverview = false;
 					}
+					int durationInSeconds = (int) (durationSinceLastEvent / 1000);
+					if (durationInSeconds == 0)
+						durationInSeconds = 1;
+
+					if (duration == 0)
+						duration = 1L;
 
 					// LAST EVENT MEMORYSATION //
 					if (lastEvent == null || lastEvent.equals(eventId)) {
-						counter++;
+						counter+=durationInSeconds;
 					} else {
 						clusteringEventLogCounter += lastEvent + "(" + counter + ")";
 						counter = 1;
@@ -148,12 +154,7 @@ public class ClickstreamConverter {
 					}
 					lastEvent = eventId + (("".equals(detail) && "".equals(linkId)) ? "Product" + productId : "");
 
-					int durationInSeconds = (int) (durationSinceLastEvent / 1000);
-					if (durationInSeconds == 0)
-						durationInSeconds = 1;
-
-					if (duration == 0)
-						duration = 1L;
+	
 					// add browserBack Events
 					if (hasBrowserBackToProduct) {
 						clusteringEventLogDetailed += "browserBackToProduct" + "(" + 1 + ")";
@@ -165,7 +166,8 @@ public class ClickstreamConverter {
 					
 					switch(version) {
 						case 0:
-							clusteringEventLogDetailed += eventId + "(TBD)";	
+//							clusteringEventLogDetailed += eventId + "(TBD)";	
+							clusteringEventLogDetailed += (!eventId.contains("open") ? eventId : "")  + (("".equals(detail) && "".equals(linkId)) ? "Product" : "") + (!"".equals(detail) ? "Detail" : "") + "(TBD)";
 							break;
 						case 1: 
 							clusteringEventLogDetailed += eventId + (!eventId.contains("open") ? eventId : "")  + (("".equals(detail) && "".equals(linkId)) ? "Product" + productId: "") + (!"".equals(detail) ? "Detail" + detail: "") + "(TBD)";
@@ -230,45 +232,45 @@ public class ClickstreamConverter {
 	}
 
 	private static int normalize(Long durationSinceLastEvent) {
-		int normalizedDurationSinceLastEvent = 1;
+		int normalizedDurationSinceLastEvent = 10;
 		if (durationSinceLastEvent <= 1000) {
-			normalizedDurationSinceLastEvent = 2;
-		}
-
-		if (durationSinceLastEvent > 1000 && durationSinceLastEvent <= 2000) {
-			normalizedDurationSinceLastEvent = 3;
-		}
-
-		if (durationSinceLastEvent > 2000 && durationSinceLastEvent <= 3000) {
-			normalizedDurationSinceLastEvent = 5;
-		}
-
-		if (durationSinceLastEvent > 3000 && durationSinceLastEvent <= 5000) {
-			normalizedDurationSinceLastEvent = 8;
-		}
-
-		if (durationSinceLastEvent > 5000 && durationSinceLastEvent <= 8000) {
-			normalizedDurationSinceLastEvent = 13;
-		}
-
-		if (durationSinceLastEvent > 8000 && durationSinceLastEvent <= 13000) {
 			normalizedDurationSinceLastEvent = 20;
 		}
 
-		if (durationSinceLastEvent > 13000 && durationSinceLastEvent <= 20000) {
+		if (durationSinceLastEvent > 1000 && durationSinceLastEvent <= 2000) {
 			normalizedDurationSinceLastEvent = 30;
 		}
 
-		if (durationSinceLastEvent > 20000 && durationSinceLastEvent <= 30000) {
+		if (durationSinceLastEvent > 2000 && durationSinceLastEvent <= 3000) {
 			normalizedDurationSinceLastEvent = 50;
 		}
 
-		if (durationSinceLastEvent > 30000) {
+		if (durationSinceLastEvent > 3000 && durationSinceLastEvent <= 5000) {
 			normalizedDurationSinceLastEvent = 80;
 		}
 
-		if (durationSinceLastEvent > 60000) {
+		if (durationSinceLastEvent > 5000 && durationSinceLastEvent <= 8000) {
 			normalizedDurationSinceLastEvent = 130;
+		}
+
+		if (durationSinceLastEvent > 8000 && durationSinceLastEvent <= 13000) {
+			normalizedDurationSinceLastEvent = 200;
+		}
+
+		if (durationSinceLastEvent > 13000 && durationSinceLastEvent <= 20000) {
+			normalizedDurationSinceLastEvent = 300;
+		}
+
+		if (durationSinceLastEvent > 20000 && durationSinceLastEvent <= 30000) {
+			normalizedDurationSinceLastEvent = 500;
+		}
+
+		if (durationSinceLastEvent > 30000) {
+			normalizedDurationSinceLastEvent = 800;
+		}
+
+		if (durationSinceLastEvent > 60000) {
+			normalizedDurationSinceLastEvent = 1300;
 		}
 		return normalizedDurationSinceLastEvent;
 	}

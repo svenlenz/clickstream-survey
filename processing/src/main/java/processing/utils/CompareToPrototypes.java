@@ -10,7 +10,7 @@ import java.util.TreeMap;
 
 public class CompareToPrototypes {
 	
-	static boolean prototypeAsendorf = false;
+	static boolean prototypeAsendorf = true;
 	
 	//lenz
 	private static int[] prototype3_1 = new int[]{1, 2, 5, 6, 7, 8, 10, 13, 15, 16, 19, 24, 26, 29, 30, 32, 36, 43, 44, 46, 49, 50, 54, 57, 58, 60, 61, 62, 63, 64, 66, 67, 68, 69, 71, 77, 78, 81, 82, 88, 91, 92, 93, 94, 95, 96, 97, 100, 101, 102, 103, 106, 107, 110, 111, 113, 114, 115, 116, 117, 118, 120, 124};
@@ -84,12 +84,8 @@ public class CompareToPrototypes {
 		dch4.add(dch4_3);
 		dch4.add(dch4_4);
 		
-		if(prototypeAsendorf) {
-			prototype3_1 = prototypeA3_1;
-			prototype3_2 = prototypeA3_2;
-			prototype3_3 = prototypeA3_3;
-		}
-		compareFMeasureToPrototype3(dch3);
+
+		compareFMeasureToPrototype3(dch3, prototypeAsendorf);
 		
 //		
 //		System.out.println("---------------------");
@@ -155,30 +151,56 @@ public class CompareToPrototypes {
 		}
 	}
 
-	public static void compareFMeasureToPrototype3(ArrayList<int[]> dch3) {
+	public static void compareFMeasureToPrototype3(ArrayList<int[]> dch3, boolean useAsendorf) {
+		
+		int[] p1;
+		int[] p2;
+		int[] p3;
+		
+		if(useAsendorf) {
+			p1 = prototypeA3_1;
+			p2 = prototypeA3_2;
+			p3 = prototypeA3_3;
+		} else {
+			p1 = prototype3_1;
+			p2 = prototype3_2;
+			p3 = prototype3_3;
+		}
+		
 		//TODO: kombinatorik!
 		TreeMap<Double, ArrayList<SimpleEntry<int[],int[]>>> winner = new TreeMap<Double, ArrayList<SimpleEntry<int[],int[]>>>();
 		double[] fMeasures = new double[3];
 		
+		prototype3.clear();
 		ArrayList<ArrayList<int[]>> combosGold = new ArrayList<ArrayList<int[]>>();
-		prototype3.add(prototype3_1);
-		prototype3.add(prototype3_2);
-		prototype3.add(prototype3_3);
+		prototype3.add(p1);
+		prototype3.add(p2);
+		prototype3.add(p3);
 		combosGold.add((ArrayList<int[]>)prototype3.clone());
 		prototype3.clear();
-		prototype3.add(prototype3_2);
-		prototype3.add(prototype3_1);
-		prototype3.add(prototype3_3);
-		combosGold.add((ArrayList<int[]>)prototype3.clone());
-		prototype3.clear();
-		prototype3.add(prototype3_2);
-		prototype3.add(prototype3_3);
-		prototype3.add(prototype3_1);
+		prototype3.add(p1);
+		prototype3.add(p3);
+		prototype3.add(p2);
 		combosGold.add((ArrayList<int[]>)prototype3.clone());		
 		prototype3.clear();
-		prototype3.add(prototype3_3);
-		prototype3.add(prototype3_2);
-		prototype3.add(prototype3_1);
+		prototype3.add(p2);
+		prototype3.add(p1);
+		prototype3.add(p3);
+		combosGold.add((ArrayList<int[]>)prototype3.clone());
+		prototype3.clear();
+		prototype3.add(p2);
+		prototype3.add(p3);
+		prototype3.add(p1);
+		combosGold.add((ArrayList<int[]>)prototype3.clone());				
+		prototype3.clear();
+		prototype3.add(p3);
+		prototype3.add(p1);
+		prototype3.add(p2);
+		combosGold.add((ArrayList<int[]>)prototype3.clone());
+		prototype3.clear();
+		prototype3.add(p3);
+		prototype3.add(p2);
+		prototype3.add(p1);		
 		combosGold.add((ArrayList<int[]>)prototype3.clone());		
 		
 		ArrayList<int[]> dch = new ArrayList<int[]>();
@@ -216,21 +238,21 @@ public class CompareToPrototypes {
 					int[] test = dch3.get(x);
 					double fmeasure = getFMeasure(gold, test);
 					fMeasures[x] = fmeasure;					
-					System.out.println("best match: "  + fmeasure);
+//					System.out.println("best match: "  + fmeasure);
 					pair = new SimpleEntry<int[],int[]>(prototype3.get(x), dch3.get(x));				
-					System.out.println("prototype: " + Arrays.toString(prototype3.get(x)));
-					System.out.println("dch: " + Arrays.toString(dch3.get(x)));						
+//					System.out.println("prototype: " + Arrays.toString(prototype3.get(x)));
+//					System.out.println("dch: " + Arrays.toString(dch3.get(x)));						
 					pairList.add(pair);	
-					System.out.println("----");
+//					System.out.println("----");
 				}
 
 				double total = 0.0;
 				for(int f = 0; f < 3; f++) {
 					total +=fMeasures[f];
 				}
-				System.out.println("f-measure: " + total/3);
+//				System.out.println("f-measure: " + total/3);
 				winner.put(total/3, pairList);
-				System.out.println("------------");				
+//				System.out.println("------------");				
 			}
 		}
 
@@ -239,7 +261,7 @@ public class CompareToPrototypes {
 		
 		double avgFMeasure = (double)winner.keySet().toArray()[winner.keySet().toArray().length-1];
 		ArrayList<SimpleEntry<int[], int[]>> topMatch = winner.get(avgFMeasure);
-		System.out.println("/////// RESULT /////////");
+		System.out.println("/////// RESULT "+ (useAsendorf ? "Asendorf " : "Lenz") +"/////////");
 		System.out.println("avg f-measure:" + df.format(avgFMeasure));
 		topMatch.forEach(entry -> {
 			System.out.println("prototype: " + Arrays.toString(entry.getKey()));
@@ -288,6 +310,10 @@ public class CompareToPrototypes {
 		return truePositive / (truePositive + falseNegative);
 	}
 	
+	/**
+	 * true positives: relevant & selected
+	 * https://en.wikipedia.org/wiki/Precision_and_recall
+	 */
 	public static int getNumberOfTruePositives(int[] goldStandard, int[] clustering) {
 		int counter = 0;
 		for(int i = 0; i < goldStandard.length; i++) {
@@ -301,11 +327,17 @@ public class CompareToPrototypes {
 		return counter;
 	}
 
+	/**
+	 * false positives: not relevant & selected
+	 */
 	public static int getNumberOfFalsePositives(int[] goldStandard, int[] clustering) {
 		int counter = getNumberOfTruePositives(goldStandard, clustering);
 		return clustering.length - counter;
 	}
 	
+	/**
+	 * false positives: relevant & not selected
+	 */	
 	public static int getNumberOfFalseNegatives(int[] goldStandard, int[] clustering) {
 		int counter = getNumberOfTruePositives(goldStandard, clustering);
 		return goldStandard.length - counter;
