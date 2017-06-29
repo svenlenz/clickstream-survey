@@ -1,3 +1,6 @@
+# Credits
+http://sandlab.cs.ucsb.edu/clickstream/
+
 # Recursive Hierarchical Clustering
 
 This scirpt is used to perform user behaviour clustering. Users are put into a hierachy of clusters, each identified by a list of features.

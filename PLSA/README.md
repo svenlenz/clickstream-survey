@@ -1,3 +1,6 @@
+# Credits
+https://github.com/laserwave/PLSA
+
 # PLSA (Probabilistic Latent Semantic Analysis) 
 
 This is a python implementation of Probabilistic Latent Semantic Analysis using EM algorithm.
