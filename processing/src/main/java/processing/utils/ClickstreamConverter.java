@@ -9,26 +9,39 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+/**
+ * Create different clickstreams out of the events. For each user event file a new line is created. 
+ * Parametrization: 
+ * 		Version: 0 = high level concepts, 1 = medium level concepts, 0 = low level concepts
+ * 		TimeMode: 0 = milliseconds, 1 = seconds, 2 = normalized values based on fibonacci
+ * 		WithID: true: each line starts with the id of the file and a tabstopp, otherwhise directly with the clickstream
+ * 
+ *  
+ * @author sven.lenz@msc.htwchur.ch
+ */
 public class ClickstreamConverter {
 	
 	static int maxDoc = 126;
 	static int version = 2; //0 = high, 1=medium, 2=low
 	static int timeMode = 1; //0 = millis, 1=seconds, 2=normalized
+	static boolean withId = true;
+	
+	public static boolean USE_WINDOWS = true;
+	public static String BASE_PATH_WINDOWS = "..\\results\\survey_results\\";
+	public static String BASE_PATH_IOS = "../results/survey_results/";
 
 	public static void main(String[] args) throws Exception {
 
 
 		JSONParser parser = new JSONParser();
 
-		for (int i = 1; i <= maxDoc; i++) {
+		for (int id = 1; id <= maxDoc; id++) {
 
 			try {
-				// i = 61;
-				Object obj = parser.parse(new FileReader(
-//				 "/Users/sle/switchdrive/Master/survey_results/clickers/" + i
-				// + "/events.json"));
-//						"/Users/sle/switchdrive/Master/survey_results/" + i + "/events.json"));
-				 "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\"+i+"\\events.json"));
+				String evt = (USE_WINDOWS ? BASE_PATH_WINDOWS + "\\" + id + "\\" : BASE_PATH_IOS + "/" + id + "/")
+						+ "events.json";
+				
+				Object obj = parser.parse(new FileReader(evt));
 
 				JSONArray events = (JSONArray) obj;
 				// events = shuffleJsonArray(events);
@@ -66,10 +79,11 @@ public class ClickstreamConverter {
 					// }
 
 					if (first) {
-						// clusteringEventLogDetailed = sessionId + "\t";
-						clusteringEventLogDetailed = i + "\t";
-						clusteringEventLogCondensed = i + "\t";
-						clusteringEventLogCounter = i + "\t";
+						if(withId) {
+							clusteringEventLogDetailed = id + "\t";
+							clusteringEventLogCondensed = id + "\t";
+							clusteringEventLogCounter = id + "\t";							
+						}
 						first = false;
 					} else {
 						Long time = 0L;

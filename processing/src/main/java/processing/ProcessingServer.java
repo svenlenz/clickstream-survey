@@ -15,7 +15,7 @@ import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.map.ObjectMapper;
 
 /**
- * TBD
+ * Server application to collect survey results and click events. 
  * 
  * @author sven.lenz@msc.htwchur.ch
  */
@@ -34,9 +34,6 @@ public class ProcessingServer {
 			PATH_TO_SHARED_VOLUME = "/opt/data";
 		}
 	}	
-	
-//	private static final Logger logger = LoggerFactory.getLogger(ProcessingServer.class);
-	
 	final static Logger logger = Logger.getLogger(ProcessingServer.class);
 
 	

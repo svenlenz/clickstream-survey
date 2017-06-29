@@ -20,7 +20,17 @@ import gov.sandia.cognition.learning.algorithm.clustering.cluster.CentroidCluste
 import gov.sandia.cognition.math.matrix.Vector;
 import gov.sandia.cognition.math.matrix.VectorFactory;
 
+/**
+ * clickstream clustering based on the survey events using k-means ( Cognitive Foundry ) and euclidean distance for a user/event matrix (number of event as values)
+ * 
+ * @author sven.lenz@msc.htwchur.ch
+ */
 public class KMeansClickstream {
+	
+	public static boolean USE_WINDOWS = true;
+	public static boolean WITH_LIERS = true;
+	public static String BASE_PATH_WINDOWS = "..\\results\\survey_results\\";
+	public static String BASE_PATH_IOS = "../results/survey_results/";
 
 	static ArrayList<double[]> matrix = new ArrayList<double[]>();
 	static HashMap<String, Integer> eventMap = new HashMap<String, Integer>();
@@ -30,17 +40,11 @@ public class KMeansClickstream {
 
 		JSONParser parser = new JSONParser();
 
-		for (int i = 1; i <= 123; i++) {
+		for (int id = 1; id <= 126; id++) {
 
 			try {
-				// i = 61;
-				Object obj = parser.parse(new FileReader(
-				// "/Users/sle/switchdrive/Master/survey_results/clickers/" + i
-				// + "/events.json"));
-//						"/Users/sle/switchdrive/Master/survey_results/" + i + "/events.json"));
-				 "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\"+i+"\\events.json"));
-//				"C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\clickers\\"+i+"\\events.json"));
-
+				Object obj = parser.parse(new FileReader((USE_WINDOWS ? BASE_PATH_WINDOWS + "\\" + id + "\\events.json" : BASE_PATH_IOS + "/" + id + "/events.json")));
+				
 				JSONArray events = (JSONArray) obj;
 				// events = shuffleJsonArray(events);
 				Iterator<JSONObject> iterator = events.iterator();
@@ -75,9 +79,9 @@ public class KMeansClickstream {
 
 					if (first) {
 						// clusteringEventLogDetailed = sessionId + "\t";
-						clusteringEventLogDetailed = i + "\t";
-						clusteringEventLogCondensed = i + "\t";
-						clusteringEventLogCounter = i + "\t";
+						clusteringEventLogDetailed = id + "\t";
+						clusteringEventLogCondensed = id + "\t";
+						clusteringEventLogCounter = id + "\t";
 						first = false;
 					}
 

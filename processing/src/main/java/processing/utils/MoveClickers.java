@@ -14,11 +14,17 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+/**
+ * move results with a certain minimum number of events to a new folder "clickers"
+ * 
+ * @author sven.lenz@msc.htwchur.ch
+ */
 public class MoveClickers {
+	
+	public static int NUMBER_OF_EVENTS = 20;
 	public static boolean USE_WINDOWS = false;
-	public static String BASE_PATH_WINDOWS = "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\";
-	public static String BASE_PATH_IOS = "/Users/sle/switchdrive/Master/survey_results/";
-
+	public static String BASE_PATH_WINDOWS = "..\\results\\survey_results\\";
+	public static String BASE_PATH_IOS = "../results/survey_results/";
 	private static final Random random = new Random();
 
 	private static int next() {
@@ -91,7 +97,7 @@ public class MoveClickers {
 //	            Iterator<JSONObject> iterator = eventsArray.iterator();
 
 //				String eventId = (String)event.get("event");
-				if(eventCounter >= 20) {		           
+				if(eventCounter >= NUMBER_OF_EVENTS) {		           
 					File source = new File((USE_WINDOWS ? BASE_PATH_WINDOWS + "\\" + id + "\\" : BASE_PATH_IOS + "/" + id + "/"));
 					File target = new File((USE_WINDOWS ? BASE_PATH_WINDOWS + "\\clickers\\" + newCounter + "\\" : BASE_PATH_IOS + "/clickers/" + newCounter + "/"));
 					newCounter++;

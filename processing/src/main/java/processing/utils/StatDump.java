@@ -10,19 +10,22 @@ import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.swing.plaf.synth.SynthSeparatorUI;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+/**
+ * Statistic dump off all survey results. 
+ * 
+ * @author sven.lenz@msc.htwchur.ch
+ */
 public class StatDump {
 
-	public static boolean USE_WINDOWS = false;
+	public static boolean USE_WINDOWS = true;
 	public static boolean WITH_LIERS = true;
-	public static String BASE_PATH_WINDOWS = "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\";
-	public static String BASE_PATH_IOS = "/Users/sle/switchdrive/Master/survey_results/";
-
+	public static String BASE_PATH_WINDOWS = "..\\results\\survey_results\\";
+	public static String BASE_PATH_IOS = "../results/survey_results/";
+	
 	static int avgNeuro = 5;
 	static int avgExo = 5;
 	static int avgGewissen = 5;
@@ -209,11 +212,11 @@ public class StatDump {
 					JSONObject event = (JSONObject) evtIter.next();
 					duration += ((Long) event.get("duration")).intValue();
 				}
-				b5result.meanDuration = duration;
+				b5result.duration = duration;
 
-				int[] profilePoints = { b5result.meanNeuro, b5result.meanExtra,
-						b5result.meanGewissen, b5result.meanOffen,
-						b5result.meanVertrag };
+				int[] profilePoints = { b5result.neuro, b5result.extra,
+						b5result.gewissen, b5result.offen,
+						b5result.vertrag };
 				calculateNDistance(id, profilePoints, clusterOne, clusterTwo,
 						clusterThree, clusterFour, clusterFive, 5);			
 				
@@ -222,41 +225,41 @@ public class StatDump {
 				int high = 6;
 				int low = 4;
 				String profile = "";
-				if (b5result.meanNeuro > high) {
+				if (b5result.neuro > high) {
 					profile += "H";
-				} else if (b5result.meanNeuro < low) {
+				} else if (b5result.neuro < low) {
 					profile += "L";
 				} else {
 					profile += "A";
 				}
 
-				if (b5result.meanExtra > high) {
+				if (b5result.extra > high) {
 					profile += "H";
-				} else if (b5result.meanExtra < low) {
+				} else if (b5result.extra < low) {
 					profile += "L";
 				} else {
 					profile += "A";
 				}
 
-				if (b5result.meanGewissen > high) {
+				if (b5result.gewissen > high) {
 					profile += "H";
-				} else if (b5result.meanGewissen < low) {
+				} else if (b5result.gewissen < low) {
 					profile += "L";
 				} else {
 					profile += "A";
 				}
 
-				if (b5result.meanOffen > 5) {
+				if (b5result.offen > 5) {
 					profile += "H";
-				} else if (b5result.meanOffen < 3) {
+				} else if (b5result.offen < 3) {
 					profile += "L";
 				} else {
 					profile += "A";
 				}
 
-				if (b5result.meanVertrag > 5) {
+				if (b5result.vertrag > 5) {
 					profile += "H";
-				} else if (b5result.meanVertrag < 3) {
+				} else if (b5result.vertrag < 3) {
 					profile += "L";
 				} else {
 					profile += "A";
@@ -392,15 +395,15 @@ public class StatDump {
 			JSONObject object = (JSONObject) obj;
 			JSONObject answers = (JSONObject) object.get("big5_result");
 			JSONObject detailed = (JSONObject) answers.get("detailed");
-			b5result.meanNeuro = Integer
+			b5result.neuro = Integer
 					.valueOf((String) detailed.get("neuro"));
-			b5result.meanExtra = Integer
+			b5result.extra = Integer
 					.valueOf((String) detailed.get("extra"));
-			b5result.meanGewissen = Integer.valueOf((String) detailed
+			b5result.gewissen = Integer.valueOf((String) detailed
 					.get("gewissen"));
-			b5result.meanOffen = Integer
+			b5result.offen = Integer
 					.valueOf((String) detailed.get("offen"));
-			b5result.meanVertrag = Integer.valueOf((String) detailed
+			b5result.vertrag = Integer.valueOf((String) detailed
 					.get("vertrag"));
 			b5result.anerkennung = Integer.valueOf((String) detailed
 					.get("anerkennung"));
@@ -411,8 +414,8 @@ public class StatDump {
 			JSONObject metric = (JSONObject) answers.get("metric");
 			b5result.highest = (String) metric.get("highest");
 			b5result.lowest = (String) metric.get("lowest");
-			b5result.meanAge = Integer.valueOf((String) object.get("age"));
-			b5result.meanTechnique = Integer.valueOf((String) object
+			b5result.age = Integer.valueOf((String) object.get("age"));
+			b5result.technique = Integer.valueOf((String) object
 					.get("technique"));
 			b5result.gender = (String) object.get("gender");
 			if (((String) object.get("gender")).equals("M")) {

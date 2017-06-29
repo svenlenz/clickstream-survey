@@ -1,9 +1,14 @@
 package processing.utils;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+/**
+ * compare two cluster with each other and calculate the matching percentage / precision
+ * permutation on the cluster order is performed to achieve the heighest posssible precision match. 
+ *  
+ * @author sven.lenz@msc.htwchur.ch
+ */
 public class CompareClusters {
 	
 	//plsa, 50 sessions, runs 1-10, 3 clusters

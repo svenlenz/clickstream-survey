@@ -14,15 +14,23 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+/**
+ * Evaluates DCH clustering results and calculates the F-Measure for two different reference prototypes & prints the cluster closeness/distribution to those prototpyes. 
+ * Results can be generated with: https://github.com/svenlenz/clickstream-survey/tree/master/clustering 
+ * (based on http://sandlab.cs.ucsb.edu/clickstream/documentation.html)
+ *  
+ * @author sven.lenz@msc.htwchur.ch
+ */
 public class ClusterEvaluator {
 
 	public static boolean CSV_FORMAT = true;
-	public static boolean USE_WINDOWS = false;
+	public static boolean USE_WINDOWS = true;
 	public static boolean CLICKERS = false;
 	public static boolean FLAT = true;
-	public static String BASE_PATH_WINDOWS = "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\";
-	public static String BASE_PATH_IOS = "/Users/sle/switchdrive/Master/survey_results/";
-	public static String CLICKPATH_FILE = "testresult.json";
+	public static String BASE_PATH_WINDOWS = "..\\results\\survey_results\\";
+	public static String BASE_PATH_IOS = "../results/survey_results/";
+	public static String CLICKPATH_FILE_IOS = "../clustering/testresult.json";
+	public static String CLICKPATH_FILE_WS = "..\\clustering\\testresult.json";
 
 	static boolean takePLSA = false;
 	static List<Integer> cl1 = Arrays.asList(15,16,34,45,47,49,52,54,57,63);
@@ -37,11 +45,7 @@ public class ClusterEvaluator {
 		JSONParser parser = new JSONParser();
 
 		try {
-			String path = "/Users/sle/Repos/clickstream-survey/clustering/" + CLICKPATH_FILE;
-//			String path = "C:\\Users\\slenz\\workspace\\clickstream-survey\\clustering\\" + CLICKPATH_FILE;
-			
-			
-			
+			String path = USE_WINDOWS ? CLICKPATH_FILE_WS : CLICKPATH_FILE_IOS;			
 			Object obj = parser.parse(new FileReader(path));
 
 			JSONArray jsonClusters = (JSONArray) obj;
@@ -328,21 +332,21 @@ public class ClusterEvaluator {
 		});
 
 		Big5Result b5result = new Big5Result();
-		b5result.meanNeuro = calculateAverage(neuroList);
-		b5result.meanExtra = calculateAverage(extraList);
-		b5result.meanGewissen = calculateAverage(gewissenList);
-		b5result.meanOffen = calculateAverage(offenList);
-		b5result.meanVertrag = calculateAverage(vertragList);
+		b5result.neuro = calculateAverage(neuroList);
+		b5result.extra = calculateAverage(extraList);
+		b5result.gewissen = calculateAverage(gewissenList);
+		b5result.offen = calculateAverage(offenList);
+		b5result.vertrag = calculateAverage(vertragList);
 		b5result.anerkennung = calculateAverage(anerkennungList);
 		b5result.macht = calculateAverage(machtList);
 		b5result.sicher = calculateAverage(sicherList);
 		b5result.ehrlich = calculateAverage(ehrlichList);
-		b5result.meanAge = calculateAverage(ageList);
-		b5result.meanTechnique = calculateAverage(techniqueList);
+		b5result.age = calculateAverage(ageList);
+		b5result.technique = calculateAverage(techniqueList);
 		b5result.numberOfmales = maleList.size();
 		b5result.numberofWomen = womenList.size();
 		b5result.numberOfClicks = calculateAverage(numberOfClicksList);
-		b5result.meanDuration = calculateAverage(durationList);
+		b5result.duration = calculateAverage(durationList);
 
 		b5result.numberOfHighestNeuro = counter(highestList, "neuro");
 		b5result.numberOfLowestNeuro = counter(lowestList, "neuro");
@@ -366,13 +370,13 @@ public class ClusterEvaluator {
 			System.out.println("offen:" + b5result.numberOfHighestOffen + " - " + b5result.numberOfLowestOffen);
 			System.out.println("vertrag:" + b5result.numberOfHighestVertrag + " - " + b5result.numberOfLowestVertrag);
 			System.out.println("--- demo ---");
-			System.out.println("age:" + b5result.meanAge);
-			System.out.println("technique:" + b5result.meanTechnique);
+			System.out.println("age:" + b5result.age);
+			System.out.println("technique:" + b5result.technique);
 			System.out.println("male:" + b5result.numberOfmales);
 			System.out.println("women:" + b5result.numberofWomen);
 			System.out.println("--- stats ---");
 			System.out.println("number of clicks: " + b5result.numberOfClicks);
-			System.out.println("duration: " + b5result.meanDuration / 1000);
+			System.out.println("duration: " + b5result.duration / 1000);
 		} else {
 			System.out.println(b5result.toCSV());
 		}

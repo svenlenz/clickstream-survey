@@ -1,18 +1,5 @@
 package processing.kmeans;
 
-import gov.sandia.cognition.learning.algorithm.clustering.KMeansClusterer;
-import gov.sandia.cognition.learning.algorithm.clustering.cluster.CentroidCluster;
-import gov.sandia.cognition.learning.algorithm.clustering.cluster.ClusterCreator;
-import gov.sandia.cognition.learning.algorithm.clustering.cluster.VectorMeanCentroidClusterCreator;
-import gov.sandia.cognition.learning.algorithm.clustering.divergence.CentroidClusterDivergenceFunction;
-import gov.sandia.cognition.learning.algorithm.clustering.divergence.ClusterDivergenceFunction;
-import gov.sandia.cognition.learning.algorithm.clustering.initializer.DistanceSamplingClusterInitializer;
-import gov.sandia.cognition.learning.function.distance.EuclideanDistanceSquaredMetric;
-import gov.sandia.cognition.math.Semimetric;
-import gov.sandia.cognition.math.matrix.Vector;
-import gov.sandia.cognition.math.matrix.VectorFactory;
-import gov.sandia.cognition.math.matrix.Vectorizable;
-
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,24 +14,36 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import gov.sandia.cognition.learning.algorithm.clustering.KMeansClusterer;
+import gov.sandia.cognition.learning.algorithm.clustering.cluster.CentroidCluster;
+import gov.sandia.cognition.learning.algorithm.clustering.cluster.ClusterCreator;
+import gov.sandia.cognition.learning.algorithm.clustering.cluster.VectorMeanCentroidClusterCreator;
+import gov.sandia.cognition.learning.algorithm.clustering.divergence.CentroidClusterDivergenceFunction;
+import gov.sandia.cognition.learning.algorithm.clustering.divergence.ClusterDivergenceFunction;
+import gov.sandia.cognition.learning.algorithm.clustering.initializer.DistanceSamplingClusterInitializer;
+import gov.sandia.cognition.learning.function.distance.EuclideanDistanceSquaredMetric;
+import gov.sandia.cognition.math.Semimetric;
+import gov.sandia.cognition.math.matrix.Vector;
+import gov.sandia.cognition.math.matrix.VectorFactory;
+import gov.sandia.cognition.math.matrix.Vectorizable;
 import processing.utils.Big5Result;
 import processing.utils.StatDump;
 
 /**
- * K-Means clickstream clustering based on apache mahout. Input files for
- * clustering:
- * https://github.com/svenlenz/clickstream-survey/tree/master/clustering/input
- * The survey / event results are under disclosure.
+ * create clickstream prototype personalities based on the big5 survey results.
+ * surveys are clustered with k-means ( Cognitive Foundry ) and euclidean distance for NEOACE dimension vectors
+ * Average of NEOAC are calculated over N iterations (default n = 10'000)
  * 
  * @author sven.lenz@msc.htwchur.ch
  */
 public class CreatePrototypesWithKMeans {
 
-	public static boolean USE_WINDOWS = false;
+	public static boolean USE_WINDOWS = true;
 	public static boolean WITH_LIERS = true;
-	public static String BASE_PATH_WINDOWS = "C:\\Users\\slenz\\switchdrive\\Master\\survey_results\\";
-	public static String BASE_PATH_IOS = "/Users/sle/switchdrive/Master/survey_results/";
+	public static String BASE_PATH_WINDOWS = "..\\results\\survey_results\\";
+	public static String BASE_PATH_IOS = "../results/survey_results/";
 	static int numRequestedClusters = 3; // The "k" in k-means.
+	static int iterations = 10000; //number of iterations, result is average between all those iterations
 
 	public static HashMap<Integer, double[]> index = new HashMap<Integer, double[]>();
 
@@ -76,10 +75,10 @@ public class CreatePrototypesWithKMeans {
 					JSONObject event = (JSONObject) evtIter.next();
 					duration += ((Long) event.get("duration")).intValue();
 				}
-				b5result.meanDuration = duration;
+				b5result.duration = duration;
 
-				double[] profilePoints = { b5result.meanNeuro, b5result.meanExtra, b5result.meanGewissen,
-						b5result.meanOffen, b5result.meanVertrag };
+				double[] profilePoints = { b5result.neuro, b5result.extra, b5result.gewissen,
+						b5result.offen, b5result.vertrag };
 				index.put(id, profilePoints);
 				data.add(vectorFactory.copyArray(profilePoints));
 			} catch (Exception e) {
@@ -87,7 +86,7 @@ public class CreatePrototypesWithKMeans {
 			}
 		}
 
-		for (int i = 0; i < 10000; i++) {
+		for (int i = 0; i < iterations; i++) {
 
 			final Random random = new Random();
 
