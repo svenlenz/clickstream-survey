@@ -1,0 +1,128 @@
+[
+  {
+    "datetime": "2017-05-30T08:51:59.195Z",
+    "duration": 10,
+    "event": "open",
+    "sessionId": "0:j3bb9me6:9v_lRrzb96IxHhGJ8caUnGaoKvXOIwho",
+    "productId": "undefined",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-30T08:52:31.662Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j3bb9me6:9v_lRrzb96IxHhGJ8caUnGaoKvXOIwho",
+    "productId": "3",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-30T08:52:53.493Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j3bb9me6:9v_lRrzb96IxHhGJ8caUnGaoKvXOIwho",
+    "productId": "3",
+    "detail": "3",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-30T08:53:06.640Z",
+    "duration": 13147,
+    "event": "home",
+    "sessionId": "0:j3bb9me6:9v_lRrzb96IxHhGJ8caUnGaoKvXOIwho",
+    "productId": "3",
+    "detail": "3",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-30T08:53:06.658Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j3bb9me6:9v_lRrzb96IxHhGJ8caUnGaoKvXOIwho",
+    "productId": "undefined",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-30T08:53:27.236Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j3bb9me6:9v_lRrzb96IxHhGJ8caUnGaoKvXOIwho",
+    "productId": "3",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-30T08:53:32.371Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j3bb9me6:9v_lRrzb96IxHhGJ8caUnGaoKvXOIwho",
+    "productId": "3",
+    "detail": "0",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-30T08:53:37.408Z",
+    "duration": 5037,
+    "event": "backToProduct",
+    "sessionId": "0:j3bb9me6:9v_lRrzb96IxHhGJ8caUnGaoKvXOIwho",
+    "productId": "3",
+    "detail": "0",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-30T08:53:37.435Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j3bb9me6:9v_lRrzb96IxHhGJ8caUnGaoKvXOIwho",
+    "productId": "3",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-30T08:53:38.790Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j3bb9me6:9v_lRrzb96IxHhGJ8caUnGaoKvXOIwho",
+    "productId": "3",
+    "detail": "2",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-30T08:53:45.367Z",
+    "duration": 6577,
+    "event": "backToProduct",
+    "sessionId": "0:j3bb9me6:9v_lRrzb96IxHhGJ8caUnGaoKvXOIwho",
+    "productId": "3",
+    "detail": "2",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-30T08:53:45.414Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j3bb9me6:9v_lRrzb96IxHhGJ8caUnGaoKvXOIwho",
+    "productId": "3",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-30T08:53:58.296Z",
+    "duration": 12882,
+    "event": "home",
+    "sessionId": "0:j3bb9me6:9v_lRrzb96IxHhGJ8caUnGaoKvXOIwho",
+    "productId": "3",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-30T08:53:58.347Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j3bb9me6:9v_lRrzb96IxHhGJ8caUnGaoKvXOIwho",
+    "productId": "undefined",
+    "detail": "undefined",
+    "linkId": "undefined"
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "datetime": "2017-05-15T18:41:51.299Z",
+    "duration": 1,
+    "event": "open",
+    "sessionId": "0:j2qgyodv:TE430QRygbwmdwaxoS2pyA7LjKWYC~6~",
+    "productId": "undefined",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-15T18:42:26.278Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2qgyodv:TE430QRygbwmdwaxoS2pyA7LjKWYC~6~",
+    "productId": "0",
+    "detail": "undefined",
+    "linkId": "undefined"
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "datetime": "2017-06-08T20:21:01.402Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j3out4qc:gbwxCBDcbdHWL3GzT9MbKdODfU9FcSlq",
+    "productId": "undefined",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-06-08T20:21:52.040Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j3out4qc:gbwxCBDcbdHWL3GzT9MbKdODfU9FcSlq",
+    "productId": "0",
+    "detail": "undefined",
+    "linkId": "undefined"
+  }
+]

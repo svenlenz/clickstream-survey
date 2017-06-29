@@ -1,0 +1,317 @@
+[
+  {
+    "datetime": "2017-05-16T12:50:07.205Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2rju5vf:kRHysHniAS3ABQNbW6Wt7DTkRNSIKrq7",
+    "productId": "undefined",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T12:50:27.393Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2rju5vf:kRHysHniAS3ABQNbW6Wt7DTkRNSIKrq7",
+    "productId": "0",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T12:50:35.663Z",
+    "duration": 1,
+    "event": "open",
+    "sessionId": "0:j2rju5vf:kRHysHniAS3ABQNbW6Wt7DTkRNSIKrq7",
+    "productId": "0",
+    "detail": "2",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T12:50:45.502Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2rju5vf:kRHysHniAS3ABQNbW6Wt7DTkRNSIKrq7",
+    "productId": "0",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T12:50:46.962Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2rju5vf:kRHysHniAS3ABQNbW6Wt7DTkRNSIKrq7",
+    "productId": "0",
+    "detail": "1",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T12:50:54.012Z",
+    "duration": 1,
+    "event": "open",
+    "sessionId": "0:j2rju5vf:kRHysHniAS3ABQNbW6Wt7DTkRNSIKrq7",
+    "productId": "0",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T12:50:58.313Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2rju5vf:kRHysHniAS3ABQNbW6Wt7DTkRNSIKrq7",
+    "productId": "0",
+    "detail": "0",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T12:51:07.110Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2rju5vf:kRHysHniAS3ABQNbW6Wt7DTkRNSIKrq7",
+    "productId": "0",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T12:51:09.370Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2rju5vf:kRHysHniAS3ABQNbW6Wt7DTkRNSIKrq7",
+    "productId": "0",
+    "detail": "3",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T12:51:13.012Z",
+    "duration": 3642,
+    "event": "backToProduct",
+    "sessionId": "0:j2rju5vf:kRHysHniAS3ABQNbW6Wt7DTkRNSIKrq7",
+    "productId": "0",
+    "detail": "3",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T12:51:13.050Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2rju5vf:kRHysHniAS3ABQNbW6Wt7DTkRNSIKrq7",
+    "productId": "0",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T12:51:15.655Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2rju5vf:kRHysHniAS3ABQNbW6Wt7DTkRNSIKrq7",
+    "productId": "0",
+    "detail": "3",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T12:51:16.471Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2rju5vf:kRHysHniAS3ABQNbW6Wt7DTkRNSIKrq7",
+    "productId": "0",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T12:51:17.106Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2rju5vf:kRHysHniAS3ABQNbW6Wt7DTkRNSIKrq7",
+    "productId": "undefined",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T12:51:19.307Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2rju5vf:kRHysHniAS3ABQNbW6Wt7DTkRNSIKrq7",
+    "productId": "undefined",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T12:51:25.002Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2rju5vf:kRHysHniAS3ABQNbW6Wt7DTkRNSIKrq7",
+    "productId": "1",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T12:51:28.205Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2rju5vf:kRHysHniAS3ABQNbW6Wt7DTkRNSIKrq7",
+    "productId": "1",
+    "detail": "2",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T12:51:36.382Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2rju5vf:kRHysHniAS3ABQNbW6Wt7DTkRNSIKrq7",
+    "productId": "1",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T12:51:42.768Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2rju5vf:kRHysHniAS3ABQNbW6Wt7DTkRNSIKrq7",
+    "productId": "undefined",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T12:51:47.051Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2rju5vf:kRHysHniAS3ABQNbW6Wt7DTkRNSIKrq7",
+    "productId": "2",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T12:51:48.980Z",
+    "duration": 1,
+    "event": "open",
+    "sessionId": "0:j2rju5vf:kRHysHniAS3ABQNbW6Wt7DTkRNSIKrq7",
+    "productId": "2",
+    "detail": "2",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T12:51:52.888Z",
+    "duration": 1,
+    "event": "open",
+    "sessionId": "0:j2rju5vf:kRHysHniAS3ABQNbW6Wt7DTkRNSIKrq7",
+    "productId": "2",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T12:51:54.583Z",
+    "duration": 1,
+    "event": "open",
+    "sessionId": "0:j2rju5vf:kRHysHniAS3ABQNbW6Wt7DTkRNSIKrq7",
+    "productId": "2",
+    "detail": "1",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T12:52:00.055Z",
+    "duration": 1,
+    "event": "open",
+    "sessionId": "0:j2rju5vf:kRHysHniAS3ABQNbW6Wt7DTkRNSIKrq7",
+    "productId": "2",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T12:52:01.700Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2rju5vf:kRHysHniAS3ABQNbW6Wt7DTkRNSIKrq7",
+    "productId": "2",
+    "detail": "3",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T12:52:05.723Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2rju5vf:kRHysHniAS3ABQNbW6Wt7DTkRNSIKrq7",
+    "productId": "2",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T12:52:07.465Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2rju5vf:kRHysHniAS3ABQNbW6Wt7DTkRNSIKrq7",
+    "productId": "2",
+    "detail": "0",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T12:52:12.853Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2rju5vf:kRHysHniAS3ABQNbW6Wt7DTkRNSIKrq7",
+    "productId": "2",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T12:52:13.059Z",
+    "duration": 1,
+    "event": "open",
+    "sessionId": "0:j2rju5vf:kRHysHniAS3ABQNbW6Wt7DTkRNSIKrq7",
+    "productId": "undefined",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T12:52:17.067Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2rju5vf:kRHysHniAS3ABQNbW6Wt7DTkRNSIKrq7",
+    "productId": "3",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T12:52:22.898Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2rju5vf:kRHysHniAS3ABQNbW6Wt7DTkRNSIKrq7",
+    "productId": "3",
+    "detail": "2",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T12:52:25.745Z",
+    "duration": 1,
+    "event": "open",
+    "sessionId": "0:j2rju5vf:kRHysHniAS3ABQNbW6Wt7DTkRNSIKrq7",
+    "productId": "3",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T12:52:29.941Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2rju5vf:kRHysHniAS3ABQNbW6Wt7DTkRNSIKrq7",
+    "productId": "3",
+    "detail": "1",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T12:52:35.270Z",
+    "duration": 1,
+    "event": "open",
+    "sessionId": "0:j2rju5vf:kRHysHniAS3ABQNbW6Wt7DTkRNSIKrq7",
+    "productId": "3",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T12:52:37.076Z",
+    "duration": 1,
+    "event": "open",
+    "sessionId": "0:j2rju5vf:kRHysHniAS3ABQNbW6Wt7DTkRNSIKrq7",
+    "productId": "3",
+    "detail": "3",
+    "linkId": "undefined"
+  }
+]

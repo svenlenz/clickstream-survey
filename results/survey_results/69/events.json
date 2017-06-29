@@ -1,0 +1,56 @@
+[
+  {
+    "datetime": "2017-05-15T17:08:42.195Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2qdjbv0:iYSNRmEdwhzEPxCWZdoNNyxW~Z148kUn",
+    "productId": "undefined",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-15T17:09:27.093Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2qdjbv0:iYSNRmEdwhzEPxCWZdoNNyxW~Z148kUn",
+    "productId": "0",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-15T17:09:44.980Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2qdjbv0:iYSNRmEdwhzEPxCWZdoNNyxW~Z148kUn",
+    "productId": "0",
+    "detail": "2",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-15T17:09:54.378Z",
+    "duration": 9398,
+    "event": "playingVideo",
+    "sessionId": "0:j2qdjbv0:iYSNRmEdwhzEPxCWZdoNNyxW~Z148kUn",
+    "productId": "0",
+    "detail": "2",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-15T17:11:39.091Z",
+    "duration": 104713,
+    "event": "home",
+    "sessionId": "0:j2qdjbv0:iYSNRmEdwhzEPxCWZdoNNyxW~Z148kUn",
+    "productId": "0",
+    "detail": "2",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-15T17:11:39.181Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2qdjbv0:iYSNRmEdwhzEPxCWZdoNNyxW~Z148kUn",
+    "productId": "undefined",
+    "detail": "undefined",
+    "linkId": "undefined"
+  }
+]

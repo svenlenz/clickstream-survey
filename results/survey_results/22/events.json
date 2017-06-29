@@ -1,0 +1,155 @@
+[
+  {
+    "datetime": "2017-05-11T14:10:24.975Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2kcilza:a440C1Isx9BmArjT6jD73m0KqFnRTgwb",
+    "productId": "undefined",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T14:10:33.583Z",
+    "duration": 1,
+    "event": "open",
+    "sessionId": "0:j2kcilza:a440C1Isx9BmArjT6jD73m0KqFnRTgwb",
+    "productId": "0",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T14:10:38.733Z",
+    "duration": 1,
+    "event": "open",
+    "sessionId": "0:j2kcilza:a440C1Isx9BmArjT6jD73m0KqFnRTgwb",
+    "productId": "0",
+    "detail": "0",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T14:11:39.438Z",
+    "duration": 60705,
+    "event": "backToProduct",
+    "sessionId": "0:j2kcilza:a440C1Isx9BmArjT6jD73m0KqFnRTgwb",
+    "productId": "0",
+    "detail": "0",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T14:11:39.473Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2kcilza:a440C1Isx9BmArjT6jD73m0KqFnRTgwb",
+    "productId": "0",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T14:11:40.719Z",
+    "duration": 1,
+    "event": "open",
+    "sessionId": "0:j2kcilza:a440C1Isx9BmArjT6jD73m0KqFnRTgwb",
+    "productId": "0",
+    "detail": "1",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T14:11:42.524Z",
+    "duration": 1805,
+    "event": "backToProduct",
+    "sessionId": "0:j2kcilza:a440C1Isx9BmArjT6jD73m0KqFnRTgwb",
+    "productId": "0",
+    "detail": "1",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T14:11:42.556Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2kcilza:a440C1Isx9BmArjT6jD73m0KqFnRTgwb",
+    "productId": "0",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T14:11:43.830Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2kcilza:a440C1Isx9BmArjT6jD73m0KqFnRTgwb",
+    "productId": "0",
+    "detail": "2",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T14:12:12.551Z",
+    "duration": 28721,
+    "event": "playingVideo",
+    "sessionId": "0:j2kcilza:a440C1Isx9BmArjT6jD73m0KqFnRTgwb",
+    "productId": "0",
+    "detail": "2",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T14:21:12.446Z",
+    "duration": 539895,
+    "event": "endedVideo",
+    "sessionId": "0:j2kcilza:a440C1Isx9BmArjT6jD73m0KqFnRTgwb",
+    "productId": "0",
+    "detail": "2",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T14:39:08.465Z",
+    "duration": 1076019,
+    "event": "home",
+    "sessionId": "0:j2kcilza:a440C1Isx9BmArjT6jD73m0KqFnRTgwb",
+    "productId": "0",
+    "detail": "2",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T14:39:08.537Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2kcilza:a440C1Isx9BmArjT6jD73m0KqFnRTgwb",
+    "productId": "undefined",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T14:39:18.239Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2kcilza:a440C1Isx9BmArjT6jD73m0KqFnRTgwb",
+    "productId": "1",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T14:39:20.366Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2kcilza:a440C1Isx9BmArjT6jD73m0KqFnRTgwb",
+    "productId": "1",
+    "detail": "0",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T15:00:22.615Z",
+    "duration": 1262249,
+    "event": "backToProduct",
+    "sessionId": "0:j2kcilza:a440C1Isx9BmArjT6jD73m0KqFnRTgwb",
+    "productId": "1",
+    "detail": "0",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T15:00:22.625Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2kcilza:a440C1Isx9BmArjT6jD73m0KqFnRTgwb",
+    "productId": "1",
+    "detail": "undefined",
+    "linkId": "undefined"
+  }
+]

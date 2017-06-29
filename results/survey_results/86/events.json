@@ -1,0 +1,92 @@
+[
+  {
+    "datetime": "2017-05-17T08:32:16.442Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2sq44yq:9~2ClqmA4rA3pLJpHDmEb~9gRPuWyodb",
+    "productId": "undefined",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-17T08:32:35.802Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2sq44yq:9~2ClqmA4rA3pLJpHDmEb~9gRPuWyodb",
+    "productId": "1",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-17T08:32:43.509Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2sq44yq:9~2ClqmA4rA3pLJpHDmEb~9gRPuWyodb",
+    "productId": "1",
+    "detail": "0",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-17T08:32:46.705Z",
+    "duration": 3196,
+    "event": "backToProduct",
+    "sessionId": "0:j2sq44yq:9~2ClqmA4rA3pLJpHDmEb~9gRPuWyodb",
+    "productId": "1",
+    "detail": "0",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-17T08:32:46.734Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2sq44yq:9~2ClqmA4rA3pLJpHDmEb~9gRPuWyodb",
+    "productId": "1",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-17T08:32:48.792Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2sq44yq:9~2ClqmA4rA3pLJpHDmEb~9gRPuWyodb",
+    "productId": "1",
+    "detail": "1",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-17T08:32:50.699Z",
+    "duration": 1907,
+    "event": "backToProduct",
+    "sessionId": "0:j2sq44yq:9~2ClqmA4rA3pLJpHDmEb~9gRPuWyodb",
+    "productId": "1",
+    "detail": "1",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-17T08:32:50.728Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2sq44yq:9~2ClqmA4rA3pLJpHDmEb~9gRPuWyodb",
+    "productId": "1",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-17T08:32:54.924Z",
+    "duration": 4196,
+    "event": "backToOverviewButton",
+    "sessionId": "0:j2sq44yq:9~2ClqmA4rA3pLJpHDmEb~9gRPuWyodb",
+    "productId": "1",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-17T08:32:55.013Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2sq44yq:9~2ClqmA4rA3pLJpHDmEb~9gRPuWyodb",
+    "productId": "undefined",
+    "detail": "undefined",
+    "linkId": "undefined"
+  }
+]

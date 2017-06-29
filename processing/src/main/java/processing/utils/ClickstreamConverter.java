@@ -1,27 +1,8 @@
 package processing.utils;
 
-import gov.sandia.cognition.learning.algorithm.clustering.KMeansClusterer;
-import gov.sandia.cognition.learning.algorithm.clustering.cluster.CentroidCluster;
-import gov.sandia.cognition.learning.algorithm.clustering.cluster.ClusterCreator;
-import gov.sandia.cognition.learning.algorithm.clustering.cluster.VectorMeanCentroidClusterCreator;
-import gov.sandia.cognition.learning.algorithm.clustering.divergence.CentroidClusterDivergenceFunction;
-import gov.sandia.cognition.learning.algorithm.clustering.divergence.ClusterDivergenceFunction;
-import gov.sandia.cognition.learning.algorithm.clustering.initializer.DistanceSamplingClusterInitializer;
-import gov.sandia.cognition.learning.function.distance.EuclideanDistanceSquaredMetric;
-import gov.sandia.cognition.math.Semimetric;
-import gov.sandia.cognition.math.matrix.Vector;
-import gov.sandia.cognition.math.matrix.VectorFactory;
-import gov.sandia.cognition.math.matrix.Vectorizable;
-
 import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map.Entry;
 import java.util.Random;
-import java.util.TreeMap;
 
 import org.json.JSONException;
 import org.json.simple.JSONArray;

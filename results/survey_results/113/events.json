@@ -1,0 +1,20 @@
+[
+  {
+    "datetime": "2017-05-30T06:32:56.277Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j3b6irc6:3VROQhHozhnenvogRgW5PrlDXZgtJj9p",
+    "productId": "undefined",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-30T06:33:18.201Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j3b6irc6:3VROQhHozhnenvogRgW5PrlDXZgtJj9p",
+    "productId": "0",
+    "detail": "undefined",
+    "linkId": "undefined"
+  }
+]

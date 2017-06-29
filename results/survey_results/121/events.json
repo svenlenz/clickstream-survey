@@ -1,0 +1,38 @@
+[
+  {
+    "datetime": "2017-06-03T08:56:13.540Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j3h0ucjv:2QbQ66f1Tvo60tJa9xDFcHHoX1yal6Ih",
+    "productId": "undefined",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-06-03T08:57:10.896Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j3h0ucjv:2QbQ66f1Tvo60tJa9xDFcHHoX1yal6Ih",
+    "productId": "3",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-06-03T08:57:29.407Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j3h0ucjv:2QbQ66f1Tvo60tJa9xDFcHHoX1yal6Ih",
+    "productId": "3",
+    "detail": "1",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-06-03T08:57:37.385Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j3h0ucjv:2QbQ66f1Tvo60tJa9xDFcHHoX1yal6Ih",
+    "productId": "3",
+    "detail": "undefined",
+    "linkId": "undefined"
+  }
+]

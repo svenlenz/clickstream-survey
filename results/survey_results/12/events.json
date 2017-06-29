@@ -1,0 +1,605 @@
+[
+  {
+    "datetime": "2017-05-11T09:27:17.009Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "undefined",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:27:43.550Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "0",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:27:48.484Z",
+    "duration": 4934,
+    "event": "playingVideo",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "0",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:27:50.443Z",
+    "duration": 1959,
+    "event": "pausedVideo",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "0",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:27:50.607Z",
+    "duration": 164,
+    "event": "playingVideo",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "0",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:28:00.258Z",
+    "duration": 9651,
+    "event": "pausedVideo",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "0",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:28:00.346Z",
+    "duration": 88,
+    "event": "playingVideo",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "0",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:28:00.899Z",
+    "duration": 553,
+    "event": "pausedVideo",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "0",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:28:00.983Z",
+    "duration": 84,
+    "event": "playingVideo",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "0",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:28:01.503Z",
+    "duration": 520,
+    "event": "pausedVideo",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "0",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:28:01.633Z",
+    "duration": 130,
+    "event": "playingVideo",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "0",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:28:03.912Z",
+    "duration": 2279,
+    "event": "pausedVideo",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "0",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:28:04.635Z",
+    "duration": 1,
+    "event": "open",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "0",
+    "detail": "0",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:28:18.450Z",
+    "duration": 13815,
+    "event": "outgoingLink",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "0",
+    "detail": "0",
+    "linkId": "Fruchtgesellschaft"
+  },
+  {
+    "datetime": "2017-05-11T09:28:22.290Z",
+    "duration": 3840,
+    "event": "home",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "0",
+    "detail": "0",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:28:22.303Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "undefined",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:28:26.967Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "1",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:28:31.239Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "1",
+    "detail": "1",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:28:38.818Z",
+    "duration": 7579,
+    "event": "home",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "1",
+    "detail": "1",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:28:38.824Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "undefined",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:28:40.384Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "1",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:28:41.907Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "1",
+    "detail": "0",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:28:45.434Z",
+    "duration": 3527,
+    "event": "backToProduct",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "1",
+    "detail": "0",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:28:45.441Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "1",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:28:46.856Z",
+    "duration": 1,
+    "event": "open",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "1",
+    "detail": "2",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:28:54.416Z",
+    "duration": 7560,
+    "event": "playingVideo",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "1",
+    "detail": "2",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:28:55.854Z",
+    "duration": 1438,
+    "event": "pausedVideo",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "1",
+    "detail": "2",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:28:56.021Z",
+    "duration": 167,
+    "event": "playingVideo",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "1",
+    "detail": "2",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:28:56.658Z",
+    "duration": 637,
+    "event": "pausedVideo",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "1",
+    "detail": "2",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:28:56.750Z",
+    "duration": 92,
+    "event": "playingVideo",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "1",
+    "detail": "2",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:28:57.264Z",
+    "duration": 514,
+    "event": "pausedVideo",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "1",
+    "detail": "2",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:28:57.363Z",
+    "duration": 99,
+    "event": "playingVideo",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "1",
+    "detail": "2",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:28:57.802Z",
+    "duration": 439,
+    "event": "pausedVideo",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "1",
+    "detail": "2",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:28:57.892Z",
+    "duration": 90,
+    "event": "playingVideo",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "1",
+    "detail": "2",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:28:58.804Z",
+    "duration": 912,
+    "event": "pausedVideo",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "1",
+    "detail": "2",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:29:00.457Z",
+    "duration": 1653,
+    "event": "home",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "1",
+    "detail": "2",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:29:00.484Z",
+    "duration": 1,
+    "event": "open",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "undefined",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:29:01.695Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "2",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:29:04.806Z",
+    "duration": 3111,
+    "event": "playingVideo",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "2",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:29:05.324Z",
+    "duration": 518,
+    "event": "pausedVideo",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "2",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:29:05.408Z",
+    "duration": 84,
+    "event": "playingVideo",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "2",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:29:06.074Z",
+    "duration": 666,
+    "event": "pausedVideo",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "2",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:29:06.148Z",
+    "duration": 74,
+    "event": "playingVideo",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "2",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:29:06.700Z",
+    "duration": 552,
+    "event": "pausedVideo",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "2",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:29:06.808Z",
+    "duration": 108,
+    "event": "playingVideo",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "2",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:29:07.633Z",
+    "duration": 825,
+    "event": "pausedVideo",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "2",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:29:08.582Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "2",
+    "detail": "3",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:29:12.001Z",
+    "duration": 3419,
+    "event": "backToProduct",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "2",
+    "detail": "3",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:29:12.008Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "2",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:29:12.662Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "2",
+    "detail": "1",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:29:14.465Z",
+    "duration": 1803,
+    "event": "backToProduct",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "2",
+    "detail": "1",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:29:14.472Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "2",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:29:17.497Z",
+    "duration": 3025,
+    "event": "home",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "2",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:29:17.511Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "undefined",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:29:20.312Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "3",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:29:24.273Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "3",
+    "detail": "0",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:29:28.561Z",
+    "duration": 4288,
+    "event": "backToProduct",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "3",
+    "detail": "0",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:29:28.567Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "3",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:29:30.296Z",
+    "duration": 1729,
+    "event": "home",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "3",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:29:30.315Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "undefined",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:29:32.535Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "0",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:29:33.262Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "0",
+    "detail": "3",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:29:35.945Z",
+    "duration": 2683,
+    "event": "discount_on",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "0",
+    "detail": "3",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:29:39.728Z",
+    "duration": 3783,
+    "event": "backToProduct",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "0",
+    "detail": "3",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:29:39.735Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "0",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:29:41.305Z",
+    "duration": 1570,
+    "event": "home",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "0",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:29:41.319Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2k7ebi6:1dA24WoOfVTPHpJwxfq6hJxt8tauaghH",
+    "productId": "undefined",
+    "detail": "undefined",
+    "linkId": "undefined"
+  }
+]

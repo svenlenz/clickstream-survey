@@ -1,0 +1,47 @@
+[
+  {
+    "datetime": "2017-05-11T13:09:22.389Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2kfcbub:T67xTAExU86B6niISxuyf8QrmmSsW6Pu",
+    "productId": "undefined",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T13:09:54.816Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2kfcbub:T67xTAExU86B6niISxuyf8QrmmSsW6Pu",
+    "productId": "undefined",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T13:10:09.987Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2kfcbub:T67xTAExU86B6niISxuyf8QrmmSsW6Pu",
+    "productId": "2",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T13:10:14.863Z",
+    "duration": 4876,
+    "event": "backToOverviewButton",
+    "sessionId": "0:j2kfcbub:T67xTAExU86B6niISxuyf8QrmmSsW6Pu",
+    "productId": "2",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T13:10:14.873Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2kfcbub:T67xTAExU86B6niISxuyf8QrmmSsW6Pu",
+    "productId": "undefined",
+    "detail": "undefined",
+    "linkId": "undefined"
+  }
+]

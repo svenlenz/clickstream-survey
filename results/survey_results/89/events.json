@@ -1,0 +1,272 @@
+[
+  {
+    "datetime": "2017-05-16T13:28:47.950Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "15bec221-6b18-76d9-e96d-202863a6475e",
+    "productId": "undefined",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T13:29:02.967Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "15bec221-6b18-76d9-e96d-202863a6475e",
+    "productId": "3",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T13:29:13.959Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "15bec221-6b18-76d9-e96d-202863a6475e",
+    "productId": "3",
+    "detail": "1",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T13:29:19.945Z",
+    "duration": 5986,
+    "event": "backToProduct",
+    "sessionId": "15bec221-6b18-76d9-e96d-202863a6475e",
+    "productId": "3",
+    "detail": "1",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T13:29:19.950Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "15bec221-6b18-76d9-e96d-202863a6475e",
+    "productId": "3",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T13:29:22.265Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "15bec221-6b18-76d9-e96d-202863a6475e",
+    "productId": "3",
+    "detail": "2",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T13:29:28.786Z",
+    "duration": 6521,
+    "event": "backToProduct",
+    "sessionId": "15bec221-6b18-76d9-e96d-202863a6475e",
+    "productId": "3",
+    "detail": "2",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T13:29:28.798Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "15bec221-6b18-76d9-e96d-202863a6475e",
+    "productId": "3",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T13:29:32.399Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "15bec221-6b18-76d9-e96d-202863a6475e",
+    "productId": "3",
+    "detail": "3",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T13:29:36.098Z",
+    "duration": 3699,
+    "event": "backToProduct",
+    "sessionId": "15bec221-6b18-76d9-e96d-202863a6475e",
+    "productId": "3",
+    "detail": "3",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T13:29:36.103Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "15bec221-6b18-76d9-e96d-202863a6475e",
+    "productId": "3",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T13:29:39.269Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "15bec221-6b18-76d9-e96d-202863a6475e",
+    "productId": "3",
+    "detail": "0",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T13:29:41.515Z",
+    "duration": 2246,
+    "event": "backToProduct",
+    "sessionId": "15bec221-6b18-76d9-e96d-202863a6475e",
+    "productId": "3",
+    "detail": "0",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T13:29:41.527Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "15bec221-6b18-76d9-e96d-202863a6475e",
+    "productId": "3",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T13:29:44.714Z",
+    "duration": 3187,
+    "event": "home",
+    "sessionId": "15bec221-6b18-76d9-e96d-202863a6475e",
+    "productId": "3",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T13:29:44.725Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "15bec221-6b18-76d9-e96d-202863a6475e",
+    "productId": "undefined",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T13:29:50.733Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "15bec221-6b18-76d9-e96d-202863a6475e",
+    "productId": "1",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T13:29:56.078Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "15bec221-6b18-76d9-e96d-202863a6475e",
+    "productId": "1",
+    "detail": "0",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T13:29:57.843Z",
+    "duration": 1765,
+    "event": "backToProduct",
+    "sessionId": "15bec221-6b18-76d9-e96d-202863a6475e",
+    "productId": "1",
+    "detail": "0",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T13:29:57.862Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "15bec221-6b18-76d9-e96d-202863a6475e",
+    "productId": "1",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T13:30:00.186Z",
+    "duration": 2324,
+    "event": "home",
+    "sessionId": "15bec221-6b18-76d9-e96d-202863a6475e",
+    "productId": "1",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T13:30:00.196Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "15bec221-6b18-76d9-e96d-202863a6475e",
+    "productId": "undefined",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T13:30:02.856Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "15bec221-6b18-76d9-e96d-202863a6475e",
+    "productId": "0",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T13:30:08.489Z",
+    "duration": 5633,
+    "event": "playingVideo",
+    "sessionId": "15bec221-6b18-76d9-e96d-202863a6475e",
+    "productId": "0",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T13:30:18.551Z",
+    "duration": 10062,
+    "event": "backToOverviewButton",
+    "sessionId": "15bec221-6b18-76d9-e96d-202863a6475e",
+    "productId": "0",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T13:30:18.570Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "15bec221-6b18-76d9-e96d-202863a6475e",
+    "productId": "undefined",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T13:30:47.969Z",
+    "duration": 29399,
+    "event": "outgoingLink",
+    "sessionId": "15bec221-6b18-76d9-e96d-202863a6475e",
+    "productId": "undefined",
+    "detail": "undefined",
+    "linkId": "cc-img"
+  },
+  {
+    "datetime": "2017-05-16T13:31:01.794Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "15bec221-6b18-76d9-e96d-202863a6475e",
+    "productId": "0",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T13:31:04.607Z",
+    "duration": 2813,
+    "event": "home",
+    "sessionId": "15bec221-6b18-76d9-e96d-202863a6475e",
+    "productId": "0",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-16T13:31:04.630Z",
+    "duration": 1,
+    "event": "open",
+    "sessionId": "15bec221-6b18-76d9-e96d-202863a6475e",
+    "productId": "undefined",
+    "detail": "undefined",
+    "linkId": "undefined"
+  }
+]

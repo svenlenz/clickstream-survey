@@ -1,0 +1,92 @@
+[
+  {
+    "datetime": "2017-05-11T09:54:51.881Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2k7wwof:~R9Fiy7E8SgwmfunXx30uzJjruv_xvc1",
+    "productId": "undefined",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:55:12.732Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2k7wwof:~R9Fiy7E8SgwmfunXx30uzJjruv_xvc1",
+    "productId": "2",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:55:21.950Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2k7wwof:~R9Fiy7E8SgwmfunXx30uzJjruv_xvc1",
+    "productId": "2",
+    "detail": "0",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:55:31.816Z",
+    "duration": 9866,
+    "event": "backToProduct",
+    "sessionId": "0:j2k7wwof:~R9Fiy7E8SgwmfunXx30uzJjruv_xvc1",
+    "productId": "2",
+    "detail": "0",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:55:31.862Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2k7wwof:~R9Fiy7E8SgwmfunXx30uzJjruv_xvc1",
+    "productId": "2",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:55:33.378Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2k7wwof:~R9Fiy7E8SgwmfunXx30uzJjruv_xvc1",
+    "productId": "2",
+    "detail": "2",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:55:49.594Z",
+    "duration": 16216,
+    "event": "backToProduct",
+    "sessionId": "0:j2k7wwof:~R9Fiy7E8SgwmfunXx30uzJjruv_xvc1",
+    "productId": "2",
+    "detail": "2",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:55:49.685Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2k7wwof:~R9Fiy7E8SgwmfunXx30uzJjruv_xvc1",
+    "productId": "2",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:55:52.494Z",
+    "duration": 2809,
+    "event": "backToOverviewButton",
+    "sessionId": "0:j2k7wwof:~R9Fiy7E8SgwmfunXx30uzJjruv_xvc1",
+    "productId": "2",
+    "detail": "undefined",
+    "linkId": "undefined"
+  },
+  {
+    "datetime": "2017-05-11T09:55:52.543Z",
+    "duration": 0,
+    "event": "open",
+    "sessionId": "0:j2k7wwof:~R9Fiy7E8SgwmfunXx30uzJjruv_xvc1",
+    "productId": "undefined",
+    "detail": "undefined",
+    "linkId": "undefined"
+  }
+]
