@@ -24,12 +24,12 @@ import org.json.simple.parser.JSONParser;
 public class ClusterEvaluator {
 
 	public static boolean CSV_FORMAT = true;
-	public static boolean USE_WINDOWS = true;
+	public static boolean USE_WINDOWS = false;
 	public static boolean CLICKERS = false;
 	public static boolean FLAT = true;
 	public static String BASE_PATH_WINDOWS = "..\\results\\survey_results\\";
-	public static String BASE_PATH_IOS = "../results/survey_results/";
-	public static String CLICKPATH_FILE_IOS = "../clustering/testresult.json";
+	public static String BASE_PATH_IOS = "../../results/survey_results/";
+	public static String CLICKPATH_FILE_IOS = "../../clustering/testresult.json";
 	public static String CLICKPATH_FILE_WS = "..\\clustering\\testresult.json";
 
 	static boolean takePLSA = false;
@@ -92,53 +92,54 @@ public class ClusterEvaluator {
 			CompareToPrototypes.compareFMeasureToPrototype3(toCompare, false);
 			CompareToPrototypes.compareFMeasureToPrototype3(toCompare, true);
 			
-//			System.out.println("//// CLUSTER CLOSENESS //// ");
-//			clusterCollection.forEach(cl -> {
-//				System.out.println("//// ----------------- //// ");
-//
-//				List<Integer> clusterOne = new ArrayList<Integer>();
-//				List<Integer> clusterTwo = new ArrayList<Integer>();
-//				List<Integer> clusterThree = new ArrayList<Integer>();
-//				List<Integer> clusterFour = new ArrayList<Integer>();
-//				List<Integer> clusterFive = new ArrayList<Integer>();
-//				cl.forEach(id -> {
-//					Big5Result b5result = StatDump.toBig5Result(id);
-//					int[] profilePoints = { b5result.meanNeuro, b5result.meanExtra, b5result.meanGewissen,
-//							b5result.meanOffen, b5result.meanVertrag };
+			System.out.println("//// CLUSTER CLOSENESS //// ");
+			clusterCollection.forEach(cl -> {
+				System.out.println("//// ----------------- //// ");
+
+				List<Integer> clusterOne = new ArrayList<Integer>();
+				List<Integer> clusterTwo = new ArrayList<Integer>();
+				List<Integer> clusterThree = new ArrayList<Integer>();
+				List<Integer> clusterFour = new ArrayList<Integer>();
+				List<Integer> clusterFive = new ArrayList<Integer>();
+				cl.forEach(id -> {
+					Big5Result b5result = StatDump.toBig5Result(id);
+					int[] profilePoints = { b5result.neuro, b5result.extra, b5result.gewissen,
+							b5result.offen, b5result.vertrag };
 //					StatDump.calculateNDistance(id, profilePoints, clusterOne, clusterTwo, clusterThree, clusterFour,
-//							clusterFive, clusterCollection.size());
-//				});
-//				System.out.println("cl all " + cl.size() + " cl1 " + clusterOne.size() + " cl2 " + clusterTwo.size()
-//						+ " cl3 " + clusterThree.size());
-//				System.out.println("---> cluster one " + (int) (new Double(100) / cl.size() * clusterOne.size()));
-//				System.out.println("---> cluster two " + (int) (new Double(100) / cl.size() * clusterTwo.size()));
-//				System.out.println("---> cluster three " + (int) (new Double(100) / cl.size() * clusterThree.size()));
-//				System.out.println("---> cluster four " + (int) (new Double(100) / cl.size() * clusterFour.size()));
-//				System.out.println("---> cluster five " + (int) (new Double(100) / cl.size() * clusterFive.size()));
-//			});
-//
-//			List<Integer> clusterZero = new ArrayList<Integer>();
-//
-//			for (int i = 1; i <= 126; i++) {
-//				clusterZero.add(i);
-//			}
-//
-//			if (CSV_FORMAT) {
-//				System.out.println(Big5Result.csvHeader());
-//				meanResultValues(clusterZero);
-//				clusterCollection.forEach(cl -> {
-//					meanResultValues(cl);
-//				});
-//			} else {
-//				System.out.println("##### ALL " + clusterZero.size() + " #####");
-//				meanResultValues(clusterZero);
-//				System.out.println("---------------------------------");
-//				clusterCollection.forEach(cl -> {
-//					System.out.println("##### " + cl.size() + " #####");
-//					meanResultValues(cl);
-//					System.out.println("---------------------------------");
-//				});
-//			}
+//							clusterFive, 3);
+					StatDump.calculateNDistance(id, profilePoints, clusterOne, clusterTwo, clusterThree);					
+				});
+				System.out.println("cl all " + cl.size() + " cl1 " + clusterOne.size() + " cl2 " + clusterTwo.size()
+						+ " cl3 " + clusterThree.size());
+				System.out.println("---> cluster one " + (int) (new Double(100) / cl.size() * clusterOne.size()));
+				System.out.println("---> cluster two " + (int) (new Double(100) / cl.size() * clusterTwo.size()));
+				System.out.println("---> cluster three " + (int) (new Double(100) / cl.size() * clusterThree.size()));
+				System.out.println("---> cluster four " + (int) (new Double(100) / cl.size() * clusterFour.size()));
+				System.out.println("---> cluster five " + (int) (new Double(100) / cl.size() * clusterFive.size()));
+			});
+
+			List<Integer> clusterZero = new ArrayList<Integer>();
+
+			for (int i = 1; i <= 126; i++) {
+				clusterZero.add(i);
+			}
+
+			if (CSV_FORMAT) {
+				System.out.println(Big5Result.csvHeader());
+				meanResultValues(clusterZero);
+				clusterCollection.forEach(cl -> {
+					meanResultValues(cl);
+				});
+			} else {
+				System.out.println("##### ALL " + clusterZero.size() + " #####");
+				meanResultValues(clusterZero);
+				System.out.println("---------------------------------");
+				clusterCollection.forEach(cl -> {
+					System.out.println("##### " + cl.size() + " #####");
+					meanResultValues(cl);
+					System.out.println("---------------------------------");
+				});
+			}
 
 			// meanResultValues(clusterOne);
 			// System.out.println("------------");

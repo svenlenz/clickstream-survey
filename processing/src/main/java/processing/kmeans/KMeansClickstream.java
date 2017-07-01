@@ -1,5 +1,19 @@
 package processing.kmeans;
 
+import gov.sandia.cognition.learning.algorithm.clustering.KMeansClusterer;
+import gov.sandia.cognition.learning.algorithm.clustering.KMeansFactory;
+import gov.sandia.cognition.learning.algorithm.clustering.cluster.CentroidCluster;
+import gov.sandia.cognition.learning.algorithm.clustering.cluster.ClusterCreator;
+import gov.sandia.cognition.learning.algorithm.clustering.cluster.VectorMeanCentroidClusterCreator;
+import gov.sandia.cognition.learning.algorithm.clustering.divergence.CentroidClusterDivergenceFunction;
+import gov.sandia.cognition.learning.algorithm.clustering.divergence.ClusterDivergenceFunction;
+import gov.sandia.cognition.learning.algorithm.clustering.initializer.GreedyClusterInitializer;
+import gov.sandia.cognition.learning.function.distance.CosineDistanceMetric;
+import gov.sandia.cognition.math.Semimetric;
+import gov.sandia.cognition.math.matrix.Vector;
+import gov.sandia.cognition.math.matrix.VectorFactory;
+import gov.sandia.cognition.math.matrix.Vectorizable;
+
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,12 +28,6 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import gov.sandia.cognition.learning.algorithm.clustering.KMeansClusterer;
-import gov.sandia.cognition.learning.algorithm.clustering.KMeansFactory;
-import gov.sandia.cognition.learning.algorithm.clustering.cluster.CentroidCluster;
-import gov.sandia.cognition.math.matrix.Vector;
-import gov.sandia.cognition.math.matrix.VectorFactory;
-
 /**
  * clickstream clustering based on the survey events using k-means ( Cognitive Foundry ) and euclidean distance for a user/event matrix (number of event as values)
  * 
@@ -27,10 +35,10 @@ import gov.sandia.cognition.math.matrix.VectorFactory;
  */
 public class KMeansClickstream {
 	
-	public static boolean USE_WINDOWS = true;
+	public static boolean USE_WINDOWS = false;
 	public static boolean WITH_LIERS = true;
 	public static String BASE_PATH_WINDOWS = "..\\results\\survey_results\\";
-	public static String BASE_PATH_IOS = "../results/survey_results/";
+	public static String BASE_PATH_IOS = "../../results/survey_results/";
 
 	static ArrayList<double[]> matrix = new ArrayList<double[]>();
 	static HashMap<String, Integer> eventMap = new HashMap<String, Integer>();
@@ -205,8 +213,29 @@ public class KMeansClickstream {
 		KMeansClusterer<Vector, CentroidCluster<Vector>> kMeans =
 		KMeansFactory.create(numRequestedClusters, random);		
 
-		// Now run the clustering to create the clusters.
-		Collection<CentroidCluster<Vector>> clusters = kMeans.learn(data);
+//		// Now run the clustering to create the clusters.
+//		Collection<CentroidCluster<Vector>> clusters = kMeans.learn(data);
+		
+		
+		
+        Semimetric<Vectorizable> metric = CosineDistanceMetric.INSTANCE;
+        int maxIterations = 200;
+        ClusterCreator<CentroidCluster<Vector>, Vector> creator =
+            VectorMeanCentroidClusterCreator.INSTANCE;
+        GreedyClusterInitializer<CentroidCluster<Vector>, Vector>
+            initializer =
+                new GreedyClusterInitializer<CentroidCluster<Vector>, Vector>(
+                    metric, creator, random);
+        ClusterDivergenceFunction<CentroidCluster<Vector>, Vector>
+            clusterDivergence =
+                new CentroidClusterDivergenceFunction<Vector>(metric);
+        kMeans = new KMeansClusterer<Vector, CentroidCluster<Vector>>(
+            numRequestedClusters, maxIterations,
+            initializer, clusterDivergence, creator);
+
+        // Now run the clustering to create the clusters.
+        Collection<CentroidCluster<Vector>>  clusters = kMeans.learn(data);
+		
 		// printClusters("Version 3: ", clusters, false);
 		printClusters("Version 3: ", clusters, true);
 		collectAllCentroids(centroidIndex, clusters);
